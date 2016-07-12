@@ -18,3 +18,14 @@ Route::get('/', function () {
 Route::auth();
 
 Route::get('/home', 'HomeController@index');
+Route::get('/class', 'TeacherController@classIndex');
+Route::get('/administrator/students', ['as' => 'administrator.students', 'uses' => 'AdministratorController@students']);
+Route::any('/administrator/students/add', ['as' => 'administrator.students.add', 'uses' => 'AdministratorController@addStudent']);
+
+Route::get('/administrator/classes', ['as' => 'administrator.classes', 'uses' => 'AdministratorController@classes']);
+Route::any('/administrator/classes/add', ['as' => 'administrator.classes.add', 'uses' => 'AdministratorController@addclass']);
+
+Route::get('/administrator/subjects', ['as' => 'administrator.subjects', 'uses' => 'AdministratorController@subjects']);
+Route::any('/administrator/subjects/add', ['as' => 'administrator.subjects.add', 'uses' => 'AdministratorController@addSubject']);
+
+
