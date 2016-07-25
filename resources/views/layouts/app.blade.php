@@ -50,6 +50,7 @@
                     <li><a href="{{ url('/home') }}">Home</a></li>
                     <li><a href="{{ url('/administrator/students') }}">Alumnos</a></li>
                     <li><a href="{{ url('/administrator/subjects') }}">Materias</a></li>
+                    <li><a href="{{ url('/administrator/classes') }}">Clases</a></li>
                 </ul>
 
                 <!-- Right Side Of Navbar -->

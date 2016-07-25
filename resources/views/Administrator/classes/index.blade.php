@@ -11,6 +11,8 @@
                     <table>
                         <tr>
                             <td>Nombre</td>
+                            <td>Materia</td>
+                            <td>Profesor</td>
                         </tr>
                     @foreach($classes as $class)
                         <tr>

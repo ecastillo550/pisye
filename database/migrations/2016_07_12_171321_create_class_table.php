@@ -19,6 +19,7 @@ class CreateClassTable extends Migration
             $table->integer('subject_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('subject_id')->references('id')->on('subject');
+            $table->softDeletes();
         });
     }
 

@@ -53,14 +53,19 @@ class AdministratorController extends Controller {
     function addClass(Request $request) {
     	$input = $request->input();
     	if (!empty($input)) {
-	    	$id = DB::table('class')->insertGetId(
-				['name' => $input['name']]
-			);
+	    	$id = DB::table('class')->insertGetId([
+                'subject_id' => $input['subjectId'],
+                'user_id' => $input['userId'],
+                'name' => $input['name']
+            ]);
 
 			if (!empty($id)) {
 				return redirect()->route('administrator.classes');
 			}
 		}
-        return view('administrator.classes.add');
+        $subjects = DB::table('subject')->get();
+        $users = DB::table('users')->get();
+
+        return view('administrator.classes.add', ['subjects' => $subjects, 'users' => $users]);
     }
 }

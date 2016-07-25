@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests;
 use Illuminate\Http\Request;
+use App\PisyeClass;
 
 class HomeController extends Controller
 {
@@ -24,6 +25,7 @@ class HomeController extends Controller
      */
     public function index()
     {
+        dd(\App\Student::find(2)->pisyeclass[0]->pivot->grade2);
         return view('home');
     }
 }
