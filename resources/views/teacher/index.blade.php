@@ -13,7 +13,7 @@
                 	<tr>
                 		<td>class: </td>
                 		<td>{{ $class->name }}</td>
-                		<td><a href="{{ route('teacher::class', $class->id) }}">ver</td>
+                		<td><a href="{{ route('teacher.class', $class->id) }}">ver</td>
                 	</tr>
                 @endforeach
                 </table>

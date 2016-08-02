@@ -13,11 +13,11 @@ class UserController extends Controller {
 		$user  = Auth::user();
 		if (!empty($user)) {
 			if ($user->hasRole('administrator')) {
-				return redirect()->route('administrator::index');
+				return redirect()->route('administrator.index');
 			} else if($user->hasRole('teacher')){
-				return redirect()->route('teacher::index');
+				return redirect()->route('teacher.index');
 			}
 		}
-		return redirect()->route('auth::login');
+		return redirect()->route('auth.login');
 	}
 }

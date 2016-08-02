@@ -39,7 +39,7 @@
                 </button>
 
                 <!-- Branding Image -->
-                <a class="navbar-brand" href="{{ url('/') }}">
+                <a class="navbar-brand" href="{{ route('root') }}">
                     PISYE
                 </a>
             </div>
@@ -47,11 +47,11 @@
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
-                    <li><a href="{{ url('/') }}">Inicio</a></li>
+                    <li><a href="{{ route('root') }}">Inicio</a></li>
                     @role('administrator')
-                    <li><a href="{{ url('/administrator/students') }}">Alumnos</a></li>
-                    <li><a href="{{ url('/administrator/subjects') }}">Materias</a></li>
-                    <li><a href="{{ url('/administrator/classes') }}">Clases</a></li>
+                    <li><a href="{{ route('administrator.students') }}">Alumnos</a></li>
+                    <li><a href="{{ route('administrator.subjects') }}">Materias</a></li>
+                    <li><a href="{{ route('administrator.classes') }}">Clases</a></li>
                     @endrole
 
                     @role('teacher')
@@ -62,7 +62,7 @@
                 <ul class="nav navbar-nav navbar-right">
                     <!-- Authentication Links -->
                     @if (Auth::guest())
-                        <li><a href="{{ route('auth::login') }}">Login</a></li>
+                        <li><a href="{{ route('auth.login') }}">Login</a></li>
                         <li><a href="{{ url('/register') }}">Register</a></li>
                     @else
                         <li class="dropdown">
@@ -71,7 +71,7 @@
                             </a>
 
                             <ul class="dropdown-menu" role="menu">
-                                <li><a href="{{ route('auth::logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
+                                <li><a href="{{ route('auth.logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
                             </ul>
                         </li>
                     @endif
