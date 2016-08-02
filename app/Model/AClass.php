@@ -35,7 +35,7 @@ class AClass extends Model
         return $this->hasOne('App\Model\Subject', 'subject_id');
     }
 
-    public function student() {
-        return $this->hasMany('App\Model\Student');
+    public function students() {
+        return $this->belongsToMany('App\Model\Student', 'grade', 'class_id');
     }
 }

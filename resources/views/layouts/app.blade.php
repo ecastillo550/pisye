@@ -48,14 +48,14 @@
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
                     <li><a href="{{ url('/') }}">Inicio</a></li>
-                    @if(Auth::user()->hasRole('administrator'))
+                    @role('administrator')
                     <li><a href="{{ url('/administrator/students') }}">Alumnos</a></li>
                     <li><a href="{{ url('/administrator/subjects') }}">Materias</a></li>
                     <li><a href="{{ url('/administrator/classes') }}">Clases</a></li>
-                    @endif
+                    @endrole
 
-                    @if(Auth::user()->hasRole('teacher'))
-                    @endif
+                    @role('teacher')
+                    @endrole
                 </ul>
 
                 <!-- Right Side Of Navbar -->

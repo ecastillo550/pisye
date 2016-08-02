@@ -12,11 +12,11 @@
                         <tr>
                             <td>Nombre</td>
                         </tr>
-                  {{!--  @foreach($students as $student)
+                    @foreach($students as $student)
                         <tr>
                             <td>{{$student->name}}</td>
                         </tr>
-                    @endforeach }}
+                    @endforeach 
                     </table>
                 </div>
             </div>
