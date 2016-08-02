@@ -15,7 +15,26 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::auth();
+//Route::auth();
+
+Route::group(['as' => 'auth::', 'prefix' => 'auth'], function () {
+	// Route::post('/registration', [
+	// 	'as' => 'register', 
+	// 	'uses' => 'Auth\AuthController@register'
+	// ]);
+
+	Route::get('/login', ['as' => 'login', 'uses' => 'Auth\AuthController@getLogin']);
+
+	Route::post('/login', [
+		'as' => 'login',
+		'uses' => 'Auth\AuthController@authenticate'
+	]);
+
+	// Route::get('/logout', [
+	// 	'as' => 'logout',
+	// 	'uses' => 'Auth\AuthController@logout'
+	// ]);
+});
 
 Route::get('/home', 'HomeController@index');
 Route::get('/class', 'TeacherController@classIndex');

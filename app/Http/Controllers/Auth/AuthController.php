@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\User;
+use App\Model\User;
+use Auth;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+use Illuminate\Http\Request;
 
 class AuthController extends Controller
 {
@@ -50,7 +52,7 @@ class AuthController extends Controller
     {
         return Validator::make($data, [
             'name' => 'required|max:255',
-            'email' => 'required|email|max:255|unique:users',
+            'username' => 'required|max:255|unique:users',
             'password' => 'required|min:6|confirmed',
         ]);
     }
@@ -65,8 +67,34 @@ class AuthController extends Controller
     {
         return User::create([
             'name' => $data['name'],
+            'username' => $data['username'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
+    }
+
+    protected function getLogin(Request $request) {
+        return view('auth.login');
+    }
+
+    /**
+    * Handle an authentication attempt
+    *
+    * @param Request $request
+    * @return Response
+    */
+    protected function authenticate(Request $request) {
+        $rememberUser = !empty($request->remember) ? true : false;
+
+        if (Auth::attempt(['email' => $request->username_email, 'password' => $request->password], $rememberUser)) {
+            return redirect()->intended('/');
+        }
+        else if (Auth::attempt(['username' => $request->username_email, 'password' => $request->password], $rememberUser)) {
+            return redirect()->intended('/');
+        }
+
+        $errors = new MessageBag(['password' => ['Email y/o password inválidos.']]);
+
+        return back()->withErrors($errors)->withInput($request->except('password'));
     }
 }

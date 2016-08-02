@@ -25,7 +25,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        dd(\App\Student::find(2)->pisyeclass[0]->pivot->grade2);
         return view('home');
     }
 }
