@@ -5,7 +5,7 @@ namespace App\Model;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class PisyeClass extends Model
+class AClass extends Model
 {
     use SoftDeletes;
     protected $table = 'class';
@@ -28,14 +28,14 @@ class PisyeClass extends Model
     // ];
 
     public function teacher() {
-    	return $this->hasOne('App\User', 'user_id');
+    	return $this->hasOne('App\Model\User', 'user_id');
     }
 
     public function subject() {
-        return $this->hasOne('App\Subject', 'subject_id');
+        return $this->hasOne('App\Model\Subject', 'subject_id');
     }
 
     public function student() {
-        return $this->hasMany('App\Student');
+        return $this->hasMany('App\Model\Student');
     }
 }

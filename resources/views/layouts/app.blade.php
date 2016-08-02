@@ -47,10 +47,15 @@
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
-                    <li><a href="{{ url('/home') }}">Home</a></li>
+                    <li><a href="{{ url('/') }}">Inicio</a></li>
+                    @if(Auth::user()->hasRole('administrator'))
                     <li><a href="{{ url('/administrator/students') }}">Alumnos</a></li>
                     <li><a href="{{ url('/administrator/subjects') }}">Materias</a></li>
                     <li><a href="{{ url('/administrator/classes') }}">Clases</a></li>
+                    @endif
+
+                    @if(Auth::user()->hasRole('teacher'))
+                    @endif
                 </ul>
 
                 <!-- Right Side Of Navbar -->

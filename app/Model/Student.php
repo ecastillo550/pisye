@@ -7,23 +7,23 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Student extends Model
 {
-    use SoftDeletes;
-    protected $table = 'student';
+	use SoftDeletes;
+	protected $table = 'student';
 	/**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'name'
-    ];
+	 * The attributes that are mass assignable.
+	 *
+	 * @var array
+	 */
+	protected $fillable = [
+		'name'
+	];
 
 
-    public function pisyeClass() {
-    	return $this->belongsToMany('App\PisyeClass', 'grade', 'student_id', 'class_id');
-    }
+	public function AClass() {
+		return $this->belongsToMany('App\Model\AClass', 'grade', 'student_id', 'class_id');
+	}
 
-    public function grades() {
-        return $this->hasMany('App\Grades');
-    }
+	public function grades() {
+		return $this->hasMany('App\Model\Grades');
+	}
 }

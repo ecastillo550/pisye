@@ -28,10 +28,10 @@ class Grades extends Model
     // ];
 
     public function student() {
-        return $this->belongsTo('App\Student');
+        return $this->belongsTo('App\Model\Student');
     }
 
     public function class() {
-        return $this->belongsTo('App\Class');
+        return $this->belongsTo('App\Model\AClass');
     }
 }
