@@ -20,9 +20,10 @@ class Student extends Model
 
 
     public function pisyeClass() {
-    	return $this->belongsToMany('App\PisyeClass', 'grade', 'student_id', 'class_id')
-        ->withPivot('grade1')
-        ->withPivot('grade2')
-        ->withPivot('final');
+    	return $this->belongsToMany('App\PisyeClass', 'grade', 'student_id', 'class_id');
+    }
+
+    public function grades() {
+        return $this->hasMany('App\Grades');
     }
 }

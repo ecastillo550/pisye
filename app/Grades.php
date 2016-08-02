@@ -26,4 +26,12 @@ class Grades extends Model
     // protected $dates = [
     //     'date', 'publish_date', 'end_date', 'deleted_at'
     // ];
+
+    public function student() {
+        return $this->belongsTo('App\Student');
+    }
+
+    public function class() {
+        return $this->belongsTo('App\Class');
+    }
 }

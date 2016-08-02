@@ -36,6 +36,6 @@ class PisyeClass extends Model
     }
 
     public function student() {
-        return $this->belongsTo('App\Student');
+        return $this->hasMany('App\Student');
     }
 }
