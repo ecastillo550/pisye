@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', ['as' => 'root', 'uses' => 'UserController@index']);
 
 //Route::auth();
 
@@ -30,21 +28,29 @@ Route::group(['as' => 'auth::', 'prefix' => 'auth'], function () {
 		'uses' => 'Auth\AuthController@authenticate'
 	]);
 
-	// Route::get('/logout', [
-	// 	'as' => 'logout',
-	// 	'uses' => 'Auth\AuthController@logout'
-	// ]);
+	Route::get('/logout', [
+		'as' => 'logout',
+		'uses' => 'Auth\AuthController@logout'
+	]);
+});
+
+Route::group(['as' => 'administrator::', 'prefix' => 'admin'], function () {
+	Route::get('/index', ['as' => 'index', 'uses' => 'Administrator\MainController@index']);
+});
+
+Route::group(['as' => 'teacher::', 'prefix' => 'maestro'], function () {
+	Route::get('/index', ['as' => 'index', 'uses' => 'Teacher\MainController@index']);
 });
 
 Route::get('/home', 'HomeController@index');
 Route::get('/class', 'TeacherController@classIndex');
-Route::get('/administrator/students', ['as' => 'administrator.students', 'uses' => 'AdministratorController@students']);
-Route::any('/administrator/students/add', ['as' => 'administrator.students.add', 'uses' => 'AdministratorController@addStudent']);
+Route::get('/administrator/students', ['as' => 'administrator.students', 'uses' => 'Administrator\MainController@students']);
+Route::any('/administrator/students/add', ['as' => 'administrator.students.add', 'uses' => 'Administrator\MainController@addStudent']);
 
-Route::get('/administrator/classes', ['as' => 'administrator.classes', 'uses' => 'AdministratorController@classes']);
-Route::any('/administrator/classes/add', ['as' => 'administrator.classes.add', 'uses' => 'AdministratorController@addclass']);
+Route::get('/administrator/classes', ['as' => 'administrator.classes', 'uses' => 'Administrator\MainController@classes']);
+Route::any('/administrator/classes/add', ['as' => 'administrator.classes.add', 'uses' => 'Administrator\MainController@addclass']);
 
-Route::get('/administrator/subjects', ['as' => 'administrator.subjects', 'uses' => 'AdministratorController@subjects']);
-Route::any('/administrator/subjects/add', ['as' => 'administrator.subjects.add', 'uses' => 'AdministratorController@addSubject']);
+Route::get('/administrator/subjects', ['as' => 'administrator.subjects', 'uses' => 'Administrator\MainController@subjects']);
+Route::any('/administrator/subjects/add', ['as' => 'administrator.subjects.add', 'uses' => 'Administrator\MainController@addSubject']);
 
 

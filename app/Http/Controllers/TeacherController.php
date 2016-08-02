@@ -7,8 +7,8 @@ use Illuminate\Http\Request;
 use DB;
 
 class TeacherController extends Controller {
-    function classIndex(Request $request) {
-        $students = DB::table('student')->get();
-        return view('teacher.class', ['students' => $students]);
-    }
+	function classIndex(Request $request) {
+		$students = DB::table('student')->get();
+		return view('teacher.class', ['students' => $students]);
+	}
 }
