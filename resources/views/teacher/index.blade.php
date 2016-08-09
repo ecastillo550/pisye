@@ -8,7 +8,7 @@
                 <div class="panel-heading">Clase</div>
 
                 <div class="panel-body">
-                <table>
+                <table class="table table-striped">
                 @foreach($classes as $class)
                 	<tr>
                 		<td>class: </td>

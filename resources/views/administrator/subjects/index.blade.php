@@ -8,7 +8,7 @@
                 <div class="panel-heading">Materias</div>
 
                 <div class="panel-body">
-                    <table>
+                    <table class="table table-striped">
                         <tr>
                             <td>Nombre</td>
                         </tr>

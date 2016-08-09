@@ -35,14 +35,19 @@ Route::group(['as' => 'auth.', 'prefix' => 'auth'], function () {
 Route::group(['as' => 'administrator.', 'prefix' => 'admin'], function () {
 	Route::get('/index', ['as' => 'index', 'uses' => 'Administrator\MainController@index']);
 
-	Route::get('/alumnos', ['as' => 'students', 'uses' => 'Administrator\MainController@students']);
-	Route::any('/alumnos/add', ['as' => 'students.add', 'uses' => 'Administrator\MainController@addStudent']);
+	
 	
 	Route::get('/clases', ['as' => 'classes', 'uses' => 'Administrator\MainController@classes']);
 	Route::any('/clases/add', ['as' => 'classes.add', 'uses' => 'Administrator\MainController@addclass']);
 
 	Route::get('/materias', ['as' => 'subjects', 'uses' => 'Administrator\MainController@subjects']);
 	Route::any('/materias/add', ['as' => 'subjects.add', 'uses' => 'Administrator\MainController@addSubject']);
+});
+
+Route::group(['as' => 'students.', 'prefix' => 'estudiantes'], function () {
+	Route::get('/', ['as' => 'index', 'uses' => 'Student\MainController@index']);
+	Route::any('/agregar', ['as' => 'add', 'uses' => 'Student\MainController@addStudent']);
+	Route::any('/clases', ['as' => 'classes', 'uses' => 'Student\MainController@classes']);
 });
 
 Route::group(['as' => 'teacher.', 'prefix' => 'maestro'], function () {

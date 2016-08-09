@@ -8,7 +8,7 @@
                 <div class="panel-heading">Alumnos</div>
 
                 <div class="panel-body">
-                    <table>
+                    <table class="table table-striped">
                         <tr>
                             <td>Nombre</td>
                             <td>Materia</td>
