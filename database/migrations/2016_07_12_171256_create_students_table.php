@@ -15,6 +15,8 @@ class CreateStudentsTable extends Migration
         Schema::create('student', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
+            $table->integer('type');
+            $table->integer('branch');
             $table->softDeletes();
             $table->timestamps();
         });

@@ -15,6 +15,7 @@ class CreateGradeTable extends Migration
         Schema::create('grade', function (Blueprint $table) {
             $table->float('grade1')->nullable();
             $table->float('grade2')->nullable();
+            $table->float('comments')->nullable();
             $table->float('final')->nullable();
             $table->integer('student_id');
             $table->integer('class_id');

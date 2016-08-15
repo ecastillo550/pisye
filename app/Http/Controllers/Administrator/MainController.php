@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Administrator;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 use DB;
+use App\Model\AClass;
 use App\Http\Controllers\Controller;
 
 class MainController extends Controller {
@@ -51,7 +52,7 @@ class MainController extends Controller {
 	}
 
 	function classes(Request $request) {
-		$classes = DB::table('class')->get();
+		$classes = AClass::all();
 		return view('administrator.classes.index', ['classes' => $classes]);
 	}
 
