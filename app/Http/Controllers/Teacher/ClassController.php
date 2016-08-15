@@ -11,9 +11,9 @@ use App\Http\Controllers\Controller;
 
 class ClassController extends Controller {
 	function index($id, Request $request) {
-		$user = Auth::user();
+		//$user = Auth::user();
 		$class = AClass::find($id);
-		$students = $class->students()->get();
-		return view('teacher.class', ['students' => $students]);
+		$students = $class->students;
+		return view('teacher.class', ['class' => $class]);
 	}
 }

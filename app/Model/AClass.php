@@ -36,6 +36,6 @@ class AClass extends Model
     }
 
     public function students() {
-        return $this->hasMany('App\Model\Student', 'grade', 'class_id');
+        return $this->belongsToMany('App\Model\Student', 'grade', 'class_id', 'student_id')->whereNull('grade.deleted_at')->withTimestamps()->withPivot('grade1', 'grade2');
     }
 }
