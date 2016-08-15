@@ -23,9 +23,9 @@ class AClass extends Model
     *
     * @var array
     */
-    // protected $dates = [
-    //     'date', 'publish_date', 'end_date', 'deleted_at'
-    // ];
+    protected $dates = [
+        'deleted_at'
+    ];
 
     public function teacher() {
     	return $this->hasOne('App\Model\User', 'user_id');
@@ -36,6 +36,6 @@ class AClass extends Model
     }
 
     public function students() {
-        return $this->belongsToMany('App\Model\Student', 'grade', 'class_id');
+        return $this->hasMany('App\Model\Student', 'grade', 'class_id');
     }
 }

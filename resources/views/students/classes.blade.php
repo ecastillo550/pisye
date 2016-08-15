@@ -5,22 +5,20 @@
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
             <div class="panel panel-default">
-                <div class="panel-heading">Alumnos</div>
+                <div class="panel-heading">Clases de: {{ $student->name }}</div>
 
                 <div class="panel-body">
                     <table class="table table-striped">
                         <tr>
-                            <td>Nombre</td>
-                            <td>Ver clases</td>
+                            <td>Clase</td>
                         </tr>
-                    @foreach($students as $student)
+                    @foreach($student->classes as $class)
                         <tr>
-                            <td>{{$student->name}}</td>
-                            <td><a href="{{ route('students.classes', $student->id) }}">ver</a></td>
+                            <td>{{$class->name}}</td>
                         </tr>
                     @endforeach
                     </table>
-                    <a class="btn btn-primary" href="{{ route('students.add') }}">Nuevo</a>
+                    <a class="btn btn-primary" href="{{ route('students.enroll', $student->id) }}">Inscribir a clases</a>
                 </div>
             </div>
         </div>

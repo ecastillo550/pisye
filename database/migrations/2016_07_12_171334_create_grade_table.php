@@ -21,6 +21,8 @@ class CreateGradeTable extends Migration
             $table->foreign('student_id')->references('id')->on('student');
             $table->foreign('class_id')->references('id')->on('class');
             $table->softDeletes();
+            $table->primary(['student_id', 'class_id']);
+            $table->timestamps();
         });
     }
 

@@ -18,9 +18,13 @@ class Student extends Model
 		'name'
 	];
 
+	protected $dates = [
+        'deleted_at'
+    ];
+
 
 	public function classes() {
-		return $this->belongsToMany('App\Model\AClass', 'grade', 'student_id', 'class_id');
+		return $this->belongsToMany('App\Model\AClass', 'grade', 'student_id', 'class_id')->whereNull('grade.deleted_at')->withTimestamps()->withPivot('grade1', 'grade2');
 	}
 
 	public function grades() {

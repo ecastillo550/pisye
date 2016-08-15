@@ -20,6 +20,7 @@ class CreateClassTable extends Migration
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('subject_id')->references('id')->on('subject');
             $table->softDeletes();
+            $table->timestamps();
         });
     }
 

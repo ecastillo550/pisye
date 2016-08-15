@@ -8,7 +8,7 @@
                 <div class="panel-heading">Agregar Alumno</div>
 
                 <div class="panel-body">
-                    <form method="post" action="{{ route('administrator.students.add') }}">
+                    <form method="post" action="{{ route('students.add') }}">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                         <input type="text" name="name" placeholder="Nombre">
                         <input type="Submit" value="Guardar">

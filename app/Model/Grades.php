@@ -23,15 +23,15 @@ class Grades extends Model
     *
     * @var array
     */
-    // protected $dates = [
-    //     'date', 'publish_date', 'end_date', 'deleted_at'
-    // ];
+    protected $dates = [
+        'deleted_at'
+    ];
 
     public function student() {
         return $this->belongsTo('App\Model\Student');
     }
 
-    public function class() {
+    public function myclass() {
         return $this->belongsTo('App\Model\AClass');
     }
 }

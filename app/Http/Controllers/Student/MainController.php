@@ -23,7 +23,7 @@ class MainController extends Controller {
 			);
 
 			if (!empty($id)) {
-				return redirect()->route('students');
+				return redirect()->route('students.index');
 			}
 		}
 		return view('students.add');
@@ -31,8 +31,7 @@ class MainController extends Controller {
 
 	function classes($id, Request $request) {
 		$student = Student::find($id);
-		dd($student->classes);
-		//return view('students.index', ['students' => $students]);
+		return view('students.classes', ['student' => $student]);
 	}
 
 	function enroll($id, Request $request) {
@@ -45,10 +44,28 @@ class MainController extends Controller {
 
 			if (!empty($classId)) {
 				$class = AClass::find($classId);
-				$student->classes()->save($class);
+
+				//ver si no estaba soft deleted
+				if ($student->grades()->onlyTrashed()->where('class_id', $classId)->get()->isEmpty()) {
+					$student->classes()->save($class);
+				} else {
+					$student->grades()->onlyTrashed()->where('class_id', $classId)->restore();
+				}
 			} 
 		}
-		//dd($student->classes);
 		return view('students.enroll', ['student' => $student, 'classes' => $classes]);
+	}
+
+	function disenroll($id, Request $request) {
+		if ($request->isMethod('post')) {
+			$student = Student::find($id);
+			$classId = !empty($request->input('classId')) ? $request->input('classId') : null;
+
+			if (!empty($classId)) {
+				$class = AClass::find($classId);
+				$student->grades()->delete($class);
+			} 
+		}
+		return redirect()->back();
 	}
 }

@@ -16,6 +16,7 @@ class CreateStudentsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->softDeletes();
+            $table->timestamps();
         });
     }
 

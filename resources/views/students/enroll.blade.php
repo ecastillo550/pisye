@@ -29,10 +29,17 @@
 					<table class="table table-striped">
 						<tr>
 							<td>Clase</td>
+							<td></td>
 						</tr>
 					@foreach($student->classes as $class)
 						<tr>
 							<td>{{ $class->name }}</td>
+							<td>
+								<form method="post" action="{{ route('students.disenroll', $student->id) }}">
+								<input type="hidden" name="_token" value="{{ csrf_token() }}">
+								<input type="hidden" value="{{ $class->id }}" name="classId">
+								<input class="btn btn-warning" type="Submit" value="Desinscribir">
+							</td>
 						</tr>
 					@endforeach
 					</table>
