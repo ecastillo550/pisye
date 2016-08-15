@@ -14,13 +14,13 @@
                         <tr>
                             <td>Parcial 1</td>
                             <td>
-                                <input type="number" min="0" max="100" name="grade1" value="">
+                                <input type="number" min="0" max="100" name="grade1" value="{{ $class->students->find($student->id)->pivot->grade1 or null }}">
                             </td>
                         </tr>
                         <tr>
                             <td>Parcial 2</td>
                             <td>
-                                <input type="number" min="0" max="100" name="grade2" value="">
+                                <input type="number" min="0" max="100" name="grade2" value="{{ $class->students->find($student->id)->pivot->grade2 or null }}">
                             </td>
                         </tr>
                     </table>

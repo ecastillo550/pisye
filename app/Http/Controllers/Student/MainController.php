@@ -76,15 +76,22 @@ class MainController extends Controller {
 
 		//si es post, debe venir el id de clase a inscribir
 		if ($request->isMethod('post')) {
-			if (!empty($request->input('grade1'))) {
-				// $grade = Grades::where('class_id', $class->id)->where('student_id', $student->id)->first();
-				// $grade->grade1 = $request->input('grade1');
-				// $student->grades()->where('class_id', $class)->save($grade);
-				//dd($student->classes->find($class)->grade1);
-				//return redirect()->back();
+			$data = array();
 
-				$student->classes()->updateExistingPivot($class->id, ['grade1' => $request->input('grade1')]);
+			if (!empty($request->input('grade1'))) {
+				$data['grade1'] = $request->input('grade1');
 			}
+
+			if (!empty($request->input('grade2'))) {
+				$data['grade2'] = $request->input('grade2');
+			}
+
+			try {
+				$student->classes()->updateExistingPivot($class->id, $data);
+			} catch (\Exception $error) {
+				return redirect()->back()->withData();
+			}
+			return redirect()->route('teacher.class', $class->id);
 		}
 		return view('students.grade', ['student' => $student, 'class' => $class]);
 	}
