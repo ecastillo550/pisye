@@ -86,10 +86,14 @@ class MainController extends Controller {
 				$data['grade2'] = $request->input('grade2');
 			}
 
+			if (!empty($request->input('comments'))) {
+				$data['comments'] = $request->input('comments');
+			}
+
 			try {
 				$student->classes()->updateExistingPivot($class->id, $data);
 			} catch (\Exception $error) {
-				return redirect()->back()->withData();
+				return redirect()->back()->withInput();
 			}
 			return redirect()->route('teacher.class', $class->id);
 		}

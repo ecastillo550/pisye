@@ -16,7 +16,7 @@ class CreateStudentsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->integer('type');
-            $table->integer('branch');
+            //$table->integer('branch');
             $table->softDeletes();
             $table->timestamps();
         });
