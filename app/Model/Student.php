@@ -19,7 +19,7 @@ class Student extends Model
 	];
 
 
-	public function AClass() {
+	public function classes() {
 		return $this->belongsToMany('App\Model\AClass', 'grade', 'student_id', 'class_id');
 	}
 
