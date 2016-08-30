@@ -94,9 +94,9 @@ class AuthController extends Controller
 			return redirect()->intended('/');
 		}
 
-		$errors = new MessageBag(['password' => ['Email y/o password inválidos.']]);
+		//$errors = new MessageBag(['password' => ['Email y/o password inválidos.']]);
 
-		return back()->withErrors($errors)->withInput($request->except('password'));
+		return back()->withInput($request->except('password'));
 	}
 
 	protected function logout() {

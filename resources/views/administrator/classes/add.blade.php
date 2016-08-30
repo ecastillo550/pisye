@@ -11,6 +11,11 @@
                     <form method="post" action="{{ route('administrator.classes.add') }}">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                         <input type="text" name="name" placeholder="Nombre">
+                        <select name="semesterId">
+                            @foreach($semesters as $semester)
+                                <option value="{{ $semester->id }}">{{ $semester->name }}</option>
+                            @endforeach
+                        </select>
                         <select name="subjectId">
                             @foreach($subjects as $subject)
                                 <option value="{{ $subject->id }}">{{ $subject->name }}</option>

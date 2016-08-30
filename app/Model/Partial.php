@@ -5,10 +5,9 @@ namespace App\Model;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Subject extends Model
+class Partial extends Model
 {
     use SoftDeletes;
-    protected $table = 'subjects';
 	/**
      * The attributes that are mass assignable.
      *
@@ -22,7 +21,11 @@ class Subject extends Model
         'deleted_at'
     ];
 
-    public function classes() {
-        return $this->hasMany('App\Model\AClass', 'user_id');
+    public function semester() {
+        return $this->belongsTo('App\Model\Semester');
+    }
+
+    public function grades() {
+        return $this->hasMany('App\Model\Grade');
     }
 }

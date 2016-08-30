@@ -12,17 +12,37 @@ class CreateGradeTable extends Migration
      */
     public function up()
     {
-        Schema::create('grade', function (Blueprint $table) {
-            $table->float('grade1')->nullable();
-            $table->float('grade2')->nullable();
-            $table->float('comments')->nullable();
-            $table->float('final')->nullable();
-            $table->integer('student_id');
-            $table->integer('class_id');
-            $table->foreign('student_id')->references('id')->on('student');
-            $table->foreign('class_id')->references('id')->on('class');
+        
+
+        Schema::create('partials', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('name');
+            $table->integer('order');
+            $table->integer('semester_id')->unsigned();
+            $table->foreign('semester_id')->references('id')->on('semesters');
             $table->softDeletes();
-            $table->primary(['student_id', 'class_id']);
+            $table->timestamps();
+        });
+
+        Schema::create('grades', function (Blueprint $table) {
+            $table->increments('id');
+            $table->float('cuantitative')->nullable();
+            $table->integer('participation')->nullable();
+            $table->integer('punctuality')->nullable();
+            $table->integer('working_disposition')->nullable();
+            $table->integer('homework')->nullable();
+            $table->text('comments')->nullable();
+            $table->integer('partial_id')->unsigned();
+            $table->integer('student_id')->unsigned();
+            $table->integer('user_id')->unsigned();
+            $table->integer('class_id')->unsigned();
+
+            $table->foreign('partial_id')->references('id')->on('partials');
+            $table->foreign('student_id')->references('id')->on('students');
+            $table->foreign('class_id')->references('id')->on('classes');
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->softDeletes();
+            $table->unique(['student_id', 'class_id', 'partial_id']);
             $table->timestamps();
         });
     }
@@ -34,6 +54,7 @@ class CreateGradeTable extends Migration
      */
     public function down()
     {
+        Schema::drop('partials');
         Schema::drop('grade');
     }
 }

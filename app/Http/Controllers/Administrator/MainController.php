@@ -6,6 +6,7 @@ use App\Http\Requests;
 use Illuminate\Http\Request;
 use DB;
 use App\Model\AClass;
+use App\Model\Semester;
 use App\Http\Controllers\Controller;
 
 class MainController extends Controller {
@@ -14,14 +15,14 @@ class MainController extends Controller {
 	}
 
 	function students(Request $request) {
-		$students = DB::table('student')->get();
+		$students = DB::table('students')->get();
 		return view('administrator.students.index', ['students' => $students]);
 	}
 
 	function addStudent(Request $request) {
 		$input = $request->input();
 		if (!empty($input)) {
-			$id = DB::table('student')->insertGetId(
+			$id = DB::table('students')->insertGetId(
 				['name' => $input['name']]
 			);
 
@@ -33,14 +34,14 @@ class MainController extends Controller {
 	}
 
 	function subjects(Request $request) {
-		$subjects = DB::table('subject')->get();
+		$subjects = DB::table('subjects')->get();
 		return view('administrator.subjects.index', ['subjects' => $subjects]);
 	}
 
 	function addSubject(Request $request) {
 		$input = $request->input();
 		if (!empty($input)) {
-			$id = DB::table('subject')->insertGetId(
+			$id = DB::table('subjects')->insertGetId(
 				['name' => $input['name']]
 			);
 
@@ -59,9 +60,10 @@ class MainController extends Controller {
 	function addClass(Request $request) {
 		$input = $request->input();
 		if (!empty($input)) {
-			$id = DB::table('class')->insertGetId([
+			$id = DB::table('classes')->insertGetId([
 				'subject_id' => $input['subjectId'],
 				'user_id' => $input['userId'],
+				'semester_id' => $input['semesterId'],
 				'name' => $input['name']
 			]);
 
@@ -69,9 +71,10 @@ class MainController extends Controller {
 				return redirect()->route('administrator.classes');
 			}
 		}
-		$subjects = DB::table('subject')->get();
+		$subjects = DB::table('subjects')->get();
 		$users = DB::table('users')->get();
+		$semesters = Semester::all();
 
-		return view('administrator.classes.add', ['subjects' => $subjects, 'users' => $users]);
+		return view('administrator.classes.add', ['subjects' => $subjects, 'users' => $users, 'semesters' => $semesters]);
 	}
 }

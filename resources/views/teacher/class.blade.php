@@ -12,15 +12,17 @@
                     <table class="table table-striped">
                         <tr>
                             <td>Nombre</td>
-                            <td>Parcial 1</td>
-                            <td>Parcial 2</td>
+                            @foreach($class->semester->partials->sortBy('order') as $partial)
+                                <td>{{ $partial->name }}</td>
+                            @endforeach
                             <td></td>
                         </tr>
                     @foreach($class->students as $student)
                         <tr>
                             <td>{{ $student->name }}</td>
-                            <td>{{ $student->pivot->grade1 }}</td>
-                            <td>{{ $student->pivot->grade2 }}</td>
+                            @foreach($class->semester->partials as $partial)
+                                <td><a href="{{ route('students.grade.partial', [$student->id, $class->id, $partial->id]) }}">{{ $student->grades->where('class_id', $class->id)->where('partial_id', $partial->id)->cuantitative or 0}}</a></td>
+                            @endforeach
                             <td><a class="btn btn-primary" href="{{ route('students.grade', [$student->id, $class->id]) }}">Calificar</a></td>
                         </tr>
                     @endforeach 

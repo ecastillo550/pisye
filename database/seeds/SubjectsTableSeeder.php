@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use App\Model\Subject;
+use App\Model\Semester;
 
 class SubjectsTableSeeder extends Seeder
 {
@@ -12,6 +13,7 @@ class SubjectsTableSeeder extends Seeder
 	 */
 	public function run()
 	{
+
 		$class = new Subject();
 		$class->name = 'Computación';
 		$class->save();

@@ -5,28 +5,74 @@
 	<div class="row">
 		<div class="col-md-10 col-md-offset-1">
 			<div class="panel panel-default">
-				<div class="panel-heading">Clase: {{ $class->name }}</div>
+				<div class="panel-heading">Clase: {{ $class->name }}, Parcial: {{ $partial->name }}</div>
 
 				<div class="panel-body">
-					<form method="post" action="{{ route('students.grade', [$student->id, $class->id]) }}">
+					<form method="post" action="{{ route('students.grade.partial', [$student->id, $class->id, $partial->id]) }}">
 					<input type="hidden" name="_token" value="{{ csrf_token() }}">
 					<table class="table table-striped">
 						<tr>
-							<td>Parcial 1</td>
+							<td>Cuantitativo</td>
 							<td>
-								<input type="number" min="0" max="100" name="grade1" value="{{ $class->students->find($student->id)->pivot->grade1 or null }}">
+								<input type="number" min="0" max="100" name="cuantitative" value="{{ $grade->cuantitative or 0}}">
 							</td>
 						</tr>
 						<tr>
-							<td>Parcial 2</td>
+							<td>Participación</td>
 							<td>
-								<input type="number" min="0" max="100" name="grade2" value="{{ $class->students->find($student->id)->pivot->grade2 or null }}">
+								<select name="participation"> 
+									<option value="1" {{!empty($grade)&&$grade->participation&&$grade->participation==1?'selected':null}}>No logrado</option>
+									<option value="2" {{!empty($grade)&&$grade->participation&&$grade->participation==2?'selected':null}}>En proceso</option>
+									<option value="3" {{!empty($grade)&&$grade->participation&&$grade->participation==3?'selected':null}}>Regular</option>
+									<option value="4" {{!empty($grade)&&$grade->participation&&$grade->participation==4?'selected':null}}>Bien</option>
+									<option value="5" {{!empty($grade)&&$grade->participation&&$grade->participation==5?'selected':null}}>Muy bien</option>
+									<option value="6" {{!empty($grade)&&$grade->participation&&$grade->participation==6?'selected':null}}>Excelente</option>
+								</select>
+							</td>
+						</tr>
+						<tr>
+							<td>Puntualidad</td>
+							<td>
+								<select name="punctuality"> 
+									<option value="1" {{!empty($grade)&&$grade->punctuality&&$grade->punctuality==1?'selected':null}}>No logrado</option>
+									<option value="2" {{!empty($grade)&&$grade->punctuality&&$grade->punctuality==2?'selected':null}}>En proceso</option>
+									<option value="3" {{!empty($grade)&&$grade->punctuality&&$grade->punctuality==3?'selected':null}}>Regular</option>
+									<option value="4" {{!empty($grade)&&$grade->punctuality&&$grade->punctuality==4?'selected':null}}>Bien</option>
+									<option value="5" {{!empty($grade)&&$grade->punctuality&&$grade->punctuality==5?'selected':null}}>Muy bien</option>
+									<option value="6" {{!empty($grade)&&$grade->punctuality&&$grade->punctuality==6?'selected':null}}>Excelente</option>
+								</select>
+							</td>
+						</tr>
+						<tr>
+							<td>Disposición para trabajar</td>
+							<td>
+								<select name="working_disposition"> 
+									<option value="1" {{!empty($grade)&&$grade->working_disposition&&$grade->working_disposition==1?'selected':null}}>No logrado</option>
+									<option value="2" {{!empty($grade)&&$grade->working_disposition&&$grade->working_disposition==2?'selected':null}}>En proceso</option>
+									<option value="3" {{!empty($grade)&&$grade->working_disposition&&$grade->working_disposition==3?'selected':null}}>Regular</option>
+									<option value="4" {{!empty($grade)&&$grade->working_disposition&&$grade->working_disposition==4?'selected':null}}>Bien</option>
+									<option value="5" {{!empty($grade)&&$grade->working_disposition&&$grade->working_disposition==5?'selected':null}}>Muy bien</option>
+									<option value="6" {{!empty($grade)&&$grade->working_disposition&&$grade->working_disposition==6?'selected':null}}>Excelente</option>
+								</select>
+							</td>
+						</tr>
+						<tr>
+							<td>Entrega de tareas</td>
+							<td>
+								<select name="homework"> 
+									<option value="1" {{!empty($grade)&&$grade->homework&&$grade->homework==1?'selected':null}}>No logrado</option>
+									<option value="2" {{!empty($grade)&&$grade->homework&&$grade->homework==2?'selected':null}}>En proceso</option>
+									<option value="3" {{!empty($grade)&&$grade->homework&&$grade->homework==3?'selected':null}}>Regular</option>
+									<option value="4" {{!empty($grade)&&$grade->homework&&$grade->homework==4?'selected':null}}>Bien</option>
+									<option value="5" {{!empty($grade)&&$grade->homework&&$grade->homework==5?'selected':null}}>Muy bien</option>
+									<option value="6" {{!empty($grade)&&$grade->homework&&$grade->homework==6?'selected':null}}>Excelente</option>
+								</select>
 							</td>
 						</tr>
 						<tr>
                             <td>Comentarios</td>
                             <td>
-                            	<textarea name="comments">{{ $class->students->find($student->id)->pivot->comments or null }}</textarea>
+                            	<textarea name="comments">{{ $grade->comments or null }}</textarea>
                             </td>
                         </tr>
 					</table>

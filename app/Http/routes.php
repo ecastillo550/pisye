@@ -49,6 +49,7 @@ Route::group(['as' => 'students.', 'prefix' => 'estudiantes'], function () {
 	Route::any('/{id}/inscribir', ['as' => 'enroll', 'uses' => 'Student\MainController@enroll']);
 	Route::any('/{id}/desinscribir', ['as' => 'disenroll', 'uses' => 'Student\MainController@disenroll']);
 	Route::any('/{id}/calificar/{clase}', ['as' => 'grade', 'uses' => 'Student\MainController@grade']);
+	Route::any('/{id}/calificar/{clase}/parcial/{parcial}', ['as' => 'grade.partial', 'uses' => 'Student\MainController@gradePartial']);
 });
 
 Route::group(['as' => 'teacher.', 'prefix' => 'maestro'], function () {

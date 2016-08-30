@@ -5,17 +5,17 @@ namespace App\Model;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Grades extends Model
+class Grade extends Model
 {
     use SoftDeletes;
-    protected $table = 'grade';
+    protected $table = 'grades';
 	/**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'grade1', 'grade2', 'final'
+        'cuantitative', 'participation', 'punctuality', 'working_disposition', 'homework', 'comments', 'partial'
     ];
 
     /**
@@ -33,5 +33,13 @@ class Grades extends Model
 
     public function myclass() {
         return $this->belongsTo('App\Model\AClass');
+    }
+
+    public function teacher() {
+        return $this->belongsTo('App\Model\User');
+    }
+
+    public function partial() {
+        return $this->belongsTo('App\Model\Partial');
     }
 }
