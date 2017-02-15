@@ -72,7 +72,7 @@
 						<tr>
                             <td>Comentarios</td>
                             <td>
-                            	<textarea name="comments">{{ $grade->comments or null }}</textarea>
+                            	<textarea name="comments">{{ !empty($grade)&&$grade->comments or null }}</textarea>
                             </td>
                         </tr>
 					</table>

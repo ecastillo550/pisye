@@ -12,11 +12,18 @@ class CreateStudentsTable extends Migration
      */
     public function up()
     {
+        Schema::create('levels', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('name');
+            $table->softDeletes();
+            $table->timestamps();
+        });
+
         Schema::create('students', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->integer('type');
-            //$table->integer('branch');
+            $table->integer('level_id')->unsigned();
+            $table->foreign('level_id')->references('id')->on('levels');
             $table->softDeletes();
             $table->timestamps();
         });
@@ -29,6 +36,7 @@ class CreateStudentsTable extends Migration
      */
     public function down()
     {
+        Schema::drop('levels');
         Schema::drop('student');
     }
 }

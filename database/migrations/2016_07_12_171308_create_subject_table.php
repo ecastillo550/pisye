@@ -15,6 +15,7 @@ class CreateSubjectTable extends Migration
         Schema::create('subjects', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
+
             $table->softDeletes();
             $table->timestamps();
         });
@@ -34,8 +35,8 @@ class CreateSubjectTable extends Migration
      */
     public function down()
     {
-        Schema::drop('subject');
+        Schema::drop('subjects');
         Schema::drop('semesters');
-        
+
     }
 }

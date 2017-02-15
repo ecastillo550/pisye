@@ -37,7 +37,8 @@ class GradePartialsSeeder extends Seeder
 
         $partial = new Partial();
         $partial->name = 'Final';
-        $partial->order = 4;
+        $partial->order = 0;
+        $partial->is_final = true;
         $partial->semester_id = $semester->id;
         $partial->save();
     }
