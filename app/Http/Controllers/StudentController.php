@@ -12,7 +12,7 @@ use App\Model\Partial;
 use App\Http\Controllers\Controller;
 use Auth;
 
-class MainController extends Controller {
+class StudentController extends Controller {
 	function index(Request $request) {
 		$students = DB::table('students')->get();
 		return view('students.index', ['students' => $students]);
@@ -32,11 +32,6 @@ class MainController extends Controller {
 		return view('students.add');
 	}
 
-	function classes($id, Request $request) {
-		$student = Student::find($id);
-		return view('students.classes', ['student' => $student]);
-	}
-
 	function enroll($id, Request $request) {
 		$student = Student::find($id);
 		$classes = AClass::all();
@@ -54,7 +49,7 @@ class MainController extends Controller {
 				} else {
 					$student->grades()->onlyTrashed()->where('class_id', $classId)->restore();
 				}
-			} 
+			}
 		}
 		return view('students.enroll', ['student' => $student, 'classes' => $classes]);
 	}
@@ -67,7 +62,7 @@ class MainController extends Controller {
 			if (!empty($classId)) {
 				$class = AClass::find($classId);
 				$student->classes()->detach($class);
-			} 
+			}
 		}
 		return redirect()->back();
 	}

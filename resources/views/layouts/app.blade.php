@@ -49,8 +49,8 @@
                     <li><a href="{{ route('root') }}">Inicio</a></li>
                     @role('administrator')
                     <li><a href="{{ route('students.index') }}">Alumnos</a></li>
-                    <li><a href="{{ route('administrator.subjects') }}">Materias</a></li>
-                    <li><a href="{{ route('administrator.classes') }}">Clases</a></li>
+                    <li><a href="{{ route('subjects.index') }}">Materias</a></li>
+                    <li><a href="{{ route('classes.index') }}">Clases</a></li>
                     @endrole
 
                     @role('teacher')

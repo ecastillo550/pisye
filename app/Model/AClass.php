@@ -15,7 +15,7 @@ class AClass extends Model
 	 * @var array
 	 */
 	protected $fillable = [
-		'name'
+		'name', 'level_id', 'semester_id'
 	];
 
 	/**
@@ -26,6 +26,10 @@ class AClass extends Model
 	protected $dates = [
 		'deleted_at'
 	];
+
+	public function level() {
+		return $this->belongsTo('App\Model\Level');
+	}
 
 	public function teacher() {
 		return $this->belongsTo('App\Model\User', 'user_id');

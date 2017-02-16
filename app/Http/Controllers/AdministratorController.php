@@ -9,7 +9,7 @@ use App\Model\AClass;
 use App\Model\Semester;
 use App\Http\Controllers\Controller;
 
-class MainController extends Controller {
+class AdministratorController extends Controller {
 	function index(Request $request) {
 		return view('administrator.index');
 	}
@@ -50,31 +50,5 @@ class MainController extends Controller {
 			}
 		}
 		return view('administrator.subjects.add');
-	}
-
-	function classes(Request $request) {
-		$classes = AClass::all();
-		return view('administrator.classes.index', ['classes' => $classes]);
-	}
-
-	function addClass(Request $request) {
-		$input = $request->input();
-		if (!empty($input)) {
-			$id = DB::table('classes')->insertGetId([
-				'subject_id' => $input['subjectId'],
-				'user_id' => $input['userId'],
-				'semester_id' => $input['semesterId'],
-				'name' => $input['name']
-			]);
-
-			if (!empty($id)) {
-				return redirect()->route('administrator.classes');
-			}
-		}
-		$subjects = DB::table('subjects')->get();
-		$users = DB::table('users')->get();
-		$semesters = Semester::all();
-
-		return view('administrator.classes.add', ['subjects' => $subjects, 'users' => $users, 'semesters' => $semesters]);
 	}
 }

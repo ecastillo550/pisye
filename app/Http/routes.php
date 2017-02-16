@@ -15,7 +15,7 @@ Route::get('/', ['as' => 'root', 'uses' => 'UserController@index']);
 
 Route::group(['as' => 'auth.', 'prefix' => 'auth'], function () {
 	// Route::post('/registration', [
-	// 	'as' => 'register', 
+	// 	'as' => 'register',
 	// 	'uses' => 'Auth\AuthController@register'
 	// ]);
 
@@ -34,22 +34,26 @@ Route::group(['as' => 'auth.', 'prefix' => 'auth'], function () {
 
 Route::group(['as' => 'administrator.', 'prefix' => 'admin'], function () {
 	Route::get('/index', ['as' => 'index', 'uses' => 'Administrator\MainController@index']);
-	
-	Route::get('/clases', ['as' => 'classes', 'uses' => 'Administrator\MainController@classes']);
-	Route::any('/clases/add', ['as' => 'classes.add', 'uses' => 'Administrator\MainController@addclass']);
+});
 
-	Route::get('/materias', ['as' => 'subjects', 'uses' => 'Administrator\MainController@subjects']);
-	Route::any('/materias/add', ['as' => 'subjects.add', 'uses' => 'Administrator\MainController@addSubject']);
+Route::group(['as' => 'classes.', 'prefix' => 'clases'], function () {
+	Route::get('/', ['as' => 'index', 'uses' => 'ClassesController@index']);
+	Route::any('/agregar', ['as' => 'add', 'uses' => 'ClassesController@addclass']);
+	Route::any('/alumno/{id}', ['as' => 'classes', 'uses' => 'ClassesController@byStudent']);
+});
+
+Route::group(['as' => 'subjects.', 'prefix' => 'materias'], function () {
+	Route::get('/', ['as' => 'index', 'uses' => 'SubjectController@subjects']);
+	Route::any('/agregar', ['as' => 'add', 'uses' => 'SubjectController@addSubject']);
 });
 
 Route::group(['as' => 'students.', 'prefix' => 'estudiantes'], function () {
-	Route::get('/', ['as' => 'index', 'uses' => 'Student\MainController@index']);
-	Route::any('/agregar', ['as' => 'add', 'uses' => 'Student\MainController@addStudent']);
-	Route::any('/{id}/clases', ['as' => 'classes', 'uses' => 'Student\MainController@classes']);
-	Route::any('/{id}/inscribir', ['as' => 'enroll', 'uses' => 'Student\MainController@enroll']);
-	Route::any('/{id}/desinscribir', ['as' => 'disenroll', 'uses' => 'Student\MainController@disenroll']);
-	Route::any('/{id}/calificar/{clase}', ['as' => 'grade', 'uses' => 'Student\MainController@grade']);
-	Route::any('/{id}/calificar/{clase}/parcial/{parcial}', ['as' => 'grade.partial', 'uses' => 'Student\MainController@gradePartial']);
+	Route::get('/', ['as' => 'index', 'uses' => 'StudentController@index']);
+	Route::any('/agregar', ['as' => 'add', 'uses' => 'StudentController@addStudent']);
+	Route::any('/{id}/inscribir', ['as' => 'enroll', 'uses' => 'StudentController@enroll']);
+	Route::any('/{id}/desinscribir', ['as' => 'disenroll', 'uses' => 'StudentController@disenroll']);
+	Route::any('/{id}/calificar/{clase}', ['as' => 'grade', 'uses' => 'StudentController@grade']);
+	Route::any('/{id}/calificar/{clase}/parcial/{parcial}', ['as' => 'grade.partial', 'uses' => 'StudentController@gradePartial']);
 });
 
 Route::group(['as' => 'teacher.', 'prefix' => 'maestro'], function () {
