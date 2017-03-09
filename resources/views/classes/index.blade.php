@@ -6,7 +6,7 @@
 		<div class="col-md-10 col-md-offset-1">
 			<div class="panel panel-default">
 				<div class="panel-heading">Clases</div>
-				<a class="btn btn-primary" href="{{ route('administrator.classes.add') }}">Nuevo</a>
+				<a class="btn btn-primary" href="{{ route('classes.add') }}">Nuevo</a>
 				<div class="panel-body">
 					<table class="table table-striped">
 						<tr>

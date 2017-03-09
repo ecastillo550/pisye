@@ -18,7 +18,7 @@
                         </tr>
                     @endforeach
                     </table>
-                    <a class="button" href="{{ route('administrator.students.add') }}">Nuevo</a>
+                    <a class="button" href="{{ route('students.add') }}">Nuevo</a>
                 </div>
             </div>
         </div>

@@ -50,6 +50,7 @@
                     @role('administrator')
                     <li><a href="{{ route('students.index') }}">Alumnos</a></li>
                     <li><a href="{{ route('subjects.index') }}">Materias</a></li>
+                    <li><a href="{{ route('levels.index') }}">Niveles</a></li>
                     <li><a href="{{ route('classes.index') }}">Clases</a></li>
                     @endrole
 

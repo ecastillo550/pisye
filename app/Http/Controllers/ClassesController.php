@@ -1,19 +1,20 @@
 <?php
 
-namespace App\Http\Controllers\Administrator;
+namespace App\Http\Controllers;
 
 use App\Http\Requests;
 use Illuminate\Http\Request;
 use DB;
 use App\Model\AClass;
 use App\Model\Semester;
+use App\Model\Student;
 use App\Http\Controllers\Controller;
 
 class ClassesController extends Controller {
 	//Vistas
 	function index(Request $request) {
 		$classes = AClass::all();
-		return view('administrator.classes.index', ['classes' => $classes]);
+		return view('classes.index', ['classes' => $classes]);
 	}
 
 	function byTeacher($id, Request $request) {
@@ -40,13 +41,13 @@ class ClassesController extends Controller {
 			]);
 
 			if (!empty($id)) {
-				return redirect()->route('administrator.classes');
+				return redirect()->route('classes.index');
 			}
 		}
 		$subjects = DB::table('subjects')->get();
 		$users = DB::table('users')->get();
 		$semesters = Semester::all();
 
-		return view('administrator.classes.add', ['subjects' => $subjects, 'users' => $users, 'semesters' => $semesters]);
+		return view('classes.add', ['subjects' => $subjects, 'users' => $users, 'semesters' => $semesters]);
 	}
 }

@@ -18,7 +18,7 @@
                         </tr>
                     @endforeach
                     </table>
-                    <a class="btn btn-primary" href="{{ route('administrator.subjects.add') }}">Nuevo</a>
+                    <a class="btn btn-primary" href="{{ route('subjects.add') }}">Nuevo</a>
                 </div>
             </div>
         </div>

@@ -16,7 +16,7 @@
                     @foreach($students as $student)
                         <tr>
                             <td>{{$student->name}}</td>
-                            <td><a class="btn btn-primary" href="{{ route('students.classes', $student->id) }}">Ver</a></td>
+                            <td><a class="btn btn-primary" href="{{ route('classes.byStudent', $student->id) }}">Ver</a></td>
                         </tr>
                     @endforeach
                     </table>

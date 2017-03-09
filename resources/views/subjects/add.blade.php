@@ -8,7 +8,7 @@
                 <div class="panel-heading">Agregar Materia</div>
 
                 <div class="panel-body">
-                    <form method="post" action="{{ route('administrator.subjects.add') }}">
+                    <form method="post" action="{{ route('subjects.add') }}">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                         <input type="text" name="name" placeholder="Nombre">
                         <input type="Submit" value="Guardar">

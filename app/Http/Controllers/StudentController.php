@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Student;
+namespace App\Http\Controllers;
 
 use App\Http\Requests;
 use Illuminate\Http\Request;
@@ -18,7 +18,7 @@ class StudentController extends Controller {
 		return view('students.index', ['students' => $students]);
 	}
 
-	function addStudent(Request $request) {
+	function add(Request $request) {
 		$input = $request->input();
 		if (!empty($input)) {
 			$id = DB::table('students')->insertGetId(
