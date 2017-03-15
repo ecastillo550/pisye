@@ -1,20 +1,20 @@
-@extends('layouts.app')
+@extends('layouts.noauth')
 
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Login</div>
+        <div class="col-md-4 col-md-offset-4">
+            <div class="login-panel panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Login</h3>
+                </div>
                 <div class="panel-body">
                     <form class="form-horizontal" role="form" method="POST" action="{{ route('auth.login') }}">
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('username_email') ? ' has-error' : '' }}">
-                            <label for="username_email" class="col-md-4 control-label">Usuario</label>
-
-                            <div class="col-md-6">
-                                <input id="username_email" type="text" class="form-control" name="username_email" value="{{ old('username_email') }}">
+                            <div class="col-md-12">
+                                <input placeholder="Usuario" id="username_email" type="text" class="form-control" name="username_email" value="{{ old('username_email') }}">
 
                                 @if ($errors->has('username_email'))
                                     <span class="help-block">
@@ -25,10 +25,8 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label for="password" class="col-md-4 control-label">Contraseña</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password">
+                            <div class="col-md-12">
+                                <input placeholder="Contraseña" id="password" type="password" class="form-control" name="password">
 
                                 @if ($errors->has('password'))
                                     <span class="help-block">
@@ -39,7 +37,7 @@
                         </div>
 
                         <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
+                            <div class="col-md-12">
                                 <div class="checkbox">
                                     <label>
                                         <input type="checkbox" name="remember"> Remember Me
@@ -49,8 +47,8 @@
                         </div>
 
                         <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
+                            <div class="col-md-12">
+                                <button type="submit" class="btn btn-primary btn-lg btn-block">
                                     <i class="fa fa-btn fa-sign-in"></i> Login
                                 </button>
                             </div>

@@ -49,6 +49,17 @@ body {
     min-height: 50px;
 }
 
+.navbar-top-links .dropdown-toggle {
+    color: $secondary;
+}
+
+.navbar-top-links .open .dropdown-toggle,
+.navbar-top-links .open .dropdown-toggle:focus,
+.navbar-top-links .dropdown-toggle:hover {
+    color: $primary;
+    background-color: $secondary !important;
+}
+
 .navbar-top-links .dropdown-menu li {
     display: block;
 }
@@ -104,10 +115,17 @@ body {
 }
 
 .sidebar ul li {
-    border-bottom: 1px solid darken($gray-lightest, 6.5%);
+    border-bottom: 1px solid darken($secondary, 6.5%);
     a {
-        &.active {
-            background-color: $gray-lighter;
+        color: $secondary;
+        &.active, &:focus {
+            background-color: $secondary;
+            color: $primary;
+        }
+
+        &:hover {
+            background-color: $active;
+            color: $primary;
         }
     }
 }
@@ -276,7 +294,7 @@ table.dataTable thead .sorting:after {
     color: rgba(50,50,50,.5);
 }
 
-// Circle Buttons 
+// Circle Buttons
 
 .btn-circle {
     width: 30px;
