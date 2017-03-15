@@ -9,13 +9,33 @@ use App\Model\Student;
 use App\Model\AClass;
 use App\Model\Grade;
 use App\Model\Partial;
+use App\Model\Level;
 use App\Http\Controllers\Controller;
 use Auth;
 
 class StudentController extends Controller {
 	function index(Request $request) {
-		$students = DB::table('students')->orderBy('id', 'asc')->paginate(10);
-		return view('students.index', ['students' => $students]);
+		$students = null;
+
+		if (!empty($request->filter)) {
+			$level = Level::find($request->filter);
+			if (!empty($level)) {
+				$students;
+				$students = Student::where('level_id', $level->id)->orderBy('id', 'asc')->get();
+			}
+		}
+
+		if (empty($students)) {
+			$students = Student::orderBy('id', 'asc')->paginate(10);
+		}
+
+
+		$levels = Level::all();
+		return view('students.index', [
+			'students' => $students,
+			'levels' => $levels,
+			'filter' => $request->filter
+		]);
 	}
 
 	function add(Request $request) {
