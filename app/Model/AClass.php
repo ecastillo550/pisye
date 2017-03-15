@@ -32,7 +32,7 @@ class AClass extends Model
 	}
 
 	public function teacher() {
-		return $this->belongsTo('App\Model\User', 'user_id');
+		return $this->belongsToMany('App\Model\User', 'user_class', 'class_id', 'user_id');
 	}
 
 	public function subject() {

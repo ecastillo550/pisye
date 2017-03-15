@@ -8,6 +8,7 @@ use DB;
 use App\Model\AClass;
 use App\Model\Semester;
 use App\Model\Student;
+use App\Model\Level;
 use App\Http\Controllers\Controller;
 
 class ClassesController extends Controller {
@@ -32,22 +33,31 @@ class ClassesController extends Controller {
 	function addClass(Request $request) {
 		$input = $request->input();
 		if (!empty($input)) {
-			$id = DB::table('classes')->insertGetId([
-				'subject_id' => $input['subjectId'],
-				'user_id' => $input['userId'],
-				'semester_id' => $input['semesterId'],
-				'level_id' => $input['levelId'],
-				'name' => $input['name']
-			]);
+			DB::transaction(function () use ($input) {
+				$class = new AClass();
+				$class->subject_id = $input['subjectId'];
+				$class->semester_id = $input['semesterId'];
+				$class->level_id = $input['levelId'];
+				$class->save();
 
-			if (!empty($id)) {
-				return redirect()->route('classes.index');
-			}
+				DB::table('user_class')->insert([
+					'user_id' => $input['userId'],
+					'class_id' => $class->id
+				]);
+			});
+
+			return redirect()->route('classes.index');
 		}
 		$subjects = DB::table('subjects')->get();
 		$users = DB::table('users')->get();
 		$semesters = Semester::all();
+		$levels = Level::all();
 
-		return view('classes.add', ['subjects' => $subjects, 'users' => $users, 'semesters' => $semesters]);
+		return view('classes.add', [
+			'subjects' => $subjects,
+			'users' => $users,
+			'semesters' => $semesters,
+			'levels' => $levels
+		]);
 	}
 }

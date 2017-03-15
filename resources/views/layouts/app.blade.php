@@ -109,7 +109,7 @@
                                 </li>
                                 @endpermission
                                 <li>
-                                    <a href="{{ route('teacher.class', Auth::user()->id) }}">Mis clases</a>
+                                    <a href="{{ route('teacher.index') }}">Mis clases</a>
                                 </li>
                                 @permission('class-management')
                                 <li>

@@ -12,17 +12,15 @@
 	<div class="panel-body">
 		<table class="table table-striped">
 			<tr>
+				<td>Semestre</td>
+				<td>Nivel</td>
 				<td>Materia</td>
-				<td>Nivel</td>
-				<td>Profesor</td>
-				<td>Nivel</td>
 			</tr>
 		@foreach($classes as $class)
 			<tr>
-				<td>{{ $class->name }}</td>
-				<td>{{ $class->subject->name }}</td>
-				<td>{{ $class->teacher->name }}</td>
+				<td>{{ $class->semester->name }}</td>
 				<td>{{ $class->level->name }}</td>
+				<td>{{ $class->subject->name }}</td>
 			</tr>
 		@endforeach
 		</table>

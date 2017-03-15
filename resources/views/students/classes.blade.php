@@ -11,11 +11,13 @@
 <div class="row">
     <table class="table table-striped">
         <tr>
-            <td>Clase</td>
+            <td>Nivel</td>
+            <td>Materia</td>
         </tr>
     @foreach($student->classes as $class)
         <tr>
-            <td>{{$class->name}}</td>
+            <td>{{$class->level->name}}</td>
+            <td>{{$class->subject->name}}</td>
         </tr>
     @endforeach
     </table>

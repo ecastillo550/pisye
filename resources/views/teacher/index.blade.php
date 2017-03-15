@@ -11,12 +11,14 @@
 <div class="row">
 	<table class="table table-striped">
 		<tr>
-			<td>Clase</td>
+			<td>Nivel</td>
+			<td>Materia</td>
 			<td></td>
 		</tr>
 	@foreach($classes as $class)
 		<tr>
-			<td>{{ $class->name }}</td>
+			<td>{{ $class->level->name }}</td>
+			<td>{{ $class->subject->name }}</td>
 			<td><a class="btn btn-primary" href="{{ route('teacher.class', $class->id) }}">ver</td>
 		</tr>
 	@endforeach

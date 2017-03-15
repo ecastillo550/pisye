@@ -14,7 +14,7 @@ use Auth;
 
 class StudentController extends Controller {
 	function index(Request $request) {
-		$students = DB::table('students')->get();
+		$students = DB::table('students')->orderBy('id', 'asc')->get();
 		return view('students.index', ['students' => $students]);
 	}
 
