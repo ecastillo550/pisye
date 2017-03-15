@@ -144,6 +144,41 @@
                                 <li>
                                     <a href="{{ route('levels.index') }}">Ver</a>
                                 </li>
+                                <li>
+                                    <a href="{{ route('levels.add') }}">Agregar nuevo</a>
+                                </li>
+                                @endpermission
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                        @endpermission
+                        @permission('see-semesters')
+                        <li>
+                            <a href="#"><i class="fa fa-files-o fa-fw"></i> Semestres<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                @permission('semester-management')
+                                <li>
+                                    <a href="{{ route('semesters.index') }}">Ver</a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('semesters.add') }}">Agregar nuevo</a>
+                                </li>
+                                @endpermission
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                        @endpermission
+                        @permission('see-users')
+                        <li>
+                            <a href="#"><i class="fa fa-files-o fa-fw"></i> Usuarios<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                @permission('user-management')
+                                <li>
+                                    <a href="{{ route('users.index') }}">Ver</a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('users.add') }}">Agregar nuevo</a>
+                                </li>
                                 @endpermission
                             </ul>
                             <!-- /.nav-second-level -->

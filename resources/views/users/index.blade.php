@@ -3,7 +3,7 @@
 @section('content')
 <div class="row">
     <div class="col-lg-12">
-        <h1 class="page-header">Materias</h1>
+        <h1 class="page-header">Usuarios</h1>
     </div>
     <!-- /.col-lg-12 -->
 </div>
@@ -12,10 +12,12 @@
     <table class="table table-striped">
         <tr>
             <td>Nombre</td>
+            <td>Rol</td>
         </tr>
-    @foreach($subjects as $subject)
+    @foreach($users as $user)
         <tr>
-            <td>{{$subject->name}}</td>
+            <td>{{$user->name}}</td>
+            <td>{{$user->roles()->first()->display_name}}</td>
         </tr>
     @endforeach
     </table>

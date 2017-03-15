@@ -74,6 +74,17 @@ class RolesTableSeeder extends Seeder
 			'display_name' => 'Ver niveles'
 		]);
 
+		$semesterManagement = Permission::create([
+			'name' => 'semester-management',
+			'display_name' => 'Manejar semestre'
+		]);
+
+		$seeSemesters = Permission::create([
+			'name' => 'see-semesters',
+			'display_name' => 'Ver semestre'
+		]);
+
+
 		$gradeStudent = Permission::create([
 			'name' => 'grade-student',
 			'display_name' => 'Calificar estudiantes'
@@ -90,6 +101,8 @@ class RolesTableSeeder extends Seeder
 			$seeClasses,
 			$seeSubjects,
 			$seeLevels,
+			$semesterManagement,
+			$seeSemesters,
 			$gradeStudent
 		]);
 

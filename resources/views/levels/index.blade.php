@@ -3,7 +3,7 @@
 @section('content')
 <div class="row">
     <div class="col-lg-12">
-        <h1 class="page-header">Materias</h1>
+        <h1 class="page-header">Niveles</h1>
     </div>
     <!-- /.col-lg-12 -->
 </div>
@@ -13,9 +13,9 @@
         <tr>
             <td>Nombre</td>
         </tr>
-    @foreach($subjects as $subject)
+    @foreach($levels as $level)
         <tr>
-            <td>{{$subject->name}}</td>
+            <td>{{$level->name}}</td>
         </tr>
     @endforeach
     </table>

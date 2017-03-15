@@ -62,6 +62,16 @@ Route::group(['middleware' => 'auth'], function () {
 		Route::any('/agregar', ['as' => 'add', 'uses' => 'SubjectController@add']);
 	});
 
+	Route::group(['as' => 'semesters.', 'prefix' => 'semestres'], function () {
+		Route::get('/', ['as' => 'index', 'uses' => 'SemesterController@index']);
+		Route::any('/agregar', ['as' => 'add', 'uses' => 'SemesterController@add']);
+	});
+
+	Route::group(['as' => 'users.', 'prefix' => 'usuarios'], function () {
+		Route::get('/', ['as' => 'index', 'uses' => 'UserController@listUsers']);
+		Route::any('/agregar', ['as' => 'add', 'uses' => 'UserController@add']);
+	});
+
 	Route::group(['as' => 'levels.', 'prefix' => 'nivel'], function () {
 		Route::get('/', ['as' => 'index', 'uses' => 'LevelController@index']);
 		Route::any('/agregar', ['as' => 'add', 'uses' => 'LevelController@add']);
