@@ -83,51 +83,72 @@
                         <li>
                             <a href="{{ route('root') }}"><i class="fa fa-dashboard fa-fw"></i> Inicio</a>
                         </li>
+                        @permission('see-students')
                         <li>
                             <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Alumnos<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
+                            @permission('student-management')
                                 <li>
                                     <a href="{{ route('students.index') }}">Ver</a>
                                 </li>
                                 <li>
                                     <a href="{{ route('students.add') }}">Agregar nuevo</a>
                                 </li>
+                            @endpermission
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
+                        @endpermission
+                        @permission('see-classes')
                         <li>
                             <a href="#"><i class="fa fa-wrench fa-fw"></i> Clases<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
+                                @permission('class-management')
                                 <li>
                                     <a href="{{ route('classes.index') }}">Ver</a>
                                 </li>
+                                @endpermission
+                                <li>
+                                    <a href="{{ route('teacher.class', Auth::user()->id) }}">Mis clases</a>
+                                </li>
+                                @permission('class-management')
                                 <li>
                                     <a href="{{ route('classes.add') }}">Agregar nuevo</a>
                                 </li>
+                                @endpermission
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
+                        @endpermission
+                        @permission('see-subjects')
                         <li>
                             <a href="#"><i class="fa fa-sitemap fa-fw"></i> Materias<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
+                                @permission('subject-management')
                                 <li>
                                     <a href="{{ route('subjects.index') }}">Ver</a>
                                 </li>
                                 <li>
                                     <a href="{{ route('subjects.add') }}">Agregar nuevo</a>
                                 </li>
+                                @endpermission
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
+                        @endpermission
+                        @permission('see-levels')
                         <li>
                             <a href="#"><i class="fa fa-files-o fa-fw"></i> Niveles<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
+                                @permission('level-management')
                                 <li>
                                     <a href="{{ route('levels.index') }}">Ver</a>
                                 </li>
+                                @endpermission
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
+                        @endpermission
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->

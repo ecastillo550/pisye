@@ -38,16 +38,6 @@
 
                         <div class="form-group">
                             <div class="col-md-12">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" name="remember"> Remember Me
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-12">
                                 <button type="submit" class="btn btn-primary btn-lg btn-block">
                                     <i class="fa fa-btn fa-sign-in"></i> Login
                                 </button>

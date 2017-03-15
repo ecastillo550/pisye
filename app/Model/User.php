@@ -27,6 +27,6 @@ class User extends Authenticatable
     ];
 
     public function myClasses() {
-        return $this->hasMany('App\Model\AClass', 'user_id');
+        return $this->belongsToMany('App\Model\AClass', 'user_class', 'class_id', 'user_id');
     }
 }
