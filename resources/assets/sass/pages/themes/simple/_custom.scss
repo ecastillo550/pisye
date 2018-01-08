@@ -1,0 +1,14 @@
+//Theme Overwrite
+
+.header{
+	background-color: $color-background;
+	border-bottom: none;
+}
+
+.sidebar-header {
+	border-bottom: none !important;
+}
+
+.social-wrapper .social .feed > .day > .item{
+	border: 0;
+}
