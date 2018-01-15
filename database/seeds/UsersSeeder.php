@@ -20,9 +20,23 @@ class UsersSeeder extends Seeder
         // -------------- User creation -----------------
         $admin = new User();
         $admin->name = 'admin';
-        $admin->email = 'admin@hagane.io';
+        $admin->email = 'admin@udem.edu';
         $admin->password = bcrypt('123456');
         $admin->attachRole($adminRole);
         $admin->save();
-    } 
+
+        $teacher = new User();
+        $teacher->name = 'teacher';
+        $teacher->email = 'teacher@udem.edu';
+        $teacher->password = bcrypt('123456');
+        $teacher->attachRole($teacherRole);
+        $teacher->save();
+
+        $student = new User();
+        $student->name = 'student';
+        $student->email = 'student@udem.edu';
+        $student->password = bcrypt('123456');
+        $student->attachRole($studentRole);
+        $student->save();
+    }
 }
