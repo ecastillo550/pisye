@@ -42,6 +42,35 @@ class CreateInitialSchema extends Migration
             $table->softDeletes();
             $table->timestamps();
         });
+
+        Schema::create('cualitative_grades', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('name');
+            $table->softDeletes();
+            $table->timestamps();
+        });
+
+        Schema::create('grades', function (Blueprint $table) {
+            $table->increments('id');
+            
+            $table->integer('student_id')->unsigned();
+            $table->foreign('student_id')->references('id')->on('users');
+
+            $table->integer('class_id')->unsigned();
+            $table->foreign('class_id')->references('id')->on('classes');
+
+            // calificaciones cuantitativas
+            $table->decimal('period_1', 5, 2);
+            $table->decimal('period_1', 5, 2);
+            $table->decimal('period_final', 5, 2);
+
+            // calificaciones cualitativas
+            $table->integer('responsability')->unsigned();
+            $table->foreign('responsability')->references('id')->on('cualitative_grades');
+
+            $table->softDeletes();
+            $table->timestamps();
+        });
     }
 
     /**
