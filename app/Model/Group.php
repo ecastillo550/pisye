@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Group extends Model
 {
 	use SoftDeletes;
-	protected $table = 'classes';
 	/**
 	 * The attributes that are mass assignable.
 	 *

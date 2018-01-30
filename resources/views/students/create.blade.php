@@ -1,4 +1,4 @@
-@extends('layouts.app_in_hotels')
+@extends('layouts.app')
 
 @section('content')
 <div class="container-fluid">

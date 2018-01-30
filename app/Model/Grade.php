@@ -31,8 +31,8 @@ class Grade extends Model
         return $this->belongsTo('App\Model\Student');
     }
 
-    public function myclass() {
-        return $this->belongsTo('App\Model\AClass');
+    public function myGroup() {
+        return $this->belongsTo('App\Model\Group');
     }
 
     public function teacher() {

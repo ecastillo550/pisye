@@ -1,0 +1,41 @@
+/*@media print {*/
+	#print {
+		display: block;
+	}
+	input {
+		border-radius: 0;
+		border: 1px black solid;
+		padding: 5px;
+		font-size: 10px !important;
+	}
+
+	body, p {
+		font-size: 10px !important;
+	}
+
+	.enable-checkbox {
+		display: none;
+	}
+
+	.card-block {
+		padding: 0 !important;
+	}
+
+	.separator {
+		border-bottom: 1px solid #c2c2c2;
+	}
+
+	.logo-sisse {
+		width: 100px;
+		height: auto;
+	}
+
+	ul {
+		list-style: none;
+		padding: 0;
+	}
+
+	.page-break {
+		page-break-before: always;
+	}
+/*}*/

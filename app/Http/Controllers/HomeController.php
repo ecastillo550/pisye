@@ -32,7 +32,7 @@ class HomeController extends Controller
 
         switch($user->roles->first()->name) {
             case 'admin':
-                return view('index');
+                return view('admin.index');
                 break;
             case 'teacher':
                 return redirect()->route('classes.index');

@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Model\Semester;
+use App\Model\Partial;
 
 class CualitativeGrades extends Seeder
 {
@@ -11,7 +13,7 @@ class CualitativeGrades extends Seeder
      */
     public function run()
     {
-    	DB::table('users')->insert([
+    	DB::table('cualitative_grades')->insert([
 		    ['name' => 'No logrado', 'order' => 1],
 		    ['name' => 'En proceso', 'order' => 2],
 		    ['name' => 'Regular', 'order' => 3],

@@ -1,0 +1,18 @@
+<!-- START COPYRIGHT -->
+<!-- START CONTAINER FLUID -->
+<!-- START CONTAINER FLUID -->
+<div class=" container-fluid  container-fixed-lg footer">
+  <div class="copyright sm-text-center">
+    <p class="small no-margin pull-left sm-pull-reset">
+      <span class="hint-text">Copyright &copy; 2018 </span>
+      <span class="font-montserrat">Erick Castillo</span>.
+      <span class="hint-text"></span>
+      <span class="sm-block"><a href="#" class="m-l-10 m-r-10"></a> <span class="muted">|</span> <a href="#" class="m-l-10"></a></span>
+    </p>
+    <p class="small no-margin pull-right sm-pull-reset">
+      Hecho a mano <span class="hint-text"> con amor</span>
+    </p>
+    <div class="clearfix"></div>
+  </div>
+</div>
+<!-- END COPYRIGHT -->

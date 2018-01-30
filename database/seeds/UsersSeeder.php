@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use App\Model\User;
+use App\Model\Role;
 
 class UsersSeeder extends Seeder
 {
@@ -22,21 +23,21 @@ class UsersSeeder extends Seeder
         $admin->name = 'admin';
         $admin->email = 'admin@udem.edu';
         $admin->password = bcrypt('123456');
-        $admin->attachRole($adminRole);
         $admin->save();
+        $admin->attachRole($adminRole);
 
         $teacher = new User();
         $teacher->name = 'teacher';
         $teacher->email = 'teacher@udem.edu';
         $teacher->password = bcrypt('123456');
-        $teacher->attachRole($teacherRole);
         $teacher->save();
+        $teacher->attachRole($teacherRole);
 
         $student = new User();
         $student->name = 'student';
         $student->email = 'student@udem.edu';
         $student->password = bcrypt('123456');
-        $student->attachRole($studentRole);
         $student->save();
+        $student->attachRole($studentRole);
     }
 }

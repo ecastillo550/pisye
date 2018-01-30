@@ -28,7 +28,7 @@ class CreateInitialSchema extends Migration
             $table->timestamps();
         });
 
-        Schema::create('classes', function (Blueprint $table) {
+        Schema::create('groups', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
 
@@ -67,8 +67,8 @@ class CreateInitialSchema extends Migration
             $table->integer('student_id')->unsigned();
             $table->foreign('student_id')->references('id')->on('users');
 
-            $table->integer('class_id')->unsigned();
-            $table->foreign('class_id')->references('id')->on('classes');
+            $table->integer('group_id')->unsigned();
+            $table->foreign('group_id')->references('id')->on('groups');
 
             $table->integer('partial_id')->unsigned();
             $table->foreign('partial_id')->references('id')->on('partials');
@@ -88,7 +88,7 @@ class CreateInitialSchema extends Migration
             $table->integer('homework')->unsigned();
             $table->foreign('homework')->references('id')->on('cualitative_grades');
 
-            $table->unique(['student_id', 'class_id', 'partial_id']);
+            $table->unique(['student_id', 'group_id', 'partial_id']);
             $table->softDeletes();
             $table->timestamps();
         });
@@ -102,10 +102,10 @@ class CreateInitialSchema extends Migration
     public function down()
     {
         Schema::dropIfExists('subjects');
-        Schema::dropIfExists('semesters');
-        Schema::dropIfExists('classes');
-        Schema::dropIfExists('cualitative_grades');
-        Schema::dropIfExists('partials');
         Schema::dropIfExists('grades');
+        Schema::dropIfExists('groups');
+        Schema::dropIfExists('partials');
+        Schema::dropIfExists('semesters');
+        Schema::dropIfExists('cualitative_grades');
     }
 }
