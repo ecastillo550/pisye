@@ -11,10 +11,6 @@
   <div class="sidebar-menu">
     <!-- BEGIN SIDEBAR MENU ITEMS-->
     <ul class="menu-items">
-      {{-- <li class="m-t-30">
-        <a href="{{ route('home') }}"><span class="title">Dashboard</span></a>
-        <span class="icon-thumbnail"><i data-feather="users"></i></span>
-      </li> --}}
       <li class="m-t-30">
         <a href="{{ route('groups.index') }}"><span class="title">Grupos</span></a>
         <span class="icon-thumbnail"><i class="pg-note"></i></span>
@@ -28,8 +24,8 @@
         <span class="icon-thumbnail"><i class="fa fa-users"></i></span>
       </li>
       <li>
-        <a href="{{ route('users.create') }}"><span class="title">Crear Usuario</span></a>
-        <span class="icon-thumbnail"><i class="fa fa-user-plus"></i></span>
+        <a href="{{ route('subjects.index') }}"><span class="title">Materias</span></a>
+        <span class="icon-thumbnail"><i class="pg-note"></i></span>
       </li>
     </ul>
     <div class="clearfix"></div>

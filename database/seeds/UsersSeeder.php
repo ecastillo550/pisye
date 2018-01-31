@@ -21,21 +21,21 @@ class UsersSeeder extends Seeder
         // -------------- User creation -----------------
         $admin = new User();
         $admin->name = 'admin';
-        $admin->email = 'admin@udem.edu';
+        $admin->username = 'admin';
         $admin->password = bcrypt('123456');
         $admin->save();
         $admin->attachRole($adminRole);
 
         $teacher = new User();
         $teacher->name = 'teacher';
-        $teacher->email = 'teacher@udem.edu';
+        $teacher->username = 'teacher';
         $teacher->password = bcrypt('123456');
         $teacher->save();
         $teacher->attachRole($teacherRole);
 
         $student = new User();
         $student->name = 'student';
-        $student->email = 'student@udem.edu';
+        $student->username = 'student';
         $student->password = bcrypt('123456');
         $student->save();
         $student->attachRole($studentRole);

@@ -105,7 +105,7 @@ class CreateInitialSchema extends Migration
         Schema::dropIfExists('grades');
         Schema::dropIfExists('groups');
         Schema::dropIfExists('partials');
-        Schema::dropIfExists('semesters');
         Schema::dropIfExists('cualitative_grades');
+        Schema::dropIfExists('semesters');
     }
 }

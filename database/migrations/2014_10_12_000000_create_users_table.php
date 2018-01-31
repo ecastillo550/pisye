@@ -22,14 +22,16 @@ class CreateUsersTable extends Migration
 
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
+            $table->text('enrollment')->nullable();
             $table->string('name');
-            $table->string('email')->unique();
+            $table->string('username')->unique();
             $table->string('password');
             $table->integer('level_id')->unsigned()->nullable();
             $table->foreign('level_id')->references('id')->on('levels');
 
             $table->rememberToken();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

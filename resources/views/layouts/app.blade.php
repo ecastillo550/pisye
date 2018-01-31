@@ -61,7 +61,11 @@
 
       <!-- START PAGE CONTENT WRAPPER -->
       <div class="page-content-wrapper ">
-        @yield('content')
+        <div class="content">
+            <div class="container-fluid">
+                @yield('content')
+            </div>
+        </div>
 
         @include('partials.footer')
       </div>

@@ -28,12 +28,12 @@ Route::group(['middleware' => ['web', 'auth']], function() {
     });
 
     Route::group(['prefix' => 'alumnos', 'as' => 'students.'], function() {
-        Route::get('/', 'StudentController@index')->name('index');
-        Route::get('/crear', 'StudentController@create')->name('create');
-        Route::post('/crear', 'StudentController@store')->name('store');
-        Route::get('/{id}/editar', 'StudentController@edit')->name('edit');
-        Route::put('/{id}/editar', 'StudentController@update')->name('update');
-        Route::delete('/{id}', 'StudentController@destroy')->name('delete');
+        Route::get('/', 'StudentsController@index')->name('index');
+        Route::get('/crear', 'StudentsController@create')->name('create');
+        Route::post('/crear', 'StudentsController@store')->name('store');
+        Route::get('/{id}/editar', 'StudentsController@edit')->name('edit');
+        Route::put('/{id}/editar', 'StudentsController@update')->name('update');
+        Route::delete('/{id}', 'StudentsController@destroy')->name('delete');
     });
 
     Route::group(['prefix' => 'grupos', 'as' => 'groups.'], function() {
@@ -61,6 +61,15 @@ Route::group(['middleware' => ['web', 'auth']], function() {
         Route::get('/{id}/editar', 'SemestersController@edit')->name('edit');
         Route::put('/{id}/editar', 'SemestersController@update')->name('update');
         Route::delete('/{id}', 'SemestersController@destroy')->name('delete');
+    });
+
+    Route::group(['prefix' => 'materias', 'as' => 'subjects.'], function() {
+        Route::get('/', 'SubjectsController@index')->name('index');
+        Route::get('/crear', 'SubjectsController@create')->name('create');
+        Route::post('/crear', 'SubjectsController@store')->name('store');
+        Route::get('/{id}/editar', 'SubjectsController@edit')->name('edit');
+        Route::put('/{id}/editar', 'SubjectsController@update')->name('update');
+        Route::delete('/{id}', 'SubjectsController@destroy')->name('delete');
     });
 
     Route::group(['prefix' => 'niveles', 'as' => 'levels.'], function() {

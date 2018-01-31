@@ -5,11 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use App\Model\User;
-use App\Model\Level;
 use App\Model\Role;
+use App\Model\Subject;
 use DB;
 
-class StudentsController extends Controller
+class SubjectsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,9 +18,9 @@ class StudentsController extends Controller
      */
     public function index()
     {
-        $students = User::withRole('student')->get();
+        $subjects = Subject::all();
 
-        return view('students.index', compact('students'));
+        return view('subjects.index', compact('subjects'));
     }
 
     /**
@@ -30,9 +30,8 @@ class StudentsController extends Controller
      */
     public function create()
     {
-        $levels = Level::all();
 
-        return view('students.create', compact('levels'));
+        return view('subjects.create');
     }
 
     /**
@@ -45,22 +44,15 @@ class StudentsController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'email' => 'required|unique:users|email',
-            'password' => 'required|confirmed'
         ]);
 
         DB::transaction(function() use ($request) {
-            $studentRole = Role::where('name', 'like', 'student')->first();
-
-            $user = new User();
-            $user->name = $request->name;
-            $user->email = $request->email;
-            $user->password = bcrypt($request->password);
-            $user->save();
-            $user->attachRole($studentRole);
+            $subject = new Subject();
+            $subject->name = $request->name;
+            $subject->save();
         });
 
-        return redirect()->route('students.index');
+        return redirect()->route('subjects.index');
     }
 
     /**
@@ -82,10 +74,9 @@ class StudentsController extends Controller
      */
     public function edit($id)
     {
-        $student = User::find($id);
-        $levels = Level::all();
+        $subject = Subject::find($id);
 
-        return view('students.edit', compact('student', 'levels'));
+        return view('subjects.edit', compact('subject'));
     }
 
     /**
@@ -99,23 +90,16 @@ class StudentsController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'email' => ['required', Rule::unique('users')->ignore($id), 'email'],
-            'password' => 'confirmed'
         ]);
 
         DB::transaction(function() use ($request, $id) {
-            $user = User::find($id);
-            $user->name = $request->name;
-            $user->email = $request->email;
+            $subject = Subject::find($id);
+            $subject->name = $request->name;
 
-            if(!empty($request->password)) {
-                $user->password = bcrypt($request->password);
-            }
-
-            $user->save();
+            $subject->save();
         });
 
-        return redirect()->route('students.index');
+        return redirect()->route('subjects.index');
     }
 
     /**
@@ -126,9 +110,9 @@ class StudentsController extends Controller
      */
     public function destroy($id)
     {
-        $user = User::find($id);
-        $user->delete();
+        $subject = Subject::find($id);
+        $subject->delete();
 
-        return redirect()->route('students.index');
+        return redirect()->route('subjects.index');
     }
 }

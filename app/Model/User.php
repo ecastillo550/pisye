@@ -4,10 +4,13 @@ namespace App\Model;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Zizaco\Entrust\Traits\EntrustUserTrait;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Contracts\Auth\CanResetPassword;
 
 class User extends Authenticatable
 {
-    use EntrustUserTrait;
+    use SoftDeletes { restore as private restoreA; }
+    use EntrustUserTrait { restore as private restoreB; }
     /**
      * The attributes that are mass assignable.
      *
@@ -25,6 +28,12 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function restore()
+    {
+        $this->restoreA();
+        $this->restoreB();
+    }
 
     public function myGroups() {
         return $this->belongsToMany('App\Model\Group', 'user_class', 'group_id', 'user_id');
