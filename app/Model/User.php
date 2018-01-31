@@ -35,7 +35,7 @@ class User extends Authenticatable
         $this->restoreB();
     }
 
-    public function myGroups() {
-        return $this->belongsToMany('App\Model\Group', 'user_class', 'group_id', 'user_id');
+    public function groups() {
+        return $this->belongsToMany('App\Model\Group', 'group_teacher');
     }
 }

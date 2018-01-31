@@ -1,10 +1,10 @@
-<?php 
+<?php
   $isCreate = Request::is('*create*');
 ?>
 
-{!! Form::token() !!} 
+{!! Form::token() !!}
 <div class="row">
-  <div class="col-sm-12">      
+  <div class="col-sm-12">
     <div class="form-group form-group-default required">
       <label class="fade">Name(s)</label>
       {!! Form::text('name', old('name', $user->name), ['class' => 'form-control', 'placeholder' => 'Ej: John', 'required' => 'required']) !!}
@@ -15,8 +15,8 @@
 <div class="row">
   <div class="col-sm-9">
     <div class="form-group form-group-default required">
-      <label class="fade">Email</label>
-      {!! Form::text('email', old('email', $user->email), ['class' => 'form-control', 'placeholder' => 'Ej: johnMccoy@sisse.com', 'required' => 'required']) !!}
+      <label class="fade">Usuario</label>
+      {!! Form::text('username', old('username', $user->username), ['class' => 'form-control', 'placeholder' => 'Ej: johnMccoy@sisse.com', 'required' => 'required']) !!}
     </div>
   </div>
   <div class="col-sm-3">

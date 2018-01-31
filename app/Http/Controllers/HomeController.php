@@ -35,7 +35,7 @@ class HomeController extends Controller
                 return view('admin.index');
                 break;
             case 'teacher':
-                return redirect()->route('classes.index');
+                return redirect()->route('groups.my_groups');
                 break;
             case 'students':
                 return redirect()->route('student.home');

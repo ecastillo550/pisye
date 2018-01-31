@@ -43,6 +43,6 @@ class Group extends Model
 	}
 
 	public function students() {
-		return $this->belongsToMany('App\Model\Student', 'student_class', 'class_id', 'student_id');
+		return $this->belongsToMany('App\Model\User', 'group_student');
 	}
 }

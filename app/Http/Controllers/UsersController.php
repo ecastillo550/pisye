@@ -33,7 +33,7 @@ class UsersController extends Controller
 
             $user = new User();
             $user->name = $request->name;
-            $user->email = $request->email;
+            $user->username = $request->username;
             $user->password = bcrypt($request->password);
 
             $user->save();
@@ -59,7 +59,7 @@ class UsersController extends Controller
             $userRole = Role::where('id', $request->role_id)->first();
 
             $user->name = $request->name;
-            $user->email = $request->email;
+            $user->username = $request->username;
             if($request->password) {
                 $user->password = bcrypt($request->password);
             }

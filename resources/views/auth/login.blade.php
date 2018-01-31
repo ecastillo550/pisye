@@ -1,11 +1,11 @@
-@extends('layouts.app_out')
+@extends('layouts.clean')
 
 @section('content')
 <div class="login-wrapper ">
   <!-- START Login Background Pic Wrapper-->
   <div class="bg-pic">
     <!-- START Background Pic-->
-    <img src="images/banner.jpg" data-src="images/banner.jpg" data-src-retina="images/banner.jpg" alt="" class="lazy">
+    <img src="/images/banner.jpg" data-src="/images/banner.jpg" data-src-retina="/images/banner.jpg" alt="" class="lazy">
     <!-- END Background Pic-->
     <!-- START Background Caption-->
     <div class="bg-caption pull-bottom sm-pull-bottom text-white p-l-20 m-b-20">
@@ -26,12 +26,12 @@
       <form id="form-login" class="p-t-15" role="form" method="POST" action="{{ route('login') }}">
         {{ csrf_field() }}
         <!-- START Form Control-->
-        <div class="form-group form-group-default{{ $errors->has('email') ? ' has-error' : '' }}">
-          <label for="email">Usuario</label>
-          <input class="form-control" type="email" aria-describedby="emailHelp" placeholder="Enter email" name="email" value="{{ old('email') }}" required autofocus>
-          @if ($errors->has('email'))
+        <div class="form-group form-group-default{{ $errors->has('username') ? ' has-error' : '' }}">
+          <label for="username">Usuario</label>
+          <input class="form-control" type="text" aria-describedby="usernameHelp" placeholder="Enter username" name="username" value="{{ old('username') }}" required autofocus>
+          @if ($errors->has('username'))
             <span class="help-block">
-              <strong>{{ $errors->first('email') }}</strong>
+              <strong>{{ $errors->first('username') }}</strong>
             </span>
           @endif
         </div>

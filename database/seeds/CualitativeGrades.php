@@ -2,7 +2,10 @@
 
 use Illuminate\Database\Seeder;
 use App\Model\Semester;
+use App\Model\Level;
 use App\Model\Partial;
+use App\Model\Subject;
+use App\Model\Group;
 
 class CualitativeGrades extends Seeder
 {
@@ -26,6 +29,10 @@ class CualitativeGrades extends Seeder
         $semester->name = 'PR 18';
         $semester->save();
 
+        $level = new Level();
+        $level->name = 'A';
+        $level->save();
+
         $partial = new Partial();
         $partial->name = 'Parcial 1';
         $partial->order = 1;
@@ -44,5 +51,15 @@ class CualitativeGrades extends Seeder
         $partial->is_final = true;
         $partial->semester_id = $semester->id;
         $partial->save();
+
+        $subject = new Subject();
+        $subject->name = 'Computacion';
+        $subject->save();
+
+        $group = new Group();
+        $group->subject_id = $subject->id;
+        $group->semester_id = $semester->id;
+        $group->level_id = $level->id;
+        $group->save();
     }
 }

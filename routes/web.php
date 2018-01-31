@@ -38,11 +38,21 @@ Route::group(['middleware' => ['web', 'auth']], function() {
 
     Route::group(['prefix' => 'grupos', 'as' => 'groups.'], function() {
         Route::get('/', 'GroupsController@index')->name('index');
+        Route::get('/mis_grupos', 'GroupsController@myGroups')->name('my_groups');
+        Route::get('/{id}/lista', 'GroupsController@listGroups')->name('student_list');
         Route::get('/crear', 'GroupsController@create')->name('create');
         Route::post('/crear', 'GroupsController@store')->name('store');
         Route::get('/{id}/editar', 'GroupsController@edit')->name('edit');
         Route::put('/{id}/editar', 'GroupsController@update')->name('update');
         Route::delete('/{id}', 'GroupsController@destroy')->name('delete');
+    });
+
+    Route::group(['prefix' => 'calificacion', 'as' => 'grades.'], function() {
+        Route::get('/', 'GradesController@index')->name('index');
+        Route::get('/parcial', 'GradesController@create')->name('partial');
+        Route::post('/parcial', 'GradesController@store')->name('store');
+        Route::get('/{id}/editar', 'GradesController@edit')->name('edit');
+        Route::put('/{id}/editar', 'GradesController@update')->name('update');
     });
 
     Route::group(['prefix' => 'calificaciones', 'as' => 'grades.'], function() {

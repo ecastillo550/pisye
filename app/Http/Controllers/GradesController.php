@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use App\Model\Role;
 use App\Model\Grade;
+use App\Model\Group;
+use App\Model\Student;
 use DB;
 
 class GradesController extends Controller
@@ -119,5 +121,35 @@ class GradesController extends Controller
         $user->delete();
 
         return redirect()->route('grades.index');
+    }
+
+    function grade($id, $group, Request $request) {
+        $student = Student::find($id);
+        $group = Group::find($group);
+
+        //si es post, debe venir el id de clase a inscribir
+        if ($request->isMethod('post')) {
+            $data = array();
+
+            if (!empty($request->input('grade1'))) {
+                $data['grade1'] = $request->input('grade1');
+            }
+
+            if (!empty($request->input('grade2'))) {
+                $data['grade2'] = $request->input('grade2');
+            }
+
+            if (!empty($request->input('comments'))) {
+                $data['comments'] = $request->input('comments');
+            }
+
+            try {
+                $student->groues()->updateExistingPivot($group->id, $data);
+            } catch (\Exception $error) {
+                return redirect()->back()->withInput();
+            }
+            return redirect()->route('teacher.group', $group->id);
+        }
+        return view('students.grade', ['student' => $student, 'group' => $group]);
     }
 }

@@ -12,6 +12,10 @@
     <!-- BEGIN SIDEBAR MENU ITEMS-->
     <ul class="menu-items">
       <li class="m-t-30">
+        <a href="{{ route('groups.my_groups') }}"><span class="title">Mis Grupos</span></a>
+        <span class="icon-thumbnail"><i class="pg-note"></i></span>
+      </li>
+      <li>
         <a href="{{ route('groups.index') }}"><span class="title">Grupos</span></a>
         <span class="icon-thumbnail"><i class="pg-note"></i></span>
       </li>

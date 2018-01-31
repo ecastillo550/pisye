@@ -26,6 +26,22 @@ class GroupsController extends Controller
         return view('groups.index', compact('groups'));
     }
 
+    public function myGroups()
+    {
+        $user = \Auth::user();
+        $groups = $user->groups;
+
+        return view('groups.my_groups', compact('groups'));
+    }
+
+    public function listGroups(Request $request, $id)
+    {
+        $group = Group::find($id);
+        $students = $group->students;
+
+        return view('groups.student_list', compact('group', 'students'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -89,9 +105,13 @@ class GroupsController extends Controller
      */
     public function edit($id)
     {
-        $student = Group::find($id);
+        $group = Group::find($id);
+        $subjects = Subject::all();
+        $levels = Level::all();
+        $semesters = Semester::all();
+        $teachers = User::withRole('teacher')->get();
 
-        return view('groups.edit', compact('student'));
+        return view('groups.edit', compact('group', 'subjects', 'levels', 'semesters', 'teachers'));
     }
 
     /**
@@ -104,17 +124,23 @@ class GroupsController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'name' => 'required',
+            'subject_id' => 'required',
+            'semester_id' => 'required',
+            'level_id' => 'required',
+            'teacher_id' => 'required',
         ]);
 
-        DB::transaction(function() use ($request, $id) {
+        DB::transaction(function() use ($id, $request) {
             $group = Group::find($id);
-            $group->name = $request->name;
+            $group->subject_id = $request->subject_id;
             $group->semester_id = $request->semester_id;
             $group->level_id = $request->level_id;
-
             $group->save();
+
+            $group->teachers()->detach($group->teachers->first()->id);
+            $group->teachers()->attach($request->teacher_id);
         });
+
 
         return redirect()->route('groups.index');
     }
