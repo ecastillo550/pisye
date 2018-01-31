@@ -27,6 +27,10 @@
         <a href="{{ route('subjects.index') }}"><span class="title">Materias</span></a>
         <span class="icon-thumbnail"><i class="pg-note"></i></span>
       </li>
+      <li>
+        <a href="{{ route('semesters.index') }}"><span class="title">Semestres</span></a>
+        <span class="icon-thumbnail"><i class="pg-note"></i></span>
+      </li>
     </ul>
     <div class="clearfix"></div>
   </div>
