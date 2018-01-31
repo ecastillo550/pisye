@@ -30,8 +30,8 @@ class Group extends Model
 		return $this->belongsTo('App\Model\Level');
 	}
 
-	public function teacher() {
-		return $this->belongsToMany('App\Model\User', 'user_class', 'class_id', 'user_id');
+	public function teachers() {
+		return $this->belongsToMany('App\Model\User', 'group_teacher');
 	}
 
 	public function subject() {

@@ -30,7 +30,6 @@ class CreateInitialSchema extends Migration
 
         Schema::create('groups', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
 
             $table->integer('semester_id')->unsigned();
             $table->foreign('semester_id')->references('id')->on('semesters');
@@ -43,6 +42,17 @@ class CreateInitialSchema extends Migration
 
             $table->softDeletes();
             $table->timestamps();
+        });
+
+        Schema::create('group_teacher', function (Blueprint $table) {
+            $table->integer('group_id')->unsigned();
+            $table->foreign('group_id')->references('id')->on('groups');
+
+            $table->integer('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users');
+
+            // $table->unique(['group_id', 'user_id']);
+            $table->primary(['group_id', 'user_id']);
         });
 
         Schema::create('cualitative_grades', function (Blueprint $table) {
@@ -104,11 +114,12 @@ class CreateInitialSchema extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('subjects');
         Schema::dropIfExists('grades');
-        Schema::dropIfExists('groups');
         Schema::dropIfExists('partials');
         Schema::dropIfExists('cualitative_grades');
+        Schema::dropIfExists('group_teacher');
+        Schema::dropIfExists('groups');
         Schema::dropIfExists('semesters');
+        Schema::dropIfExists('subjects');
     }
 }

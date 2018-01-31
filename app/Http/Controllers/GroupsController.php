@@ -7,6 +7,9 @@ use Illuminate\Validation\Rule;
 use App\Model\User;
 use App\Model\Role;
 use App\Model\Group;
+use App\Model\Subject;
+use App\Model\Level;
+use App\Model\Semester;
 use DB;
 
 class GroupsController extends Controller
@@ -18,9 +21,9 @@ class GroupsController extends Controller
      */
     public function index()
     {
-        $group = Group::find();
+        $groups = Group::all();
 
-        return view('groups.index', compact('group'));
+        return view('groups.index', compact('groups'));
     }
 
     /**
@@ -30,9 +33,13 @@ class GroupsController extends Controller
      */
     public function create()
     {
-        $group = Group::find();
+        $subjects = Subject::all();
+        $levels = Level::all();
+        $semesters = Semester::all();
+        $teachers = User::withRole('teacher')->get();
+        $group = new Group();
 
-        return view('groups.create', compact('group'));
+        return view('groups.create', compact('group', 'subjects', 'levels', 'semesters', 'teachers'));
     }
 
     /**
@@ -44,15 +51,20 @@ class GroupsController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required',
+            'subject_id' => 'required',
+            'semester_id' => 'required',
+            'level_id' => 'required',
+            'teacher_id' => 'required',
         ]);
 
         DB::transaction(function() use ($request) {
-            $user = new Group();
-            $user->name = $request->name;
-            $user->semester_id = $request->semester_id;
-            $user->level_id = $request->level_id;
-            $user->save();
+            $group = new Group();
+            $group->subject_id = $request->subject_id;
+            $group->semester_id = $request->semester_id;
+            $group->level_id = $request->level_id;
+            $group->save();
+
+            $group->teachers()->attach($request->teacher_id);
         });
 
         return redirect()->route('groups.index');
@@ -96,12 +108,12 @@ class GroupsController extends Controller
         ]);
 
         DB::transaction(function() use ($request, $id) {
-            $user = Group::find($id);
-            $user->name = $request->name;
-            $user->semester_id = $request->semester_id;
-            $user->level_id = $request->level_id;
+            $group = Group::find($id);
+            $group->name = $request->name;
+            $group->semester_id = $request->semester_id;
+            $group->level_id = $request->level_id;
 
-            $user->save();
+            $group->save();
         });
 
         return redirect()->route('groups.index');
@@ -115,8 +127,8 @@ class GroupsController extends Controller
      */
     public function destroy($id)
     {
-        $user = Group::find($id);
-        $user->delete();
+        $group = Group::find($id);
+        $group->delete();
 
         return redirect()->route('groups.index');
     }
