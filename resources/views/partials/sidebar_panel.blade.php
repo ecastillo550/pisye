@@ -4,7 +4,7 @@
   <!-- END SIDEBAR MENU TOP TRAY CONTENT-->
   <!-- BEGIN SIDEBAR MENU HEADER-->
   <div class="sidebar-header">
-    <img src="/img/logo.png" alt="logo" class="brand" data-src="/img/logo.png" data-src-retina="/img/logo_2x.png" height="35">
+    <img src="/img/pisye.jpg" alt="logo" class="brand" data-src="/img/pisye.jpg" data-src-retina="/img/logo_2x.png" height="35">
   </div>
   <!-- END SIDEBAR MENU HEADER-->
   <!-- START SIDEBAR MENU -->
@@ -29,6 +29,10 @@
       </li>
       <li>
         <a href="{{ route('semesters.index') }}"><span class="title">Semestres</span></a>
+        <span class="icon-thumbnail"><i class="pg-note"></i></span>
+      </li>
+      <li>
+        <a href="{{ route('levels.index') }}"><span class="title">Niveles</span></a>
         <span class="icon-thumbnail"><i class="pg-note"></i></span>
       </li>
     </ul>

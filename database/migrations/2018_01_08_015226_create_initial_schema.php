@@ -35,6 +35,9 @@ class CreateInitialSchema extends Migration
             $table->integer('semester_id')->unsigned();
             $table->foreign('semester_id')->references('id')->on('semesters');
 
+            $table->integer('subject_id')->unsigned();
+            $table->foreign('subject_id')->references('id')->on('subjects');
+
             $table->integer('level_id')->unsigned();
             $table->foreign('level_id')->references('id')->on('levels');
 

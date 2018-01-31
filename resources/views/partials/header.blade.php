@@ -5,7 +5,7 @@
   <!-- END MOBILE SIDEBAR TOGGLE -->
   <div class="">
     <div class="brand inline">
-      <img src="/img/logo.png" alt="logo" data-src="/img/logo.png" data-src-retina="/img/logo_2x.png" height="35">
+      <img src="/img/pisye.jpg" alt="logo" data-src="/img/pisye.jpg" data-src-retina="/img/logo_2x.png" height="35">
     </div>
   </div>
   <div class="d-flex align-items-center">
