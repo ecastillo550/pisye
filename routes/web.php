@@ -55,6 +55,7 @@ Route::group(['middleware' => ['web', 'auth']], function() {
         Route::post('/parcial', 'GradesController@store')->name('store');
         Route::get('/{id}/editar', 'GradesController@edit')->name('edit');
         Route::put('/{id}/editar', 'GradesController@update')->name('update');
+        Route::get('/{id}/imprimir', 'GradesController@print')->name('print');
     });
 
     Route::group(['prefix' => 'semestres', 'as' => 'semesters.'], function() {

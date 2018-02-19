@@ -173,4 +173,20 @@ class GradesController extends Controller
 
         return redirect()->route('grades.index');
     }
+
+    /**
+     * Print the grades for a user
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function print($id)
+    {
+        $pdf = new \CanGelis\PDF\PDF('/usr/bin/wkhtmltopdf');
+        echo $pdf->loadURL('http://www.laravel.com')->grayscale()->pageSize('A3')->orientation('Landscape')->get();
+
+        // $user = grade::find($id);
+
+        // return redirect()->route('grades.index');
+    }
 }
