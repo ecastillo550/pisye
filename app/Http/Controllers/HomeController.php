@@ -37,8 +37,8 @@ class HomeController extends Controller
             case 'teacher':
                 return redirect()->route('groups.my_groups');
                 break;
-            case 'students':
-                return redirect()->route('student.home');
+            case 'student':
+                return redirect()->route('grades.print', $user->id);
                 break;
             default:
                 Auth::logout();

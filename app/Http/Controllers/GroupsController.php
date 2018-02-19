@@ -174,7 +174,7 @@ class GroupsController extends Controller
             $student = User::find($id);
             $groups = $student->level->groups()->where('semester_id', $request->semester_id)->get();
 
-            $student->enrolled()->attach($groups);
+            $student->enrolled()->syncWithoutDetaching($groups);
         });
 
         return redirect()->route('groups.enrolled', $id);

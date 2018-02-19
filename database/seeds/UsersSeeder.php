@@ -34,14 +34,14 @@ class UsersSeeder extends Seeder
         $group->teachers()->attach($admin->id);
 
         $teacher = new User();
-        $teacher->name = 'teacher';
+        $teacher->name = 'Hermeregildo Galeana';
         $teacher->username = 'teacher';
         $teacher->password = bcrypt('123456');
         $teacher->save();
         $teacher->attachRole($teacherRole);
 
         $student = new User();
-        $student->name = 'student';
+        $student->name = 'Juanito Perez Garcia';
         $student->username = 'student';
         $student->password = bcrypt('123456');
         $student->level()->associate($level);

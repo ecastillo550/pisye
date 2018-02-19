@@ -182,11 +182,9 @@ class GradesController extends Controller
      */
     public function print($id)
     {
-        $pdf = new \CanGelis\PDF\PDF('/usr/bin/wkhtmltopdf');
-        echo $pdf->loadURL('http://www.laravel.com')->grayscale()->pageSize('A3')->orientation('Landscape')->get();
-
-        // $user = grade::find($id);
+        $student = User::find($id);
 
         // return redirect()->route('grades.index');
+        return view('grades.print', compact('student'));
     }
 }
