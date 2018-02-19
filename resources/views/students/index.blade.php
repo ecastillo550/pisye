@@ -27,11 +27,14 @@
           <tr>
             <td>{{ $student->enrollment }}</td>
             <td>{{ $student->name }}</td>
-            <td>{{ $student->level->name  or null }}</td>
+            <td>{{ $student->level->name or null }}</td>
             <td>{{ $student->username }}</td>
             <td>
               <a class="btn btn-primary" href="{{ route('students.edit', ['studentId' => $student->id]) }}">
                 <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+              </a>
+              <a class="btn" href="{{ route('students.edit', ['studentId' => $student->id]) }}">
+                Clases <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
               </a>
             </td>
           </tr>

@@ -45,17 +45,19 @@ class StudentsController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'email' => 'required|unique:users|email',
+            'username' => 'required|unique:users',
             'password' => 'required|confirmed'
         ]);
 
         DB::transaction(function() use ($request) {
             $studentRole = Role::where('name', 'like', 'student')->first();
+            $level = Level::find($request->level_id);
 
             $user = new User();
             $user->name = $request->name;
-            $user->email = $request->email;
+            $user->username = $request->username;
             $user->password = bcrypt($request->password);
+            $user->level()->associate($level);
             $user->save();
             $user->attachRole($studentRole);
         });
@@ -99,14 +101,17 @@ class StudentsController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'email' => ['required', Rule::unique('users')->ignore($id), 'email'],
+            'username' => ['required', Rule::unique('users')->ignore($id)],
             'password' => 'confirmed'
         ]);
 
         DB::transaction(function() use ($request, $id) {
+            $level = Level::find($request->level_id);
+
             $user = User::find($id);
             $user->name = $request->name;
-            $user->email = $request->email;
+            $user->username = $request->username;
+            $user->level()->associate($level);
 
             if(!empty($request->password)) {
                 $user->password = bcrypt($request->password);

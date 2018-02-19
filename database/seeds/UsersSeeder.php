@@ -4,6 +4,7 @@ use Illuminate\Database\Seeder;
 use App\Model\User;
 use App\Model\Role;
 use App\Model\Group;
+use App\Model\Level;
 
 class UsersSeeder extends Seeder
 {
@@ -18,6 +19,7 @@ class UsersSeeder extends Seeder
         $adminRole = Role::where('name', 'like', 'admin')->first();
         $teacherRole = Role::where('name', 'like', 'teacher')->first();
         $studentRole = Role::where('name', 'like', 'student')->first();
+        $level = Level::where('name', 'ilike', 'a')->first();
 
         $group = Group::first();
 
@@ -42,6 +44,7 @@ class UsersSeeder extends Seeder
         $student->name = 'student';
         $student->username = 'student';
         $student->password = bcrypt('123456');
+        $student->level()->associate($level);
         $student->save();
         $student->attachRole($studentRole);
 

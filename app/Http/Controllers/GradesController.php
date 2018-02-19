@@ -7,7 +7,9 @@ use Illuminate\Validation\Rule;
 use App\Model\Role;
 use App\Model\Grade;
 use App\Model\Group;
-use App\Model\Student;
+use App\Model\User;
+use App\Model\Partial;
+use App\Model\CualitativeGrade;
 use DB;
 
 class GradesController extends Controller
@@ -29,11 +31,15 @@ class GradesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        $grade = Grade::find();
+        $group = Group::find($request->group);
+        $student = User::find($request->student);
+        $partial = Partial::find($request->partial);
+        $cualitativeGrades = CualitativeGrade::orderBy('order', 'desc')->get();
+        $grade = Grade::where('group_id', $group->id)->where('partial_id', $partial->order)->first();
 
-        return view('grades.create', compact('grade'));
+        return view('grades.create', compact('group', 'student', 'partial', 'cualitativeGrades', 'grade'));
     }
 
     /**
@@ -44,20 +50,65 @@ class GradesController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'name' => 'required',
-        ]);
+        // $request->validate([
+        //     'name' => 'required',
+        // ]);
 
-        DB::transaction(function() use ($request) {
-            $user = new Grade();
-            $user->name = $request->name;
-            $user->semester_id = $request->semester_id;
-            $user->level_id = $request->level_id;
-            $user->save();
-            $user->attachRole($studentRole);
-        });
+        DB::beginTransaction();
+        try {
+            $student = User::find($request->student);
+            $group = Group::find($request->group);
+            $partial = Partial::find($request->partial);
+            $grade = Grade::where('group_id', $group->id)->where('student_id', $student->id)->where('partial_id', $partial->id)->first();
 
-        return redirect()->route('grades.index');
+            if (empty($grade)) {
+                $grade = new Grade();
+                $grade->group_id = $group->id;
+                $grade->student_id = $student->id;
+                $grade->partial_id = $partial->id;
+                // $grade->user_id = \Auth::user()->id;
+            }
+
+            if (!empty($request->input('cuantitative'))) {
+                $grade->cuantitative = $request->input('cuantitative');
+            }
+
+            if (!empty($request->input('participation'))) {
+                $grade->participation = $request->input('participation');
+            }
+
+            if (!empty($request->input('punctuality'))) {
+                $grade->punctuality = $request->input('punctuality');
+            }
+
+            if (!empty($request->input('working_disposition'))) {
+                $grade->working_disposition = $request->input('working_disposition');
+            }
+
+            if (!empty($request->input('homework'))) {
+                $grade->homework = $request->input('homework');
+            }
+
+            if (!empty($request->input('comments'))) {
+                $grade->comments = $request->input('comments');
+            }
+
+            $grade->save();
+
+            // try {
+
+            // } catch (\Exception $error) {
+            //  return redirect()->back()->withInput();
+            // }
+            DB::commit();
+        }
+        catch(\Exception $e) {
+            DB::rollback();
+
+            return response($e, 500);
+        }
+        return redirect()->route('groups.student_list', $group->id);
+        // return view('students.grade', ['student' => $student, 'group' => $group, 'partial' => $partial, 'grade' => $grade]);
     }
 
     /**
@@ -121,35 +172,5 @@ class GradesController extends Controller
         $user->delete();
 
         return redirect()->route('grades.index');
-    }
-
-    function grade($id, $group, Request $request) {
-        $student = Student::find($id);
-        $group = Group::find($group);
-
-        //si es post, debe venir el id de clase a inscribir
-        if ($request->isMethod('post')) {
-            $data = array();
-
-            if (!empty($request->input('grade1'))) {
-                $data['grade1'] = $request->input('grade1');
-            }
-
-            if (!empty($request->input('grade2'))) {
-                $data['grade2'] = $request->input('grade2');
-            }
-
-            if (!empty($request->input('comments'))) {
-                $data['comments'] = $request->input('comments');
-            }
-
-            try {
-                $student->groues()->updateExistingPivot($group->id, $data);
-            } catch (\Exception $error) {
-                return redirect()->back()->withInput();
-            }
-            return redirect()->route('teacher.group', $group->id);
-        }
-        return view('students.grade', ['student' => $student, 'group' => $group]);
     }
 }

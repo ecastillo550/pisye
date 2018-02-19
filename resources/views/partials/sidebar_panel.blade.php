@@ -20,7 +20,7 @@
         <span class="icon-thumbnail"><i class="pg-note"></i></span>
       </li>
       <li>
-        <a href="{{ route('students.create') }}"><span class="title">Alumnos</span></a>
+        <a href="{{ route('students.index') }}"><span class="title">Alumnos</span></a>
         <span class="icon-thumbnail"><i class="fa fa-plus"></i></span>
       </li>
       <li>

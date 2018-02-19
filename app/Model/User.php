@@ -38,4 +38,12 @@ class User extends Authenticatable
     public function groups() {
         return $this->belongsToMany('App\Model\Group', 'group_teacher');
     }
+
+    public function grades() {
+        return $this->hasMany('App\Model\Grade', 'student_id');
+    }
+
+    public function level() {
+        return $this->belongsTo('App\Model\Level');
+    }
 }

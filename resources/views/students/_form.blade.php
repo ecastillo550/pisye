@@ -31,7 +31,7 @@
             <label for="level_id">Nivel:</label>
             <select id="level_id" name="level_id" class="cs-select cs-skin-slide full-width" data-init-plugin="cs-select">
               @foreach($levels as $level)
-              <option value="{{ $level->id }}" {{ $user->id > 0 && ($user->levels()->first() != null && $user->levels()->first()->id == $level->id) ? 'selected' : ''  }}>{{ $level->display_name }}</option>
+                <option value="{{ $level->id }}" {{ !empty($student) && ($student->level != null && $student->level->id == $level->id) ? 'selected' : ''  }}>{{ $level->name }}</option>
               @endforeach
             </select>
           </div>

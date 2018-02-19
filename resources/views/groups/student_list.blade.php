@@ -37,11 +37,18 @@
         <tr>
             <td>{{ $student->name }}</td>
             @foreach($group->semester->partials->sortBy('order') as $partial)
-                <td class="no-pad"><a class="boton-cal" href="{{ route('grades.partial', [$student->id, $group->id, $partial->id]) }}">
-                {{ !empty($student->grades)
-                && !empty($student->grades->where('class_id', $group->id)->where('partial_id', $partial->order)->first())
-                ? $student->grades->where('class_id', $group->id)->where('partial_id', $partial->order)->first()->cuantitative
-                : 0 }}</a></td>
+                <td class="no-pad">
+                    <a class="boton-cal" href="{{ route('grades.create', [
+                        'student' => $student->id,
+                        'group' => $group->id,
+                        'partial' => $partial->id
+                    ]) }}">
+                        {{ !empty($student->grades)
+                        && !empty($student->grades->where('group_id', $group->id)->where('partial_id', $partial->order)->first())
+                        ? $student->grades->where('group_id', $group->id)->where('partial_id', $partial->order)->first()->cuantitative
+                        : 0 }}
+                    </a>
+                </td>
             @endforeach
         </tr>
     @endforeach
