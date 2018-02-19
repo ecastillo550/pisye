@@ -29,10 +29,6 @@ class CualitativeGrades extends Seeder
         $semester->name = 'PR 18';
         $semester->save();
 
-        $level = new Level();
-        $level->name = 'A';
-        $level->save();
-
         $partial = new Partial();
         $partial->name = 'Parcial 1';
         $partial->order = 1;
@@ -55,6 +51,10 @@ class CualitativeGrades extends Seeder
         $subject = new Subject();
         $subject->name = 'Computacion';
         $subject->save();
+
+        $level = new Level();
+        $level->name = 'A';
+        $level->save();
 
         $group = new Group();
         $group->subject_id = $subject->id;

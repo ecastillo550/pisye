@@ -21,6 +21,17 @@ class CreateInitialSchema extends Migration
             $table->timestamps();
         });
 
+        // Schema::create('level_subject', function (Blueprint $table) {
+        //     $table->integer('level_id')->unsigned();
+        //     $table->foreign('level_id')->references('id')->on('levels');
+
+        //     $table->integer('subject_id')->unsigned();
+        //     $table->foreign('subject_id')->references('id')->on('subjects');
+
+        //     // $table->unique(['level_id', 'subject_id']);
+        //     $table->primary(['level_id', 'subject_id']);
+        // });
+
         Schema::create('semesters', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');

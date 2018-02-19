@@ -33,7 +33,7 @@
               <a class="btn btn-primary" href="{{ route('students.edit', ['studentId' => $student->id]) }}">
                 <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
               </a>
-              <a class="btn" href="{{ route('students.edit', ['studentId' => $student->id]) }}">
+              <a class="btn" href="{{ route('groups.enrolled', $student->id) }}">
                 Clases <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
               </a>
             </td>

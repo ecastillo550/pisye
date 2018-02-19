@@ -40,6 +40,8 @@ Route::group(['middleware' => ['web', 'auth']], function() {
         Route::get('/', 'GroupsController@index')->name('index');
         Route::get('/mis_grupos', 'GroupsController@myGroups')->name('my_groups');
         Route::get('/{id}/lista', 'GroupsController@listGroups')->name('student_list');
+        Route::get('/{id}/inscrito', 'GroupsController@enrolled')->name('enrolled');
+        Route::post('/{id}/inscribir', 'GroupsController@enrollLevel')->name('enroll_level');
         Route::get('/crear', 'GroupsController@create')->name('create');
         Route::post('/crear', 'GroupsController@store')->name('store');
         Route::get('/{id}/editar', 'GroupsController@edit')->name('edit');

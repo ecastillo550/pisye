@@ -20,4 +20,8 @@ class Level extends Model
     protected $dates = [
         'deleted_at'
     ];
+
+    public function groups() {
+        return $this->hasMany('App\Model\Group');
+    }
 }

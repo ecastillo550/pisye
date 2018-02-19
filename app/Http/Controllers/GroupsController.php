@@ -146,6 +146,41 @@ class GroupsController extends Controller
     }
 
     /**
+     * Get the groups of a student
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+
+    public function enrolled($id)
+    {
+        $student = User::find($id);
+        $groups = $student->enrolled;
+        $semesters = Semester::all();
+
+        return view('groups.enrolled', compact('student', 'groups', 'semesters'));
+    }
+
+    /**
+     * Enroll a student into a level's set of groups in a semester
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+
+    public function enrollLevel(Request $request, $id)
+    {
+        DB::transaction(function() use ($request, $id) {
+            $student = User::find($id);
+            $groups = $student->level->groups()->where('semester_id', $request->semester_id)->get();
+
+            $student->enrolled()->attach($groups);
+        });
+
+        return redirect()->route('groups.enrolled', $id);
+    }
+
+    /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
