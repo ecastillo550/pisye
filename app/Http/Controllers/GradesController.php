@@ -37,7 +37,10 @@ class GradesController extends Controller
         $student = User::find($request->student);
         $partial = Partial::find($request->partial);
         $cualitativeGrades = CualitativeGrade::orderBy('order', 'desc')->get();
-        $grade = Grade::where('group_id', $group->id)->where('partial_id', $partial->order)->first();
+        $grade = Grade::where('group_id', $group->id)
+                    ->where('partial_id', $partial->order)
+                    ->where('student_id', $request->student)
+                    ->first();
 
         return view('grades.create', compact('group', 'student', 'partial', 'cualitativeGrades', 'grade'));
     }
