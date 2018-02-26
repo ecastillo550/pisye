@@ -195,7 +195,29 @@ class GradesController extends Controller
         $header = view('grades.partials.print_header');
         $stylesheet = view('grades.partials.print_style', [ 'student' => $student ]);
 
-        $mpdf = new \Mpdf\Mpdf();
+        // $defaultConfig = (new \Mpdf\Config\ConfigVariables())->getDefaults();
+        // $fontDirs = $defaultConfig['fontDir'];
+
+        // $defaultFontConfig = (new \Mpdf\Config\FontVariables())->getDefaults();
+        // $fontData = $defaultFontConfig['fontdata'];
+
+        $mpdf = new \Mpdf\Mpdf([
+            // 'fontDir' => array_merge($fontDirs, [
+            //     public_path() . '/fonts/neosans',
+            // ]),
+            // 'fontdata' => $fontData + [
+            //     'neosanspro' => [
+            //         'R' => 'NeoSansPro-Regular.otf',
+            //         'I' => 'NeoSansPro-Italic.otf',
+            //         'B' => 'NeoSansPro-Bold.otf',
+            //     ],
+            //     'newjune' => [
+            //         'R' => 'NewJune-Medium.otf',
+            //         'B' => 'NewJune-Bold.otf',
+            //     ]
+            // ],
+            // 'default_font' => 'neosanspro'
+        ]);
         $mpdf->SetHTMLHeader($header);
         $mpdf->WriteHTML($stylesheet, 1);
         $mpdf->WriteHTML($template, 2);

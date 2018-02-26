@@ -30,20 +30,26 @@ class CualitativeGrades extends Seeder
         $semester->save();
 
         $partial = new Partial();
-        $partial->name = 'Parcial 1';
+        $partial->name = '1 Parcial';
         $partial->order = 1;
         $partial->semester_id = $semester->id;
         $partial->save();
 
         $partial = new Partial();
-        $partial->name = 'Parcial 2';
+        $partial->name = '2 Parcial';
         $partial->order = 2;
         $partial->semester_id = $semester->id;
         $partial->save();
 
         $partial = new Partial();
-        $partial->name = 'Final';
+        $partial->name = '3 Parcial';
         $partial->order = 3;
+        $partial->semester_id = $semester->id;
+        $partial->save();
+
+        $partial = new Partial();
+        $partial->name = 'Final';
+        $partial->order = 34;
         $partial->is_final = true;
         $partial->semester_id = $semester->id;
         $partial->save();
