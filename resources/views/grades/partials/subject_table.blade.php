@@ -10,12 +10,12 @@
     </thead>
     <tbody>
       <tr>
-        <td>Cualitativa</td>
+        <td>Cuantitativa</td>
         @foreach($group->semester->partials->sortBy('order') as $partial)
           <td>
             {{ !empty($student->grades)
             && !empty($student->grades->where('group_id', $group->id)->where('partial_id', $partial->id)->first())
-            ? $student->grades->where('group_id', $group->id)->where('partial_id', $partial->id)->first()->cuantitative
+            ? number_format($student->grades->where('group_id', $group->id)->where('partial_id', $partial->id)->first()->cuantitative, 0)
             : null }}
           </td>
         @endforeach
@@ -27,7 +27,7 @@
           <td>
             {{ !empty($student->grades)
             && !empty($student->grades->where('group_id', $group->id)->where('partial_id', $partial->id)->first()->participation)
-            ? App\Model\CualitativeGrade::find($student->grades->where('group_id', $group->id)->where('partial_id', $partial->id)->first()->participation)->name
+            ? App\Model\CualitativeGrade::find($student->grades->where('group_id', $group->id)->where('partial_id', $partial->id)->first()->participation)->code
             : null }}
           </td>
         @endforeach
@@ -39,7 +39,7 @@
           <td>
             {{ !empty($student->grades)
             && !empty($student->grades->where('group_id', $group->id)->where('partial_id', $partial->id)->first()->punctuality)
-            ? App\Model\CualitativeGrade::find($student->grades->where('group_id', $group->id)->where('partial_id', $partial->id)->first()->punctuality)->name
+            ? App\Model\CualitativeGrade::find($student->grades->where('group_id', $group->id)->where('partial_id', $partial->id)->first()->punctuality)->code
             : null }}
           </td>
         @endforeach
@@ -51,7 +51,7 @@
           <td>
             {{ !empty($student->grades)
             && !empty($student->grades->where('group_id', $group->id)->where('partial_id', $partial->id)->first()->working_disposition)
-            ? App\Model\CualitativeGrade::find($student->grades->where('group_id', $group->id)->where('partial_id', $partial->id)->first()->working_disposition)->name
+            ? App\Model\CualitativeGrade::find($student->grades->where('group_id', $group->id)->where('partial_id', $partial->id)->first()->working_disposition)->code
             : null }}
           </td>
         @endforeach
@@ -63,7 +63,7 @@
           <td>
             {{ !empty($student->grades)
             && !empty($student->grades->where('group_id', $group->id)->where('partial_id', $partial->id)->first()->homework)
-            ? App\Model\CualitativeGrade::find($student->grades->where('group_id', $group->id)->where('partial_id', $partial->id)->first()->homework)->name
+            ? App\Model\CualitativeGrade::find($student->grades->where('group_id', $group->id)->where('partial_id', $partial->id)->first()->homework)->code
             : null }}
           </td>
         @endforeach
