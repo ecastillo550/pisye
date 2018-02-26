@@ -185,8 +185,9 @@ class GradesController extends Controller
      */
     public function print($id)
     {
-        $pdf = new \CanGelis\PDF\PDF('/usr/bin/wkhtmltopdf');
-        echo $pdf->loadURL('http://www.laravel.com')->grayscale()->pageSize('A3')->orientation('Landscape')->get();
+        $mpdf = new \Mpdf\Mpdf();
+        $mpdf->WriteHTML('<h1>Hello world!</h1>');
+        $mpdf->Output();
 
         // $user = grade::find($id);
 

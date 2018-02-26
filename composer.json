@@ -10,8 +10,8 @@
         "laravel/framework": "5.5.*",
         "laravel/tinker": "~1.0",
         "laravelcollective/html": "^5.3.0",
-        "zizaco/entrust": "dev-master",
-        "cangelis/pdf": "2.2.*"
+        "mpdf/mpdf": "^7.0",
+        "zizaco/entrust": "dev-master"
     },
     "require-dev": {
         "filp/whoops": "~2.0",
