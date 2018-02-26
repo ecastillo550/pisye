@@ -46,7 +46,7 @@ Route::group(['middleware' => ['web', 'auth']], function() {
         Route::post('/crear', 'GroupsController@store')->name('store');
         Route::get('/{id}/editar', 'GroupsController@edit')->name('edit');
         Route::put('/{id}/editar', 'GroupsController@update')->name('update');
-        Route::delete('/{id}', 'GroupsController@destroy')->name('delete');
+        Route::post('/{id}', 'GroupsController@destroy')->name('delete');
     });
 
     Route::group(['prefix' => 'calificacion', 'as' => 'grades.'], function() {
