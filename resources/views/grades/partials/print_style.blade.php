@@ -90,6 +90,7 @@ table.subject th.title {
 	background-color: #f8eca0;
 	font-weight: bold;
 	border: none;
+	height: 2em;
 }
 
 .wordbank {
@@ -112,10 +113,9 @@ table.subject th.title {
 
 .comments {
 	background: #c4c4c4;
-	height: 11em;
+	height: 10em;
 	float: left;
 	width: 100%;
-	margin: 5px;
 	padding: 10px;
 }
 
