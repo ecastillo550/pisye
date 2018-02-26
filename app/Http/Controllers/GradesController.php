@@ -191,11 +191,15 @@ class GradesController extends Controller
         $student = User::find($id);
 
         $template = view('grades.partials.print_template', [ 'student' => $student ]);
+        $footer = view('grades.partials.print_footer');
+        $header = view('grades.partials.print_header');
         $stylesheet = view('grades.partials.print_style', [ 'student' => $student ]);
 
         $mpdf = new \Mpdf\Mpdf();
+        $mpdf->SetHTMLHeader($header);
         $mpdf->WriteHTML($stylesheet, 1);
         $mpdf->WriteHTML($template, 2);
+        $mpdf->SetHTMLFooter($footer);
         $mpdf->Output();
     }
 }

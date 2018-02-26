@@ -1,3 +1,5 @@
+<div class="blank_space">
+</div>
 <div class="header">
   <h1>Universidad de Monterrey</h1>
   <h2>División de Educacación y Humanidades</h2>
@@ -52,4 +54,8 @@
       <li><span>NE</span> No entreg&oacute; el maestro</li>
     </ul>
   </div>
+</div>
+
+<div class="comments">
+  <p>Observacones: </p>
 </div>
