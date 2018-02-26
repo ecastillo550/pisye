@@ -4,19 +4,48 @@
 
 body {
 	font-family: 'Arial';
-	font-size: 12px;
+	font-size: 10px;
 }
 
-div.subject {
-	width: 50%;
-	float: left;
+.subject-container {
+	width: 100%;
+	margin-top: 20px;
+}
+
+.subject-container .right {
+	padding-left: 30px;
+}
+.subject-container .left {
+	padding-right: 30px;
+}
+.subject-container td.row {
+	padding-top: 15px;
 }
 
 table.subject {
-	border: 1px solid #000;
 }
-table.subject td, table.subject th {
-	border: 1px solid #000;
+table.subject td{
+	border-right: 1px solid #000;
+	border-bottom: 1px solid #000;
+	font-weight: normal;
+}
+table.subject td:nth-child(1){
+	border-left: 1px solid #000;
+}
+table.subject th {
+	border-top: 1px solid #000;
+	border-right: 1px solid #000;
+	border-bottom: 1px solid #000;
+	font-weight: normal;
+	width: 40px;
+}
+table.subject th:nth-child(2) {
+	border-left: 1px solid #000;
+}
+table.subject th.title {
+	background-color: #f8eca0;
+	font-weight: bold;
+	border: none;
 }
 
 .header {
@@ -60,3 +89,20 @@ table.subject td, table.subject th {
 	margin: 0;
 }
 
+.wordbank {
+	width: 40%;
+	float: right;
+}
+.wordbank ul {
+	list-style: none;
+	padding: 0;
+}
+.wordbank ul li span {
+	font-weight: bold;
+}
+.wordbank .float-left {
+	width: 125px;
+}
+.float-left {
+	float: left;
+}

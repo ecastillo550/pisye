@@ -13,7 +13,7 @@ class UsersController extends Controller
 {
     public function index()
     {
-        $users = User::withTrashed()->orderBy('id', 'DESC')->paginate(20);
+        $users = User::hasRole(['teacher', 'admin'])->withTrashed()->orderBy('id', 'DESC')->get();
         return view('users.index', ['users' => $users]);
     }
 

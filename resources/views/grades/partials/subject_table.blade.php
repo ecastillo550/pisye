@@ -2,7 +2,7 @@
   <table class="table table-bordered subject" width="100%" cellspacing="0">
     <thead>
       <tr>
-        <th>{{ $group->subject->name }}</th>
+        <th class="title">{{ $group->subject->name }}</th>
         @foreach($group->semester->partials->sortBy('order') as $partial)
           <th>{{ $partial->name }}</th>
         @endforeach
