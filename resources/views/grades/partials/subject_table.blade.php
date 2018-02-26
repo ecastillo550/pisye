@@ -2,10 +2,14 @@
   <table class="table table-bordered subject" width="100%" cellspacing="0">
     <thead>
       <tr>
-        <th class="title">{{ $group->subject->name }}</th>
-        @foreach($group->semester->partials->sortBy('order') as $partial)
-          <th>{{ $partial->name }}</th>
-        @endforeach
+          <th class="title">
+            @if(!$group->subject->hide_title)
+                {{ $group->subject->name }}
+            @endif
+          </th>
+          @foreach($group->semester->partials->sortBy('order') as $partial)
+            <th>{{ $partial->name }}</th>
+          @endforeach
       </tr>
     </thead>
     <tbody>
