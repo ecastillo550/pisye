@@ -12,7 +12,7 @@
       <tr>
         <td>Cuantitativa</td>
         @foreach($group->semester->partials->sortBy('order') as $partial)
-          <td>
+          <td class="text-center">
             {{ !empty($student->grades)
             && !empty($student->grades->where('group_id', $group->id)->where('partial_id', $partial->id)->first())
             ? number_format($student->grades->where('group_id', $group->id)->where('partial_id', $partial->id)->first()->cuantitative, 0)

@@ -146,3 +146,7 @@ table.subject th.title {
 .top-header p {
 	margin: 5px;
 }
+
+.text-center {
+	text-align: center;
+}
