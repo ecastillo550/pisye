@@ -4,7 +4,7 @@
 
 body {
 	font-family: 'Arial';
-	font-size: 10px;
+	font-size: 9px;
 }
 
 .blank_space {
@@ -55,7 +55,7 @@ body {
 
 .subject-container {
 	width: 100%;
-	margin-top: 10px;
+	margin-top: 0px;
 }
 
 .subject-container .right {
