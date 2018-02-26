@@ -24,7 +24,7 @@
       <tr>
         <td>Participación</td>
         @foreach($group->semester->partials->sortBy('order') as $partial)
-          <td>
+          <td class="text-center">
             {{ !empty($student->grades)
             && !empty($student->grades->where('group_id', $group->id)->where('partial_id', $partial->id)->first()->participation)
             ? App\Model\CualitativeGrade::find($student->grades->where('group_id', $group->id)->where('partial_id', $partial->id)->first()->participation)->code
@@ -36,7 +36,7 @@
       <tr>
         <td>Puntualidad</td>
         @foreach($group->semester->partials->sortBy('order') as $partial)
-          <td>
+          <td class="text-center">
             {{ !empty($student->grades)
             && !empty($student->grades->where('group_id', $group->id)->where('partial_id', $partial->id)->first()->punctuality)
             ? App\Model\CualitativeGrade::find($student->grades->where('group_id', $group->id)->where('partial_id', $partial->id)->first()->punctuality)->code
@@ -48,7 +48,7 @@
       <tr>
         <td>Disposición para trabajar</td>
         @foreach($group->semester->partials->sortBy('order') as $partial)
-          <td>
+          <td class="text-center">
             {{ !empty($student->grades)
             && !empty($student->grades->where('group_id', $group->id)->where('partial_id', $partial->id)->first()->working_disposition)
             ? App\Model\CualitativeGrade::find($student->grades->where('group_id', $group->id)->where('partial_id', $partial->id)->first()->working_disposition)->code
@@ -60,7 +60,7 @@
       <tr>
         <td>Entrega de tareas</td>
         @foreach($group->semester->partials->sortBy('order') as $partial)
-          <td>
+          <td class="text-center">
             {{ !empty($student->grades)
             && !empty($student->grades->where('group_id', $group->id)->where('partial_id', $partial->id)->first()->homework)
             ? App\Model\CualitativeGrade::find($student->grades->where('group_id', $group->id)->where('partial_id', $partial->id)->first()->homework)->code
