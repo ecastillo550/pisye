@@ -122,7 +122,10 @@ class GradesController extends Controller
      */
     public function show($id)
     {
-        //
+        $student = User::find($id);
+
+        // return redirect()->route('grades.index');
+        return view('grades.show', compact('student'));
     }
 
     /**
@@ -185,12 +188,14 @@ class GradesController extends Controller
      */
     public function print($id)
     {
+        $student = User::find($id);
+
+        $template = view('grades.partials.print_template', [ 'student' => $student ]);
+        $stylesheet = view('grades.partials.print_style', [ 'student' => $student ]);
+
         $mpdf = new \Mpdf\Mpdf();
-        $mpdf->WriteHTML('<h1>Hello world!</h1>');
+        $mpdf->WriteHTML($stylesheet, 1);
+        $mpdf->WriteHTML($template, 2);
         $mpdf->Output();
-
-        // $user = grade::find($id);
-
-        // return redirect()->route('grades.index');
     }
 }

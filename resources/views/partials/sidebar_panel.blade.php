@@ -11,10 +11,13 @@
   <div class="sidebar-menu">
     <!-- BEGIN SIDEBAR MENU ITEMS-->
     <ul class="menu-items">
+      @role(['teacher', 'admin'])
       <li class="m-t-30">
         <a href="{{ route('groups.my_groups') }}"><span class="title">Mis Grupos</span></a>
         <span class="icon-thumbnail"><i class="pg-note"></i></span>
       </li>
+      @endrole
+      @role('admin')
       <li>
         <a href="{{ route('groups.index') }}"><span class="title">Grupos</span></a>
         <span class="icon-thumbnail"><i class="pg-note"></i></span>
@@ -39,6 +42,7 @@
         <a href="{{ route('levels.index') }}"><span class="title">Niveles</span></a>
         <span class="icon-thumbnail"><i class="pg-note"></i></span>
       </li>
+      @endrole
     </ul>
     <div class="clearfix"></div>
   </div>

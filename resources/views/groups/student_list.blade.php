@@ -44,8 +44,8 @@
                         'partial' => $partial->id
                     ]) }}">
                         {{ !empty($student->grades)
-                        && !empty($student->grades->where('group_id', $group->id)->where('partial_id', $partial->order)->first())
-                        ? $student->grades->where('group_id', $group->id)->where('partial_id', $partial->order)->first()->cuantitative
+                        && !empty($student->grades->where('group_id', $group->id)->where('partial_id', $partial->id)->first())
+                        ? $student->grades->where('group_id', $group->id)->where('partial_id', $partial->id)->first()->cuantitative
                         : 0 }}
                     </a>
                 </td>

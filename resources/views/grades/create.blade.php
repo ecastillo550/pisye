@@ -44,7 +44,7 @@
       <td>
         <select name="working_disposition">
           @foreach ($cualitativeGrades as $cualitative)
-            <option value="{{ $cualitative->id }}" {{!empty($grade) && $grade->working_disposition && $grade->working_disposition == $cualitative->id ? 'selected' : null }}>{{ $cualitative->name }}</option>
+            <option value="{{ $cualitative->id }}" {{ !empty($grade) && $grade->working_disposition && $grade->working_disposition == $cualitative->id ? 'selected' : null }}>{{ $cualitative->name }}</option>
           @endforeach
         </select>
       </td>
@@ -54,7 +54,7 @@
       <td>
         <select name="homework">
           @foreach ($cualitativeGrades as $cualitative)
-            <option value="{{ $cualitative->id }}" {{!empty($grade) && $grade->homework && $grade->homework == $cualitative->id ? 'selected' : null }}>{{ $cualitative->name }}</option>
+            <option value="{{ $cualitative->id }}" {{ !empty($grade) && $grade->homework && $grade->homework == $cualitative->id ? 'selected' : null }}>{{ $cualitative->name }}</option>
           @endforeach
         </select>
       </td>

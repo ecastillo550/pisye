@@ -53,6 +53,7 @@ Route::group(['middleware' => ['web', 'auth']], function() {
         Route::get('/', 'GradesController@index')->name('index');
         Route::get('/parcial', 'GradesController@create')->name('create');
         Route::post('/parcial', 'GradesController@store')->name('store');
+        Route::get('/{id}/ver', 'GradesController@show')->name('show');
         Route::get('/{id}/editar', 'GradesController@edit')->name('edit');
         Route::put('/{id}/editar', 'GradesController@update')->name('update');
         Route::get('/{id}/imprimir', 'GradesController@print')->name('print');

@@ -16,6 +16,10 @@
     {{ method_field('PUT') }}
     @endif
     <div class="form-group">
+        <label for="enrollment">Matricula:</label>
+        {!! Form::text('enrollment', null, ['class' => 'form-control']) !!}
+    </div>
+    <div class="form-group">
         <label for="name">Nombre:</label>
         {!! Form::text('name', null, ['class' => 'form-control']) !!}
     </div>

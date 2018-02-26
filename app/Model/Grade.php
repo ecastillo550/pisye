@@ -42,4 +42,18 @@ class Grade extends Model
     public function partial() {
         return $this->belongsTo('App\Model\Partial');
     }
+
+    // cualitatives
+    public function participation() {
+        return $this->belongsTo('App\Model\CualitativeGrade');
+    }
+    public function punctuality() {
+        return $this->belongsTo('App\Model\CualitativeGrade');
+    }
+    public function working_disposition() {
+        return $this->belongsTo('App\Model\CualitativeGrade');
+    }
+    public function homework() {
+        return $this->belongsTo('App\Model\CualitativeGrade');
+    }
 }
