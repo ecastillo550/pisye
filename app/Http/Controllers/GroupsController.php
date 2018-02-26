@@ -31,6 +31,10 @@ class GroupsController extends Controller
         $user = \Auth::user();
         $groups = $user->groups;
 
+        if ($user->hasRole('admin')) {
+            $groups = Group::all();
+        }
+
         return view('groups.my_groups', compact('groups'));
     }
 

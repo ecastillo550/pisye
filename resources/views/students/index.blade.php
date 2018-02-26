@@ -36,6 +36,9 @@
               <a class="btn" href="{{ route('groups.enrolled', $student->id) }}">
                 Clases <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
               </a>
+              <a class="btn" target="_blank" href="{{ route('grades.print', $student->id) }}">
+                Calificaciones <i class="fa fa-list" aria-hidden="true"></i>
+              </a>
             </td>
           </tr>
           @endforeach
