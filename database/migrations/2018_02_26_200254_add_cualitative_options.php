@@ -33,8 +33,7 @@ class AddCualitativeOptions extends Migration
             $table->foreign('cleanliness')->references('id')->on('cualitative_grades');
             $table->integer('integration')->unsigned()->nullable();
             $table->foreign('integration')->references('id')->on('cualitative_grades');
-            $table->integer('absence')->unsigned()->nullable();
-            $table->foreign('absence')->references('id')->on('cualitative_grades');
+            $table->integer('absence')->nullable();
 
             $table->integer('teamwork')->unsigned()->nullable();
             $table->foreign('teamwork')->references('id')->on('cualitative_grades');
