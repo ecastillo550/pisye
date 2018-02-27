@@ -11,7 +11,7 @@
   <div class="left">
     <div class="container">
       <h3>Reporte de Calificaciones</h3>
-      <p>Periodo: </p>
+      <p>Periodo: Primavera 2018</p>
     </div>
   </div>
   <div class="right">
