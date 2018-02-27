@@ -86,6 +86,15 @@ Route::group(['middleware' => ['web', 'auth']], function() {
         Route::delete('/{id}', 'LevelsController@destroy')->name('delete');
     });
 
+    Route::group(['prefix' => 'opciones', 'as' => 'cualitative_grades.'], function() {
+        Route::get('/', 'CualitativeGradesController@index')->name('index');
+        Route::get('/crear', 'CualitativeGradesController@create')->name('create');
+        Route::post('/crear', 'CualitativeGradesController@store')->name('store');
+        Route::get('/{id}/editar', 'CualitativeGradesController@edit')->name('edit');
+        Route::put('/{id}/editar', 'CualitativeGradesController@update')->name('update');
+        Route::delete('/{id}', 'CualitativeGradesController@destroy')->name('delete');
+    });
+
     Route::group(['prefix' => 'users', 'as' => 'users.'], function() {
         Route::get('/', ['as' => 'index', 'uses' => 'UsersController@index']);
         Route::get('/create', ['as' => 'create', 'uses' =>'UsersController@create']);

@@ -42,6 +42,10 @@
         <a href="{{ route('levels.index') }}"><span class="title">Niveles</span></a>
         <span class="icon-thumbnail"><i class="pg-note"></i></span>
       </li>
+      <li>
+        <a href="{{ route('cualitative_grades.index') }}"><span class="title">Opciones de Cal.</span></a>
+        <span class="icon-thumbnail"><i class="pg-note"></i></span>
+      </li>
       @endrole
     </ul>
     <div class="clearfix"></div>

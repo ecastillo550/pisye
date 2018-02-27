@@ -36,7 +36,12 @@ class GradesController extends Controller
         $group = Group::find($request->group);
         $student = User::find($request->student);
         $partial = Partial::find($request->partial);
-        $cualitativeGrades = CualitativeGrade::orderBy('order', 'desc')->get();
+        if ($group->subject->type != 1) {
+            $cualitativeGrades = CualitativeGrade::where('type', 2)->orderBy('order', 'asc')->get();
+        } else {
+            $cualitativeGrades = CualitativeGrade::orderBy('order', 'asc')->get();
+        }
+
         $grade = Grade::where('group_id', $group->id)
                     ->where('partial_id', $partial->order)
                     ->where('student_id', $request->student)
