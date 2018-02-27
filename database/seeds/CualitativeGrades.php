@@ -17,12 +17,21 @@ class CualitativeGrades extends Seeder
     public function run()
     {
     	DB::table('cualitative_grades')->insert([
-		    ['name' => 'No logrado', 'order' => 1],
-		    ['name' => 'En proceso', 'order' => 2],
-		    ['name' => 'Regular', 'order' => 3],
-		    ['name' => 'Bien', 'order' => 4],
-		    ['name' => 'Muy bien', 'order' => 5],
-		    ['name' => 'Excelente', 'order' => 6]
+            ['name' => 'Exceso de faltas', 'order' => 1, 'type' => 1],
+            ['name' => 'No Aplica', 'order' => 2, 'type' => 1],
+		    ['name' => 'No logrado', 'order' => 3, 'type' => 1],
+		    ['name' => 'En proceso', 'order' => 4, 'type' => 1],
+		    ['name' => 'Regular', 'order' => 5, 'type' => 1],
+		    ['name' => 'Bien', 'order' => 6, 'type' => 1],
+		    ['name' => 'Muy bien', 'order' => 7, 'type' => 1],
+
+            ['name' => 'Exceso de faltas', 'order' => 1, 'type' => 2],
+            ['name' => 'No Aplica', 'order' => 2, 'type' => 2],
+            ['name' => 'Bien Logrado', 'order' => 3, 'type' => 2],
+            ['name' => 'Logrado', 'order' => 4, 'type' => 2],
+            ['name' => 'Logrado con dificultad', 'order' => 5, 'type' => 2],
+            ['name' => 'En proceso', 'order' => 6, 'type' => 2],
+            ['name' => 'No Logrado', 'order' => 7, 'type' => 2],
 		]);
 
 		$semester = new Semester();
