@@ -4,7 +4,7 @@
   <!-- END SIDEBAR MENU TOP TRAY CONTENT-->
   <!-- BEGIN SIDEBAR MENU HEADER-->
   <div class="sidebar-header">
-    <img src="/img/pisye.jpg" alt="logo" class="brand" data-src="/img/pisye.jpg" data-src-retina="/img/logo_2x.png" height="35">
+    <img src="/img/pisye.jpg" alt="logo" class="brand" data-src="/img/pisye.jpg" data-src-retina="/img/logo_2x.png" style="height: auto; width: 195px;">
   </div>
   <!-- END SIDEBAR MENU HEADER-->
   <!-- START SIDEBAR MENU -->
