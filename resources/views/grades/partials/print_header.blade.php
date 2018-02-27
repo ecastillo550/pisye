@@ -1,3 +1,3 @@
 <div class="top-header">
-	<p>UDEM</p>
+	<img src="img/logo_udem.jpg" />
 </div>

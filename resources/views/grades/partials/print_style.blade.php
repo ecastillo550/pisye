@@ -137,21 +137,21 @@ table.subject th.title {
 .footer .left {
 	width: 70%;
 	font-size: 9px;
-	padding: 10px;
+	padding-top: 5px;
+	padding-left: 10px;
 	float: left;
 }
 .footer .right {
 	padding-top: 10px;
-	width: 20%;
+	width: 25%;
 	font-size: 9px;
 	float: left;
+	padding-bottom: 10px;
+	text-align: right;
 }
 
 .top-header {
-	width: 85px;
-	background: #fff500;
-	font-size: 25px;
-	padding: 5px;
+	width: 100px;
 	float: right;
 }
 .top-header p {

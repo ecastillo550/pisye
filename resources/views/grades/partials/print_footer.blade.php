@@ -4,8 +4,6 @@
     <p>Este documento no tiene validez oficial.</p>
   </div>
   <div class="right">
-  	<span>PISYE</span><br>
-  	<span>UNIVERSIDAD</span><br>
-  	<span>DE MONTERREY</span>
+  	<img src="img/logo_pisye_blanco.png" width="90" />
   </div>
 </div>

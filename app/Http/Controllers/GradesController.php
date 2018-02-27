@@ -223,6 +223,7 @@ class GradesController extends Controller
             ],
             'default_font' => 'neosanspro'
         ]);
+        $mpdf->setBasePath(public_path());
         $mpdf->SetHTMLHeader($header);
         $mpdf->WriteHTML($stylesheet, 1);
         $mpdf->WriteHTML($template, 2);
