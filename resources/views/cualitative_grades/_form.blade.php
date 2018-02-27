@@ -20,7 +20,11 @@
         {!! Form::text('name', null, ['class' => 'form-control']) !!}
     </div>
     <div class="form-group">
-        <label for="name">Orden:</label>
+        <label for="code">Código de Boleta:</label>
+        {!! Form::text('code', null, ['class' => 'form-control']) !!}
+    </div>
+    <div class="form-group">
+        <label for="order">Orden:</label>
         {!! Form::number('order', null, ['class' => 'form-control']) !!}
     </div>
     <div class="form-group">

@@ -16,6 +16,7 @@
         <thead>
           <tr>
             <th>Nombre</th>
+            <th>Código de boleta</th>
             <th>Orden</th>
             <th>Tipo</th>
             <th></th>
@@ -25,6 +26,7 @@
           @foreach($cualitativeGrades as $cualitativeGrade)
           <tr>
             <td>{{ $cualitativeGrade->name }}</td>
+            <td>{{ $cualitativeGrade->code }}</td>
             <td>{{ $cualitativeGrade->order }}</td>
             <td>{{ $cualitativeGrade->type }}</td>
             <td>

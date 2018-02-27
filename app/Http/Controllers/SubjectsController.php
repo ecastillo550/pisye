@@ -45,12 +45,14 @@ class SubjectsController extends Controller
         $request->validate([
             'name' => 'required',
             'type' => 'required',
+            'hide_title' => 'required',
         ]);
 
         DB::transaction(function() use ($request) {
             $subject = new Subject();
             $subject->name = $request->name;
             $subject->type = $request->type;
+            $subject->hide_title = $request->hide_title;
             $subject->save();
         });
 
@@ -93,12 +95,14 @@ class SubjectsController extends Controller
         $request->validate([
             'name' => 'required',
             'type' => 'required',
+            'hide_title' => 'required',
         ]);
 
         DB::transaction(function() use ($request, $id) {
             $subject = Subject::find($id);
             $subject->name = $request->name;
             $subject->type = $request->type;
+            $subject->hide_title = $request->hide_title;
 
             $subject->save();
         });

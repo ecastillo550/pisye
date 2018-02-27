@@ -45,12 +45,14 @@ class CualitativeGradesController extends Controller
         $request->validate([
             'name' => 'required',
             'order' => 'required',
+            'code' => 'required',
             'type' => 'required',
         ]);
 
         DB::transaction(function() use ($request) {
             $cualitativeGrade = new CualitativeGrade();
             $cualitativeGrade->name = $request->name;
+            $cualitativeGrade->code = $request->code;
             $cualitativeGrade->order = $request->order;
             $cualitativeGrade->type = $request->type;
             $cualitativeGrade->save();
@@ -94,6 +96,7 @@ class CualitativeGradesController extends Controller
     {
         $request->validate([
             'name' => 'required',
+            'code' => 'required',
             'order' => 'required',
             'type' => 'required',
         ]);
@@ -101,6 +104,7 @@ class CualitativeGradesController extends Controller
         DB::transaction(function() use ($request, $id) {
             $cualitativeGrade = CualitativeGrade::find($id);
             $cualitativeGrade->name = $request->name;
+            $cualitativeGrade->code = $request->code;
             $cualitativeGrade->order = $request->order;
             $cualitativeGrade->type = $request->type;
 
