@@ -13,7 +13,14 @@ class UsersController extends Controller
 {
     public function index()
     {
-        $users = User::hasRole(['teacher', 'admin'])->withTrashed()->orderBy('id', 'DESC')->get();
+        $users = User::select('users.*')
+                        ->join('role_user', 'role_user.user_id', '=', 'users.id')
+                        ->join('roles', 'role_user.role_id', '=', 'roles.id')
+                        ->where('roles.name', 'teacher')
+                        ->orWhere('roles.name', 'admin')
+                        ->withTrashed()
+                        ->orderBy('users.id', 'DESC')
+                        ->get();
         return view('users.index', ['users' => $users]);
     }
 

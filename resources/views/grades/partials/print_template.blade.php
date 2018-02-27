@@ -17,7 +17,7 @@
   <div class="right">
     <p>Nombre del alumno: {{ $student->name }}</p>
     <p>Matrícula: {{ $student->enrollment }}</p>
-    <p>Semestre: </p>
+    <p>Semestre: {{ $student->semester or null }}</p>
   </div>
 </div>
 <table class="subject-container">

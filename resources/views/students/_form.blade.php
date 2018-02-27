@@ -23,6 +23,10 @@
         <label for="name">Nombre:</label>
         {!! Form::text('name', null, ['class' => 'form-control']) !!}
     </div>
+    <div class="form-group">
+        <label for="semester">Semestre:</label>
+        {!! Form::text('semester', null, ['class' => 'form-control']) !!}
+    </div>
     <div class="row">
       <div class="col-9">
         <div class="form-group">

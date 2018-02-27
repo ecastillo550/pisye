@@ -57,6 +57,7 @@ class StudentsController extends Controller
             $user->enrollment = $request->enrollment;
             $user->name = $request->name;
             $user->username = $request->username;
+            $user->semester = $request->semester;
             $user->password = bcrypt($request->password);
             $user->level()->associate($level);
             $user->save();
@@ -112,6 +113,7 @@ class StudentsController extends Controller
             $user = User::find($id);
             $user->enrollment = $request->enrollment;
             $user->name = $request->name;
+            $user->semester = $request->semester;
             $user->username = $request->username;
             $user->level()->associate($level);
 
