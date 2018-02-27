@@ -36,6 +36,20 @@
   @endforeach
 </table>
 
+@if ($student->level->id == 2 || $student->level->id == 3)
+<div class="left-wordbank">
+  <div class="float-left">
+    <ul>
+      <li><span>BL</span> Bien Logrado: se desempeña de manera excelente</li>
+      <li><span>L</span> Logrado: se desempeña de manera satisfactoria</li>
+      <li><span>LD</span> Logrado con dificultad: recibe apoyo al realizar la tarea</li>
+      <li><span>EP</span> En Proceso: competencias en vías de desarrollo</li>
+      <li><span>NL</span> No Logrado: habilidades necesarias aún no desarrolladas</li>
+    </ul>
+  </div>
+</div>
+@endif
+
 <div class="wordbank">
   <div class="float-left">
     <ul>

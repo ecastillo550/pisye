@@ -122,6 +122,22 @@ table.subject th.title {
 	float: left;
 }
 
+.left-wordbank {
+	width: 50%;
+	float: left;
+	padding-left: 2px;
+}
+.left-wordbank ul {
+	list-style: none;
+	padding: 0;
+}
+.left-wordbank ul li span {
+	font-weight: bold;
+}
+.left-wordbank .float-left {
+	width: 300px;
+}
+
 .comments {
 	background: #c4c4c4;
 	height: 10em;
