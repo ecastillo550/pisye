@@ -26,11 +26,14 @@ body {
 .header h2, .header h3 {
 	margin: 0;
 	font-weight: normal;
-	font-size: 4vw;
+	font-size: 9.8vw;
+}
+.header h3 {
+	font-size: 8.1vw;
 }
 .header h1 {
 	margin: 0;
-	font-size: 4vw;
+	font-size: 15vw;
 }
 
 .subheader {
