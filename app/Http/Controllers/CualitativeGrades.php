@@ -18,7 +18,7 @@ class CualitativeGradesController extends Controller
      */
     public function index()
     {
-        $cualitativeGrades = CualitativeGrade::all();
+        $cualitativeGrades = CualitativeGrade::orderBy('type')->orderBy('order')->get();
 
         return view('cualitative_grades.index', compact('cualitativeGrades'));
     }
@@ -49,11 +49,11 @@ class CualitativeGradesController extends Controller
         ]);
 
         DB::transaction(function() use ($request) {
-            $subject = new CualitativeGrade();
-            $subject->name = $request->name;
-            $subject->order = $request->order;
-            $subject->type = $request->type;
-            $subject->save();
+            $cualitativeGrade = new CualitativeGrade();
+            $cualitativeGrade->name = $request->name;
+            $cualitativeGrade->order = $request->order;
+            $cualitativeGrade->type = $request->type;
+            $cualitativeGrade->save();
         });
 
         return redirect()->route('cualitative_grades.index');
@@ -78,9 +78,9 @@ class CualitativeGradesController extends Controller
      */
     public function edit($id)
     {
-        $subject = CualitativeGrade::find($id);
+        $cualitativeGrade = CualitativeGrade::find($id);
 
-        return view('cualitative_grades.edit', compact('subject'));
+        return view('cualitative_grades.edit', compact('cualitativeGrade'));
     }
 
     /**
@@ -99,12 +99,12 @@ class CualitativeGradesController extends Controller
         ]);
 
         DB::transaction(function() use ($request, $id) {
-            $subject = CualitativeGrade::find($id);
-            $subject->name = $request->name;
-            $subject->order = $request->order;
-            $subject->type = $request->type;
+            $cualitativeGrade = CualitativeGrade::find($id);
+            $cualitativeGrade->name = $request->name;
+            $cualitativeGrade->order = $request->order;
+            $cualitativeGrade->type = $request->type;
 
-            $subject->save();
+            $cualitativeGrade->save();
         });
 
         return redirect()->route('cualitative_grades.index');
@@ -118,8 +118,8 @@ class CualitativeGradesController extends Controller
      */
     public function destroy($id)
     {
-        $subject = CualitativeGrade::find($id);
-        $subject->delete();
+        $cualitativeGrade = CualitativeGrade::find($id);
+        $cualitativeGrade->delete();
 
         return redirect()->route('cualitative_grades.index');
     }

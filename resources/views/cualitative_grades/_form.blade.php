@@ -25,8 +25,8 @@
     </div>
     <div class="form-group">
     <select name="type" class="cs-select cs-skin-slide full-width" data-init-plugin="cs-select">
-      <option value="1" {{ !empty($cualitativeGrade->type) && $cualitativeGrade == 1 ? 'selected' : ''  }}>Set 1</option>
-      <option value="2" {{ !empty($cualitativeGrade->type) && $cualitativeGrade == 2 ? 'selected' : ''  }}>Set 2</option>
+      <option value="1" {{ !empty($cualitativeGrade->type) && $cualitativeGrade->type == 1 ? 'selected' : ''  }}>Set 1</option>
+      <option value="2" {{ !empty($cualitativeGrade->type) && $cualitativeGrade->type == 2 ? 'selected' : ''  }}>Set 2</option>
     </select>
   </div>
     <button type="submit" class="btn btn-primary">Guardar</button>
