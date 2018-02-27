@@ -1,9 +1,11 @@
 <div class="blank_space">
 </div>
 <div class="header">
-  <h1>Universidad de Monterrey</h1>
-  <h2>División de Educacación y Humanidades</h2>
-  <h3>Programa de Inclusión Social y Educativa (PISYE)</h3>
+  <div class="container">
+    <h1>Universidad de Monterrey</h1>
+    <h2>División de Educacación y Humanidades</h2>
+    <h3>Programa de Inclusión Social y Educativa (PISYE)</h3>
+  </div>
 </div>
 <div class="subheader">
   <div class="left">
@@ -57,7 +59,7 @@
 </div>
 
 <div class="comments">
-  <p>Observacones: 
+  <p>Observacones:
   @foreach ($student->enrolled as $group)
     @foreach($group->semester->partials->sortBy('order') as $partial)
       {{ !empty($student->grades)

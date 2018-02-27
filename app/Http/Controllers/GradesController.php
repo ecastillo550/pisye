@@ -200,28 +200,28 @@ class GradesController extends Controller
         $header = view('grades.partials.print_header');
         $stylesheet = view('grades.partials.print_style', [ 'student' => $student ]);
 
-        // $defaultConfig = (new \Mpdf\Config\ConfigVariables())->getDefaults();
-        // $fontDirs = $defaultConfig['fontDir'];
+        $defaultConfig = (new \Mpdf\Config\ConfigVariables())->getDefaults();
+        $fontDirs = $defaultConfig['fontDir'];
 
-        // $defaultFontConfig = (new \Mpdf\Config\FontVariables())->getDefaults();
-        // $fontData = $defaultFontConfig['fontdata'];
+        $defaultFontConfig = (new \Mpdf\Config\FontVariables())->getDefaults();
+        $fontData = $defaultFontConfig['fontdata'];
 
         $mpdf = new \Mpdf\Mpdf([
-            // 'fontDir' => array_merge($fontDirs, [
-            //     public_path() . '/fonts/neosans',
-            // ]),
-            // 'fontdata' => $fontData + [
-            //     'neosanspro' => [
-            //         'R' => 'NeoSansPro-Regular.otf',
-            //         'I' => 'NeoSansPro-Italic.otf',
-            //         'B' => 'NeoSansPro-Bold.otf',
-            //     ],
-            //     'newjune' => [
-            //         'R' => 'NewJune-Medium.otf',
-            //         'B' => 'NewJune-Bold.otf',
-            //     ]
-            // ],
-            // 'default_font' => 'neosanspro'
+            'fontDir' => array_merge($fontDirs, [
+                public_path() . '/fonts',
+            ]),
+            'fontdata' => $fontData + [
+                'neosanspro' => [
+                    'R' => '/neosans/NeoSansPro-Regular.ttf',
+                    'I' => '/neosans/NeoSansPro-Italic.ttf',
+                    'B' => '/neosans/NeoSansPro-Bold.ttf',
+                ],
+                'newjune' => [
+                    'R' => '/newjune/NewJune-Medium.ttf',
+                    'B' => '/newjune/NewJune-Bold.ttf',
+                ]
+            ],
+            'default_font' => 'neosanspro'
         ]);
         $mpdf->SetHTMLHeader($header);
         $mpdf->WriteHTML($stylesheet, 1);

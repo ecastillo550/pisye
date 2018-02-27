@@ -1,9 +1,10 @@
+<style>
 * {
 	box-sizing: border-box;
 }
 
 body {
-	font-family: 'Arial';
+	font-family: 'newjune';
 	font-size: 9px;
 }
 
@@ -18,12 +19,18 @@ body {
 	text-align: center;
 	padding: 5px;
 }
+.header .container {
+	width: 400px;
+	margin: 0 auto;
+}
 .header h2, .header h3 {
 	margin: 0;
 	font-weight: normal;
+	font-size: 4vw;
 }
 .header h1 {
 	margin: 0;
+	font-size: 4vw;
 }
 
 .subheader {
@@ -91,6 +98,7 @@ table.subject th.title {
 	font-weight: bold;
 	border: none;
 	height: 2em;
+	width: 200px;
 }
 
 .wordbank {
@@ -150,3 +158,4 @@ table.subject th.title {
 .text-center {
 	text-align: center;
 }
+</style>
