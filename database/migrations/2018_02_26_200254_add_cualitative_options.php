@@ -13,7 +13,7 @@ class AddCualitativeOptions extends Migration
      */
     public function up()
     {
-        Schema::table('cualitative_grades', function (Blueprint $table) {
+        Schema::table('grades', function (Blueprint $table) {
             $table->integer('manual_dexterity')->unsigned()->nullable();
             $table->foreign('manual_dexterity')->references('id')->on('cualitative_grades');
             $table->integer('material_selection')->unsigned()->nullable();
@@ -55,7 +55,7 @@ class AddCualitativeOptions extends Migration
      */
     public function down()
     {
-        Schema::table('cualitative_grades', function (Blueprint $table) {
+        Schema::table('grades', function (Blueprint $table) {
             $table->dropColumn('manual_dexterity');
             $table->dropColumn('material_selection');
             $table->dropColumn('instructions');
