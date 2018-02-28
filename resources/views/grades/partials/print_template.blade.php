@@ -95,7 +95,7 @@
 @endif
 
 <div class="comments">
-  <p>Observacones:
+  <p>Observaciones:
   @foreach ($student->enrolled as $group)
     @foreach($group->semester->partials->sortBy('order') as $partial)
       {{ !empty($student->grades)
