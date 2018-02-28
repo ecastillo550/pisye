@@ -72,7 +72,7 @@
     </td>
     @if (count($student->enrolledWorkshop) % 2 != 0)
       @if ($n == count($student->enrolledWorkshop)-1)
-        <td>
+        <td style="padding-left: 25px;">
           <p style="margin:0;"><span style="font-weight: bold;">BL</span> Bien Logrado: se desempeña de manera excelente</p>
           <p style="margin:0;"><span style="font-weight: bold;">L</span> Logrado: se desempeña de manera satisfactoria</p>
           <p style="margin:0;"><span style="font-weight: bold;">LD</span> Logrado con dificultad: recibe apoyo al reapzar la tarea</p>
