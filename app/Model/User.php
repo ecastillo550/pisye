@@ -6,6 +6,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Zizaco\Entrust\Traits\EntrustUserTrait;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Contracts\Auth\CanResetPassword;
+use App\Model\Group;
 
 class User extends Authenticatable
 {
@@ -41,6 +42,14 @@ class User extends Authenticatable
 
     public function enrolled() {
         return $this->belongsToMany('App\Model\Group', 'group_student');
+    }
+
+    public function enrolledNormal() {
+        return $this->belongsToMany('App\Model\Group', 'group_student')->join('subjects', 'groups.subject_id', 'subjects.id')->where('subjects.type', 1);
+    }
+
+    public function enrolledWorkshop() {
+        return $this->belongsToMany('App\Model\Group', 'group_student')->join('subjects', 'groups.subject_id', 'subjects.id')->whereIn('subjects.type', [2, 3, 4]);
     }
 
     public function grades() {

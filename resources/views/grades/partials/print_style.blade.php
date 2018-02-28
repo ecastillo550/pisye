@@ -13,6 +13,11 @@ body {
 	width: 100%;
 }
 
+.mini_blank_space {
+	height: 15px;
+	width: 100%;
+}
+
 .header {
 	background-color: #333;
 	color: #fff;
@@ -122,19 +127,17 @@ table.subject th.title {
 	float: left;
 }
 
-.left-wordbank {
-	width: 50%;
-	float: left;
-	padding-left: 2px;
+.large-wordbank {
+	float: right;
 }
-.left-wordbank ul {
+.large-wordbank ul {
 	list-style: none;
 	padding: 0;
 }
-.left-wordbank ul li span {
+.large-wordbank ul li span {
 	font-weight: bold;
 }
-.left-wordbank .float-left {
+.large-wordbank .float-left {
 	width: 300px;
 }
 
@@ -176,5 +179,11 @@ table.subject th.title {
 
 .text-center {
 	text-align: center;
+}
+
+.divider {
+	width: 100%;
+	height: 10px;
+	background-color: #c4c4c4;
 }
 </style>

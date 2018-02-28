@@ -22,7 +22,7 @@
 </div>
 <table class="subject-container">
   {{ $n = 0 }}
-  @foreach ($student->enrolled as $group)
+  @foreach ($student->enrolledNormal as $group)
   @if ($n%2 == 0)
   <tr>
   @endif
@@ -35,20 +35,6 @@
   {{ $n++ }}
   @endforeach
 </table>
-
-@if ($student->level->id == 2 || $student->level->id == 3)
-<div class="left-wordbank">
-  <div class="float-left">
-    <ul>
-      <li><span>BL</span> Bien Logrado: se desempeña de manera excelente</li>
-      <li><span>L</span> Logrado: se desempeña de manera satisfactoria</li>
-      <li><span>LD</span> Logrado con dificultad: recibe apoyo al realizar la tarea</li>
-      <li><span>EP</span> En Proceso: competencias en vías de desarrollo</li>
-      <li><span>NL</span> No Logrado: habilidades necesarias aún no desarrolladas</li>
-    </ul>
-  </div>
-</div>
-@endif
 
 <div class="wordbank">
   <div class="float-left">
@@ -71,6 +57,42 @@
     </ul>
   </div>
 </div>
+
+@if ($student->level->id == 2 || $student->level->id == 3)
+<div class="divider">
+</div>
+<table class="subject-container">
+  {{ $n = 0 }}
+  @foreach ($student->enrolledWorkshop as $group)
+  @if ($n%2 == 0)
+  <tr>
+  @endif
+    <td class="row {{ ($n%2 == 0) ? 'left' : 'right' }}">
+      @include('grades.partials.subject_table')
+    </td>
+    @if (count($student->enrolledWorkshop) % 2 != 0)
+      @if ($n == count($student->enrolledWorkshop)-1)
+        <td>
+          <p style="margin:0;"><span style="font-weight: bold;">BL</span> Bien Logrado: se desempeña de manera excelente</p>
+          <p style="margin:0;"><span style="font-weight: bold;">L</span> Logrado: se desempeña de manera satisfactoria</p>
+          <p style="margin:0;"><span style="font-weight: bold;">LD</span> Logrado con dificultad: recibe apoyo al reapzar la tarea</p>
+          <p style="margin:0;"><span style="font-weight: bold;">EP</span> En Proceso: competencias en vías de desarrollo</p>
+          <p style="margin:0;"><span style="font-weight: bold;">NL</span> No Logrado: habilidades necesarias aún no desarrolladas</p>
+        </td>
+      @endif
+    @endif
+  @if ($n%2 == 0)
+  </tr>
+  @endif
+  {{ $n++ }}
+  @endforeach
+</table>
+@endif
+
+@if ($student->level->id == 2 || $student->level->id == 3)
+<div class="mini_blank_space">
+</div>
+@endif
 
 <div class="comments">
   <p>Observacones:
