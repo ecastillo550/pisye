@@ -25,6 +25,7 @@
         <option value="2" {{ $subject->type == 2 ? 'selected' : ''  }}>Set 2</option>
         <option value="3" {{ $subject->type == 3 ? 'selected' : ''  }}>Set 3</option>
         <option value="4" {{ $subject->type == 4 ? 'selected' : ''  }}>Set 4</option>
+        <option value="5" {{ $subject->type == 5 ? 'selected' : ''  }}>Set 5 Extras</option>
       </select>
     </div>
     <div class="form-group">

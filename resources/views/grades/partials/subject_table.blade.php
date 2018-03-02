@@ -262,6 +262,81 @@
         @endforeach
       </tr>
       @endif
+
+      {{-- Extra --}}
+      @if ($group->subject->type == 5)
+      <tr>
+        <td>Inasistencias</td>
+        @foreach($group->semester->partials->sortBy('order') as $partial)
+          <td class="text-center">
+            {{ !empty($student->grades)
+            && !empty($student->grades->where('group_id', $group->id)->where('partial_id', $partial->id)->first())
+            ? number_format($student->grades->where('group_id', $group->id)->where('partial_id', $partial->id)->first()->absence, 0)
+            : null }}
+          </td>
+        @endforeach
+      </tr>
+
+      <tr>
+        <td>Conducta</td>
+        @foreach($group->semester->partials->sortBy('order') as $partial)
+          <td class="text-center">
+            {{ !empty($student->grades)
+            && !empty($student->grades->where('group_id', $group->id)->where('partial_id', $partial->id)->first()->conduct)
+            ? App\Model\CualitativeGrade::find($student->grades->where('group_id', $group->id)->where('partial_id', $partial->id)->first()->conduct)->code
+            : null }}
+          </td>
+        @endforeach
+      </tr>
+
+      <tr>
+        <td>Higiene</td>
+        @foreach($group->semester->partials->sortBy('order') as $partial)
+          <td class="text-center">
+            {{ !empty($student->grades)
+            && !empty($student->grades->where('group_id', $group->id)->where('partial_id', $partial->id)->first()->hygiene)
+            ? App\Model\CualitativeGrade::find($student->grades->where('group_id', $group->id)->where('partial_id', $partial->id)->first()->hygiene)->code
+            : null }}
+          </td>
+        @endforeach
+      </tr>
+
+      <tr>
+        <td>Presentaci&oacute;n personal</td>
+        @foreach($group->semester->partials->sortBy('order') as $partial)
+          <td class="text-center">
+            {{ !empty($student->grades)
+            && !empty($student->grades->where('group_id', $group->id)->where('partial_id', $partial->id)->first()->presentation)
+            ? App\Model\CualitativeGrade::find($student->grades->where('group_id', $group->id)->where('partial_id', $partial->id)->first()->presentation)->code
+            : null }}
+          </td>
+        @endforeach
+      </tr>
+
+      <tr>
+        <td>Int. con compa&ntilde;eros de PISYE</td>
+        @foreach($group->semester->partials->sortBy('order') as $partial)
+          <td class="text-center">
+            {{ !empty($student->grades)
+            && !empty($student->grades->where('group_id', $group->id)->where('partial_id', $partial->id)->first()->integration_pisye)
+            ? App\Model\CualitativeGrade::find($student->grades->where('group_id', $group->id)->where('partial_id', $partial->id)->first()->integration_pisye)->code
+            : null }}
+          </td>
+        @endforeach
+      </tr>
+
+      <tr>
+        <td>Int. con compa&ntilde;eros de profesional</td>
+        @foreach($group->semester->partials->sortBy('order') as $partial)
+          <td class="text-center">
+            {{ !empty($student->grades)
+            && !empty($student->grades->where('group_id', $group->id)->where('partial_id', $partial->id)->first()->integration_college)
+            ? App\Model\CualitativeGrade::find($student->grades->where('group_id', $group->id)->where('partial_id', $partial->id)->first()->integration_college)->code
+            : null }}
+          </td>
+        @endforeach
+      </tr>
+      @endif
     </tbody>
   </table>
 </div>

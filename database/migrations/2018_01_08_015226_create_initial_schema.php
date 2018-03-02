@@ -114,13 +114,13 @@ class CreateInitialSchema extends Migration
             $table->decimal('cuantitative', 5, 2)->nullable();
 
             // calificaciones cualitativas
-            $table->integer('participation')->unsigned();
+            $table->integer('participation')->unsigned()->nullable();
             $table->foreign('participation')->references('id')->on('cualitative_grades');
-            $table->integer('punctuality')->unsigned();
+            $table->integer('punctuality')->unsigned()->nullable();
             $table->foreign('punctuality')->references('id')->on('cualitative_grades');
-            $table->integer('working_disposition')->unsigned();
+            $table->integer('working_disposition')->unsigned()->nullable();
             $table->foreign('working_disposition')->references('id')->on('cualitative_grades');
-            $table->integer('homework')->unsigned();
+            $table->integer('homework')->unsigned()->nullable();
             $table->foreign('homework')->references('id')->on('cualitative_grades');
 
             $table->unique(['student_id', 'group_id', 'partial_id']);

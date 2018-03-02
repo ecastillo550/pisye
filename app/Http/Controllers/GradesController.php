@@ -36,7 +36,7 @@ class GradesController extends Controller
         $group = Group::find($request->group);
         $student = User::find($request->student);
         $partial = Partial::find($request->partial);
-        if ($group->subject->type == 1) {
+        if ($group->subject->type == 1 || $group->subject->type == 5) {
             $cualitativeGrades = CualitativeGrade::where('type', 1)->orderBy('order', 'asc')->get();
         } else {
             $cualitativeGrades = CualitativeGrade::where('type', 2)->orderBy('order', 'asc')->get();
@@ -100,6 +100,99 @@ class GradesController extends Controller
             if (!empty($request->input('comments'))) {
                 $grade->comments = $request->input('comments');
             }
+
+            // type 2
+
+            if (!empty($request->input('hygiene'))) {
+                $grade->hygiene = $request->input('hygiene');
+            }
+
+            if (!empty($request->input('presentation'))) {
+                $grade->presentation = $request->input('presentation');
+            }
+
+            if (!empty($request->input('cleanliness'))) {
+                $grade->cleanliness = $request->input('cleanliness');
+            }
+
+            if (!empty($request->input('integration'))) {
+                $grade->integration = $request->input('integration');
+            }
+
+            if (!empty($request->input('absence'))) {
+                $grade->absence = $request->input('absence');
+            }
+
+            // type 3
+
+            if (!empty($request->input('manual_dexterity'))) {
+                $grade->manual_dexterity = $request->input('manual_dexterity');
+            }
+
+            if (!empty($request->input('material_selection'))) {
+                $grade->material_selection = $request->input('material_selection');
+            }
+
+            if (!empty($request->input('instructions'))) {
+                $grade->instructions = $request->input('instructions');
+            }
+
+            if (!empty($request->input('concentration'))) {
+                $grade->concentration = $request->input('concentration');
+            }
+
+            if (!empty($request->input('problem_resolution'))) {
+                $grade->problem_resolution = $request->input('problem_resolution');
+            }
+
+            // type 4
+
+            if (!empty($request->input('working_disposition'))) {
+                $grade->working_disposition = $request->input('working_disposition');
+            }
+
+            if (!empty($request->input('teamwork'))) {
+                $grade->teamwork = $request->input('teamwork');
+            }
+
+            if (!empty($request->input('initiative'))) {
+                $grade->initiative = $request->input('initiative');
+            }
+
+            if (!empty($request->input('desicion_making'))) {
+                $grade->desicion_making = $request->input('desicion_making');
+            }
+
+            if (!empty($request->input('punctuality'))) {
+                $grade->punctuality = $request->input('punctuality');
+            }
+
+            // type 5
+
+            if (!empty($request->input('absence'))) {
+                $grade->absence = $request->input('absence');
+            }
+
+            if (!empty($request->input('conduct'))) {
+                $grade->conduct = $request->input('conduct');
+            }
+
+            if (!empty($request->input('hygiene'))) {
+                $grade->hygiene = $request->input('hygiene');
+            }
+
+            if (!empty($request->input('presentation'))) {
+                $grade->presentation = $request->input('presentation');
+            }
+
+            if (!empty($request->input('integration_pisye'))) {
+                $grade->integration_pisye = $request->input('integration_pisye');
+            }
+
+            if (!empty($request->input('integration_college'))) {
+                $grade->integration_college = $request->input('integration_college');
+            }
+
 
             $grade->save();
 

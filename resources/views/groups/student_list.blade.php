@@ -37,6 +37,7 @@
         <tr>
             <td>{{ $student->name }}</td>
             @foreach($group->semester->partials->sortBy('order') as $partial)
+                @if ($group->subject->type == 1)
                 <td class="no-pad">
                     <a class="boton-cal" href="{{ route('grades.create', [
                         'student' => $student->id,
@@ -49,6 +50,17 @@
                         : 0 }}
                     </a>
                 </td>
+                @else
+                    <td class="no-pad">
+                    <a class="boton-cal" href="{{ route('grades.create', [
+                        'student' => $student->id,
+                        'group' => $group->id,
+                        'partial' => $partial->id
+                    ]) }}">
+                        editar
+                    </a>
+                </td>
+                @endif
             @endforeach
         </tr>
     @endforeach

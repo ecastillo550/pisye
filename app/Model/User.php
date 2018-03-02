@@ -45,7 +45,7 @@ class User extends Authenticatable
     }
 
     public function enrolledNormal() {
-        return $this->belongsToMany('App\Model\Group', 'group_student')->join('subjects', 'groups.subject_id', 'subjects.id')->where('subjects.type', 1);
+        return $this->belongsToMany('App\Model\Group', 'group_student')->join('subjects', 'groups.subject_id', 'subjects.id')->whereIn('subjects.type', [1, 5]);
     }
 
     public function enrolledWorkshop() {

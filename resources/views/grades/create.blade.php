@@ -218,6 +218,66 @@
       </tr>
     @endif
 
+    {{-- Extras --}}
+    @if ($group->subject->type == 5)
+      <tr>
+        <td>Inasistencias</td>
+        <td>
+          <input type="number" min="0" max="100" name="absence" value="{{ $grade->absence or 0 }}">
+        </td>
+      </tr>
+      <tr>
+        <td>Conducta</td>
+        <td>
+          <select name="conduct">
+            @foreach ($cualitativeGrades as $cualitative)
+              <option value="{{ $cualitative->id }}" {{ !empty($grade) && $grade->conduct && $grade->conduct == $cualitative->id ? 'selected' : null }}>{{ $cualitative->name }}</option>
+            @endforeach
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td>Higiene</td>
+        <td>
+          <select name="hygiene">
+            @foreach ($cualitativeGrades as $cualitative)
+              <option value="{{ $cualitative->id }}" {{ !empty($grade) && !empty($grade->hygiene) && $grade->hygiene == $cualitative->id ? 'selected' : null }}>{{ $cualitative->name }}</option>
+            @endforeach
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td>Presentaci&oacute;n personal</td>
+        <td>
+          <select name="presentation">
+            @foreach ($cualitativeGrades as $cualitative)
+              <option value="{{ $cualitative->id }}" {{ !empty($grade) && $grade->presentation && $grade->presentation == $cualitative->id ? 'selected' : null }}>{{ $cualitative->name }}</option>
+            @endforeach
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td>Int. con compa&ntilde;eros de PISYE</td>
+        <td>
+          <select name="integration_pisye">
+            @foreach ($cualitativeGrades as $cualitative)
+              <option value="{{ $cualitative->id }}" {{ !empty($grade) && $grade->integration_pisye && $grade->integration_pisye == $cualitative->id ? 'selected' : null }}>{{ $cualitative->name }}</option>
+            @endforeach
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td>Int. con compa&ntilde;eros de profesional</td>
+        <td>
+          <select name="integration_college">
+            @foreach ($cualitativeGrades as $cualitative)
+              <option value="{{ $cualitative->id }}" {{ !empty($grade) && $grade->integration_college && $grade->integration_college == $cualitative->id ? 'selected' : null }}>{{ $cualitative->name }}</option>
+            @endforeach
+          </select>
+        </td>
+      </tr>
+    @endif
+
     <tr>
       <td>Comentarios</td>
       <td>
