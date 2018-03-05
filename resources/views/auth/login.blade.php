@@ -1,7 +1,7 @@
 @extends('layouts.clean')
 
 @section('content')
-<div class="login-wrapper ">
+<div class="login-wrapper" style="background-color: #fffff9;">
   <!-- START Login Background Pic Wrapper-->
   <div class="bg-pic">
     <!-- START Background Pic-->
@@ -9,8 +9,6 @@
     <!-- END Background Pic-->
     <!-- START Background Caption-->
     <div class="bg-caption pull-bottom sm-pull-bottom text-white p-l-20 m-b-20">
-      <h2 class="semi-bold text-white">
-      Bienvenido</h2>
       <p class="small">
       </p>
     </div>
