@@ -77,120 +77,186 @@ class GradesController extends Controller
                 // $grade->user_id = \Auth::user()->id;
             }
 
-            if (!empty($request->input('cuantitative'))) {
-                $grade->cuantitative = $request->input('cuantitative');
+            if(!empty($request->input('over_absence')) && $request->input('over_absence') == true) {
+                if ($group->subject->type == 1 || $group->subject->type == 5) {
+                    $overAbsence = CualitativeGrade::where('type', 1)->where('code', 'EF')->first();
+                } else {
+                    $overAbsence = CualitativeGrade::where('type', 2)->where('code', 'EF')->first();
+                }
             }
 
-            if (!empty($request->input('participation'))) {
-                $grade->participation = $request->input('participation');
+            if ($group->subject->type == 1) {
+                if(!empty($request->input('over_absence')) && $request->input('over_absence') == true) {
+                    $grade->cuantitative = -1;
+                } else if (!empty($request->input('cuantitative'))) {
+                    $grade->cuantitative = $request->input('cuantitative');
+                }
+
+                if(!empty($request->input('over_absence')) && $request->input('over_absence') == true) {
+                    $grade->participation = $overAbsence->id;
+                } else if (!empty($request->input('participation'))) {
+                    $grade->participation = $request->input('participation');
+                }
+
+                if(!empty($request->input('over_absence')) && $request->input('over_absence') == true) {
+                    $grade->punctuality = $overAbsence->id;
+                } else if (!empty($request->input('punctuality'))) {
+                    $grade->punctuality = $request->input('punctuality');
+                }
+
+                if(!empty($request->input('over_absence')) && $request->input('over_absence') == true) {
+                    $grade->working_disposition = $overAbsence->id;
+                } else if (!empty($request->input('working_disposition'))) {
+                    $grade->working_disposition = $request->input('working_disposition');
+                }
+
+                if(!empty($request->input('over_absence')) && $request->input('over_absence') == true) {
+                    $grade->homework = $overAbsence->id;
+                } else if (!empty($request->input('homework'))) {
+                    $grade->homework = $request->input('homework');
+                }
             }
 
-            if (!empty($request->input('punctuality'))) {
-                $grade->punctuality = $request->input('punctuality');
+            // type 2
+            if ($group->subject->type == 2) {
+                if(!empty($request->input('over_absence')) && $request->input('over_absence') == true) {
+                    $grade->hygiene = $overAbsence->id;
+                } else if (!empty($request->input('hygiene'))) {
+                    $grade->hygiene = $request->input('hygiene');
+                }
+
+                if(!empty($request->input('over_absence')) && $request->input('over_absence') == true) {
+                    $grade->presentation = $overAbsence->id;
+                } else if (!empty($request->input('presentation'))) {
+                    $grade->presentation = $request->input('presentation');
+                }
+
+                if(!empty($request->input('over_absence')) && $request->input('over_absence') == true) {
+                    $grade->cleanliness = $overAbsence->id;
+                } else if (!empty($request->input('cleanliness'))) {
+                    $grade->cleanliness = $request->input('cleanliness');
+                }
+
+                if(!empty($request->input('over_absence')) && $request->input('over_absence') == true) {
+                    $grade->integration = $overAbsence->id;
+                } else if (!empty($request->input('integration'))) {
+                    $grade->integration = $request->input('integration');
+                }
+
+                if(!empty($request->input('over_absence')) && $request->input('over_absence') == true) {
+                    $grade->absence = -1;
+                } else if (!empty($request->input('absence'))) {
+                    $grade->absence = $request->input('absence');
+                }
             }
 
-            if (!empty($request->input('working_disposition'))) {
-                $grade->working_disposition = $request->input('working_disposition');
+            // type 3
+            if ($group->subject->type == 3) {
+                if(!empty($request->input('over_absence')) && $request->input('over_absence') == true) {
+                    $grade->manual_dexterity = $overAbsence->id;
+                } else if (!empty($request->input('manual_dexterity'))) {
+                    $grade->manual_dexterity = $request->input('manual_dexterity');
+                }
+
+                if(!empty($request->input('over_absence')) && $request->input('over_absence') == true) {
+                    $grade->material_selection = $overAbsence->id;
+                } else if (!empty($request->input('material_selection'))) {
+                    $grade->material_selection = $request->input('material_selection');
+                }
+
+                if(!empty($request->input('over_absence')) && $request->input('over_absence') == true) {
+                    $grade->instructions = $overAbsence->id;
+                } else if (!empty($request->input('instructions'))) {
+                    $grade->instructions = $request->input('instructions');
+                }
+
+                if(!empty($request->input('over_absence')) && $request->input('over_absence') == true) {
+                    $grade->concentration = $overAbsence->id;
+                } else if (!empty($request->input('concentration'))) {
+                    $grade->concentration = $request->input('concentration');
+                }
+
+                if(!empty($request->input('over_absence')) && $request->input('over_absence') == true) {
+                    $grade->problem_resolution = $overAbsence->id;
+                } else if (!empty($request->input('problem_resolution'))) {
+                    $grade->problem_resolution = $request->input('problem_resolution');
+                }
             }
 
-            if (!empty($request->input('homework'))) {
-                $grade->homework = $request->input('homework');
+            // type 4
+            if ($group->subject->type == 4) {
+                if(!empty($request->input('over_absence')) && $request->input('over_absence') == true) {
+                    $grade->working_disposition = $overAbsence->id;
+                } else if (!empty($request->input('working_disposition'))) {
+                    $grade->working_disposition = $request->input('working_disposition');
+                }
+
+                if(!empty($request->input('over_absence')) && $request->input('over_absence') == true) {
+                    $grade->teamwork = $overAbsence->id;
+                } else if (!empty($request->input('teamwork'))) {
+                    $grade->teamwork = $request->input('teamwork');
+                }
+
+                if(!empty($request->input('over_absence')) && $request->input('over_absence') == true) {
+                    $grade->initiative = $overAbsence->id;
+                } else if (!empty($request->input('initiative'))) {
+                    $grade->initiative = $request->input('initiative');
+                }
+
+                if(!empty($request->input('over_absence')) && $request->input('over_absence') == true) {
+                    $grade->desicion_making = $overAbsence->id;
+                } else if (!empty($request->input('desicion_making'))) {
+                    $grade->desicion_making = $request->input('desicion_making');
+                }
+
+                if(!empty($request->input('over_absence')) && $request->input('over_absence') == true) {
+                    $grade->punctuality = $overAbsence->id;
+                } else if (!empty($request->input('punctuality'))) {
+                    $grade->punctuality = $request->input('punctuality');
+                }
+            }
+
+            // type 5
+            if ($group->subject->type == 5) {
+                if(!empty($request->input('over_absence')) && $request->input('over_absence') == true) {
+                    $grade->absence = -1;
+                } else if (!empty($request->input('absence'))) {
+                    $grade->absence = $request->input('absence');
+                }
+
+                if(!empty($request->input('over_absence')) && $request->input('over_absence') == true) {
+                    $grade->conduct = $overAbsence->id;
+                } else if (!empty($request->input('conduct'))) {
+                    $grade->conduct = $request->input('conduct');
+                }
+
+                if(!empty($request->input('over_absence')) && $request->input('over_absence') == true) {
+                    $grade->hygiene = $overAbsence->id;
+                } else if (!empty($request->input('hygiene'))) {
+                    $grade->hygiene = $request->input('hygiene');
+                }
+
+                if(!empty($request->input('over_absence')) && $request->input('over_absence') == true) {
+                    $grade->presentation = $overAbsence->id;
+                } else if (!empty($request->input('presentation'))) {
+                    $grade->presentation = $request->input('presentation');
+                }
+
+                if(!empty($request->input('over_absence')) && $request->input('over_absence') == true) {
+                    $grade->integration_pisye = $overAbsence->id;
+                } else if (!empty($request->input('integration_pisye'))) {
+                    $grade->integration_pisye = $request->input('integration_pisye');
+                }
+
+                if(!empty($request->input('over_absence')) && $request->input('over_absence') == true) {
+                    $grade->integration_college = $overAbsence->id;
+                } else if (!empty($request->input('integration_college'))) {
+                    $grade->integration_college = $request->input('integration_college');
+                }
             }
 
             if (!empty($request->input('comments'))) {
                 $grade->comments = $request->input('comments');
-            }
-
-            // type 2
-
-            if (!empty($request->input('hygiene'))) {
-                $grade->hygiene = $request->input('hygiene');
-            }
-
-            if (!empty($request->input('presentation'))) {
-                $grade->presentation = $request->input('presentation');
-            }
-
-            if (!empty($request->input('cleanliness'))) {
-                $grade->cleanliness = $request->input('cleanliness');
-            }
-
-            if (!empty($request->input('integration'))) {
-                $grade->integration = $request->input('integration');
-            }
-
-            if (!empty($request->input('absence'))) {
-                $grade->absence = $request->input('absence');
-            }
-
-            // type 3
-
-            if (!empty($request->input('manual_dexterity'))) {
-                $grade->manual_dexterity = $request->input('manual_dexterity');
-            }
-
-            if (!empty($request->input('material_selection'))) {
-                $grade->material_selection = $request->input('material_selection');
-            }
-
-            if (!empty($request->input('instructions'))) {
-                $grade->instructions = $request->input('instructions');
-            }
-
-            if (!empty($request->input('concentration'))) {
-                $grade->concentration = $request->input('concentration');
-            }
-
-            if (!empty($request->input('problem_resolution'))) {
-                $grade->problem_resolution = $request->input('problem_resolution');
-            }
-
-            // type 4
-
-            if (!empty($request->input('working_disposition'))) {
-                $grade->working_disposition = $request->input('working_disposition');
-            }
-
-            if (!empty($request->input('teamwork'))) {
-                $grade->teamwork = $request->input('teamwork');
-            }
-
-            if (!empty($request->input('initiative'))) {
-                $grade->initiative = $request->input('initiative');
-            }
-
-            if (!empty($request->input('desicion_making'))) {
-                $grade->desicion_making = $request->input('desicion_making');
-            }
-
-            if (!empty($request->input('punctuality'))) {
-                $grade->punctuality = $request->input('punctuality');
-            }
-
-            // type 5
-
-            if (!empty($request->input('absence'))) {
-                $grade->absence = $request->input('absence');
-            }
-
-            if (!empty($request->input('conduct'))) {
-                $grade->conduct = $request->input('conduct');
-            }
-
-            if (!empty($request->input('hygiene'))) {
-                $grade->hygiene = $request->input('hygiene');
-            }
-
-            if (!empty($request->input('presentation'))) {
-                $grade->presentation = $request->input('presentation');
-            }
-
-            if (!empty($request->input('integration_pisye'))) {
-                $grade->integration_pisye = $request->input('integration_pisye');
-            }
-
-            if (!empty($request->input('integration_college'))) {
-                $grade->integration_college = $request->input('integration_college');
             }
 
 

@@ -44,10 +44,17 @@
                         'group' => $group->id,
                         'partial' => $partial->id
                     ]) }}">
-                        {{ !empty($student->grades)
-                        && !empty($student->grades->where('group_id', $group->id)->where('partial_id', $partial->id)->first())
-                        ? $student->grades->where('group_id', $group->id)->where('partial_id', $partial->id)->first()->cuantitative
-                        : 0 }}
+
+
+                        @if (!empty($student->grades) && !empty($student->grades->where('group_id', $group->id)->where('partial_id', $partial->id)->first()))
+                          @if ($student->grades->where('group_id', $group->id)->where('partial_id', $partial->id)->first()->cuantitative == -1)
+                            EF
+                          @else
+                            {{ number_format($student->grades->where('group_id', $group->id)->where('partial_id', $partial->id)->first()->cuantitative, 0) }}
+                          @endif
+                        @else
+                            0
+                        @endif
                     </a>
                 </td>
                 @else

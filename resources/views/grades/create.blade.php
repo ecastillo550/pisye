@@ -18,7 +18,7 @@
       <tr>
         <td>Cuantitativo</td>
         <td>
-          <input type="number" min="0" max="100" name="cuantitative" value="{{ $grade->cuantitative or 0 }}">
+          <input type="number" min="-1" max="100" name="cuantitative" value="{{ $grade->cuantitative or 0 }}">
         </td>
       </tr>
       <tr>
@@ -282,6 +282,12 @@
       <td>Comentarios</td>
       <td>
         <textarea name="comments">{{ $grade->comments or null }}</textarea>
+      </td>
+    </tr>
+    <tr>
+      <td>Exceso de faltas</td>
+      <td>
+        <input type="checkbox" name="over_absence" value="true" />
       </td>
     </tr>
   </table>
