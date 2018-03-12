@@ -338,10 +338,10 @@ class GradesController extends Controller
      */
     public function destroy($id)
     {
-        $user = grade::find($id);
-        $user->delete();
+        // $user = grade::find($id);
+        // $user->delete();
 
-        return redirect()->route('grades.index');
+        // return redirect()->route('grades.index');
     }
 
     /**

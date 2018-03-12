@@ -122,9 +122,9 @@ class CualitativeGradesController extends Controller
      */
     public function destroy($id)
     {
-        $cualitativeGrade = CualitativeGrade::find($id);
-        $cualitativeGrade->delete();
+        // $cualitativeGrade = CualitativeGrade::find($id);
+        // $cualitativeGrade->delete();
 
-        return redirect()->route('cualitative_grades.index');
+        // return redirect()->route('cualitative_grades.index');
     }
 }

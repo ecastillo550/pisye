@@ -110,9 +110,9 @@ class LevelsController extends Controller
      */
     public function destroy($id)
     {
-        $level = Level::find($id);
-        $level->delete();
+        // $level = Level::find($id);
+        // $level->delete();
 
-        return redirect()->route('levels.index');
+        // return redirect()->route('levels.index');
     }
 }

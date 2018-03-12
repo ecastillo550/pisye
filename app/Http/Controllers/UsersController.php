@@ -81,14 +81,14 @@ class UsersController extends Controller
 
     public function destroy($id)
     {
-        $user = User::withTrashed()->where('id', $id)->first();
-        if ($user->deleted_at == null) {
-            $user->delete();
-        } else {
-            $user->forceDelete();
-        }
+        // $user = User::withTrashed()->where('id', $id)->first();
+        // if ($user->deleted_at == null) {
+        //     $user->delete();
+        // } else {
+        //     $user->forceDelete();
+        // }
 
-        return redirect()->route('users.index');
+        // return redirect()->route('users.index');
     }
 
     public function restore($id)

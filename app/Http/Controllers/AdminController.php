@@ -113,9 +113,9 @@ class AdminController extends Controller
      */
     public function destroy($id)
     {
-        $user = Group::find($id);
-        $user->delete();
+        // $user = Group::find($id);
+        // $user->delete();
 
-        return redirect()->route('admin.index');
+        // return redirect()->route('admin.index');
     }
 }

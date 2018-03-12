@@ -192,9 +192,9 @@ class GroupsController extends Controller
      */
     public function destroy($id)
     {
-        $group = Group::find($id);
-        $group->delete();
+        // $group = Group::find($id);
+        // $group->delete();
 
-        return redirect()->route('groups.index');
+        // return redirect()->route('groups.index');
     }
 }

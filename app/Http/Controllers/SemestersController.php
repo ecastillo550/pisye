@@ -110,9 +110,9 @@ class SemestersController extends Controller
      */
     public function destroy($id)
     {
-        $semester = Semester::find($id);
-        $semester->delete();
+        // $semester = Semester::find($id);
+        // $semester->delete();
 
-        return redirect()->route('semesters.index');
+        // return redirect()->route('semesters.index');
     }
 }

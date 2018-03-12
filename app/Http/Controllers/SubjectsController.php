@@ -118,9 +118,9 @@ class SubjectsController extends Controller
      */
     public function destroy($id)
     {
-        $subject = Subject::find($id);
-        $subject->delete();
+        // $subject = Subject::find($id);
+        // $subject->delete();
 
-        return redirect()->route('subjects.index');
+        // return redirect()->route('subjects.index');
     }
 }
