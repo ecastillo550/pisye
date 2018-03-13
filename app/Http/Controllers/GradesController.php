@@ -204,9 +204,9 @@ class GradesController extends Controller
                 }
 
                 if(!empty($request->input('over_absence')) && $request->input('over_absence') == true) {
-                    $grade->desicion_making = $overAbsence->id;
-                } else if (!empty($request->input('desicion_making'))) {
-                    $grade->desicion_making = $request->input('desicion_making');
+                    $grade->decision_making = $overAbsence->id;
+                } else if (!empty($request->input('decision_making'))) {
+                    $grade->decision_making = $request->input('decision_making');
                 }
 
                 if(!empty($request->input('over_absence')) && $request->input('over_absence') == true) {

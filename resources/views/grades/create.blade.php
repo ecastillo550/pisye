@@ -199,9 +199,9 @@
       <tr>
         <td>Toma de decisiones</td>
         <td>
-          <select name="desicion_making">
+          <select name="decision_making">
             @foreach ($cualitativeGrades as $cualitative)
-              <option value="{{ $cualitative->id }}" {{ !empty($grade) && $grade->desicion_making && $grade->desicion_making == $cualitative->id ? 'selected' : null }}>{{ $cualitative->name }}</option>
+              <option value="{{ $cualitative->id }}" {{ !empty($grade) && $grade->decision_making && $grade->decision_making == $cualitative->id ? 'selected' : null }}>{{ $cualitative->name }}</option>
             @endforeach
           </select>
         </td>

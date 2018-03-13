@@ -253,8 +253,8 @@
         @foreach($group->semester->partials->sortBy('order') as $partial)
           <td class="text-center">
             {{ !empty($student->grades)
-            && !empty($student->grades->where('group_id', $group->id)->where('partial_id', $partial->id)->first()->desicion_making)
-            ? App\Model\CualitativeGrade::find($student->grades->where('group_id', $group->id)->where('partial_id', $partial->id)->first()->desicion_making)->code
+            && !empty($student->grades->where('group_id', $group->id)->where('partial_id', $partial->id)->first()->decision_making)
+            ? App\Model\CualitativeGrade::find($student->grades->where('group_id', $group->id)->where('partial_id', $partial->id)->first()->decision_making)->code
             : null }}
           </td>
         @endforeach
