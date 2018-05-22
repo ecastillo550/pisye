@@ -43,7 +43,7 @@ class GradesController extends Controller
         }
 
         $grade = Grade::where('group_id', $group->id)
-                    ->where('partial_id', $partial->order)
+                    ->where('partial_id', $partial->id)
                     ->where('student_id', $request->student)
                     ->first();
 
