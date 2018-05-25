@@ -27,7 +27,7 @@
   </div>
   <div class="card-body">
     <div class="row">
-      <div class="col-12">
+      <div class="col-12" style="padding: 0 35px;">
         @foreach ($student->enrolled as $group)
           @foreach($group->semester->partials->sortBy('order') as $partial)
           <p>
