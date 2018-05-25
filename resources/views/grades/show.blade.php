@@ -26,19 +26,21 @@
     <h1>Observaciones</h1>
   </div>
   <div class="card-body">
-
-      @foreach ($student->enrolled as $group)
-        @foreach($group->semester->partials->sortBy('order') as $partial)
-        <p>
-          {{ !empty($student->grades)
-          && !empty($student->grades->where('group_id', $group->id)->where('partial_id', $partial->id)->first())
-          && !empty($student->grades->where('group_id', $group->id)->where('partial_id', $partial->id)->first()->comments)
-          ? $group->subject->name . ', ' . $partial->name . ': ' . $student->grades->where('group_id', $group->id)->where('partial_id', $partial->id)->first()->comments
-          : null }}
-        </p>
+    <div class="row">
+      <div class="col-12">
+        @foreach ($student->enrolled as $group)
+          @foreach($group->semester->partials->sortBy('order') as $partial)
+          <p>
+            {{ !empty($student->grades)
+            && !empty($student->grades->where('group_id', $group->id)->where('partial_id', $partial->id)->first())
+            && !empty($student->grades->where('group_id', $group->id)->where('partial_id', $partial->id)->first()->comments)
+            ? $group->subject->name . ', ' . $partial->name . ': ' . $student->grades->where('group_id', $group->id)->where('partial_id', $partial->id)->first()->comments
+            : null }}
+          </p>
+          @endforeach
         @endforeach
-      @endforeach
-    </p>
+      </div>
+    </div>
   </div>
 </div>
 @endsection
